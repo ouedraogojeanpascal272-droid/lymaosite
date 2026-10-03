@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo "Installation des dépendances..."
+echo "=== DEBUT DU SCRIPT ==="
+echo "Installation des dependances..."
 pip install -r requirements.txt
 
 echo "Collecte des fichiers statiques..."
-python3 manage.py collectstatic --noinput
+python manage.py collectstatic --noinput
+
+echo "=== FIN DU SCRIPT ==="
