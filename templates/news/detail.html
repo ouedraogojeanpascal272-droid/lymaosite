@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block title %} {{ actualite.titre }} — Actualités
+{% endblock %} {% block content %}
+
+<section class="page-header page-header-small">
+    <div class="page-header-bg">
+        <div class="page-header-pattern"></div>
+    </div>
+    <div class="container">
+        <div class="page-header-content" data-aos="fade-up">
+            <nav class="breadcrumb">
+                <a href="{% url 'home' %}">Accueil</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="{% url 'liste_actualites' %}">Actualités</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Détail</span>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<article class="article-section">
+    <div class="container">
+        <div class="article-container" data-aos="fade-up">
+            <div class="article-header">
+                <div class="article-meta-top">
+                    <span class="article-category">Actualité</span>
+                    <span class="article-date">
+                        <i class="fas fa-calendar-alt"></i>
+                    </span>
+                </div>
+                <h1 class="article-title">{{ actualite.titre }}</h1>
+            </div>
+
+            {% if actualite.image %}
+            <div class="article-image">
+                <img
+                    src="{{ actualite.image.url }}"
+                    alt="{{ actualite.titre }}"
+                />
+            </div>
+            {% endif %}
+
+            <div class="article-body">{{ actualite.contenu|linebreaks }}</div>
+
+            <div class="article-footer">
+                <div class="article-share">
+                    <span>Partager :</span>
+                    <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" class="share-btn facebook"
+                        ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    <a href="#" class="share-btn whatsapp"
+                        ><i class="fab fa-whatsapp"></i
+                    ></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-nav" data-aos="fade-up">
+            <a href="{% url 'liste_actualites' %}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                <span>Retour aux actualités</span>
+            </a>
+        </div>
+    </div>
+</article>
+
+{% endblock %}

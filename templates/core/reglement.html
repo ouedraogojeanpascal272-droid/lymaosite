@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Règlement intérieur - LYMAO{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Règlement intérieur</h1>
+</div>
+
+<section class="reglement">
+    <h2>Préambule</h2>
+    <p>Le présent règlement définit les droits et devoirs de chaque membre de la communauté éducative : élèves, parents, enseignants, personnel administratif et d’encadrement. Il vise à garantir un climat scolaire serein, respectueux et propice à la réussite de tous.</p>
+
+    <h2>TITRE I – ASSIDUITÉ ET PONCTUALITÉ</h2>
+    <p><strong>Article 1 – Assiduité</strong><br>
+    La présence à tous les cours, études et activités obligatoires est impérative. Tout élève absent doit fournir un justificatif dans les 48 heures.</p>
+    <p><strong>Article 2 – Retards</strong><br>
+    Après plusieurs retards successifs, l’élève se verra infliger une sanction sur sa moyenne de conduite.</p>
+    
+    <h2>TITRE II – TENUE, COMPORTEMENT ET RESPECT</h2>
+    <p><strong>Article 3 – Tenue vestimentaire</strong><br>
+    La tenue réglementaire (pantalon long kaki et chemise pour les garçons ou jupe bleue marrine longue pour les filles, chaussures fermées) est exigée. Tout manquement entraîne une sanction.</p>
+    <p><strong>Article 4 – Usage du téléphone portable et appareils électroniques</strong><br>
+    Le téléphone portable et les écouteurs sont strictement interdits dans l'enceinte de l'établissement.  Toute infraction entraîne la confiscation de l’appareil et une sanction.</p>
+    <p><strong>Article 5 – Respect mutuel</strong><br>
+    Chaque élève doit respecter les enseignants, le personnel, ses camarades ainsi que le matériel mis à disposition. Les insultes, violences verbales ou physiques, le harcèlement sont passibles d’un conseil de discipline.</p>
+
+    <h2>TITRE III – TRAVAIL SCOLAIRE ET ÉVALUATIONS</h2>
+    <p><strong>Article 6 – Obligation de travail</strong><br>
+    Les devoirs et leçons sont à préparer quotidiennement.</p>
+    
+    <h2>TITRE IV – SANCTIONS DISCIPLINAIRES</h2>
+    <p>Selon la gravité de l’infraction, les sanctions applicables sont :</p>
+    <ul>
+        <li>L’avertissement </li>
+        <li>Le blâme </li>
+        <li>L’exclusion temporaire de 1 à 8 jours</li>
+        <li>L’exclusion définitive de l’établissement</li>
+    </ul>
+    <p>Les décisions sont prises par le conseil de discipline après audition de l’élève et de ses responsables légaux.</p>
+
+    <h2>TITRE V – SANTÉ, SÉCURITÉ ET LOCAUX</h2>
+    <p><strong>Article 7 – Santé</strong><br>
+    Tout élève malade doit se présenter à l’infirmerie. En cas de maladie contagieuse, un certificat médical de reprise est exigé.</p>
+    <p><strong>Article 8 – Sécurité</strong><br>
+    Il est interdit de se trouver dans les couloirs ou la cour pendant les heures de cours. Les circulations se font dans le calme.</p>
+    <p><strong>Article 9 – Propreté des locaux</strong><br>
+    Chaque élève contribue à la propreté de la salle de classe et de l’établissement. Détériorer volontairement le matériel ou les murs expose à une sanction financière et disciplinaire.</p>
+
+    <h2>TITRE VI – DISPOSITIONS FINALES</h2>
+    <p>Le présent règlement est applicable dès la rentrée scolaire. Tout manquement pourra être sanctionné même en dehors des heures de cours si l’élève est identifiable comme appartenant au LYMAO.</p>
+    <p>Le proviseur peut, après avis du conseil d’administration, modifier certaines dispositions en cours d’année après information des familles.</p>
+
+    <p class="signature">Fait à Abidjan, le 18 Mai 2026<br>Le Proviseur du LYMAO<br>M. KONAN YAO HONORE</p>
+</section>
+
+<style>
+    .page-header {
+        background: #2c3e50;
+        color: white;
+        padding:  auto;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .reglement h2 {
+        background: #f0f4f8;
+        padding: 0.5rem 1rem;
+        border-left: 5px solid #e67e22;
+        margin-top: 2rem;
+        font-size: 1.4rem;
+    }
+    .reglement p, .reglement ul {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    .reglement ul {
+        margin-left: 2rem;
+    }
+    .signature {
+        margin-top: 3rem;
+        font-style: italic;
+        text-align: right;
+        border-top: 1px solid #ccc;
+        padding-top: 1rem;
+    }
+</style>
+{% endblock %}

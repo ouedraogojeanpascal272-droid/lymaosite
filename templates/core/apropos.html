@@ -1,0 +1,248 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Notre École —
+LYCEE MODERNE ALASSANE OUATTARA{% endblock %} {% block content %}
+
+<section class="page-header">
+    <div class="page-header-bg">
+        <div class="page-header-pattern"></div>
+    </div>
+    <div class="container">
+        <div class="page-header-content" data-aos="fade-up">
+            <nav class="breadcrumb">
+                <a href="{% url 'home' %}">Accueil</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Notre École</span>
+            </nav>
+            <h1>Découvrez <span class="text-gradient">Excellence</span></h1>
+            <p>
+                17 ans d'engagement pour l'éducation et l'épanouissement des
+                jeunes
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- History -->
+<section class="about-history">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image" data-aos="fade-right">
+                <div class="about-image-main">
+                    <img
+                        src="{% static 'images/vf-R.jpg' %}" alt="image absente"
+                    /> 
+                        
+                    
+                </div>
+                
+                <div class="experience-badge">
+                    <span class="exp-number">17+</span>
+                    <span class="exp-text">Années d'Excellence</span>
+                </div>
+            </div>
+
+            <div class="about-content" data-aos="fade-left">
+                <span class="section-tag">Notre Histoire</span>
+                <h2>
+                    Une École Construite sur des
+                    <span class="highlight">Valeurs Solides</span>
+                </h2>
+                <p>
+                    Fondée en 2009,anciennement Collège Moderne d'Anyama (CMA) ,il devient le Lycée Moderne Alassane Ouattara d'Anyama (LYMAO) depuis Novembre 2015
+                    avec une vision audacieuse :Celle de créer un établissement où l'excellence
+                    académique se marie harmonieusement avec le développement
+                    personnel de chaque élève.
+                </p>
+                <p>
+                    Au fil des années, nous avons formé des milliers de
+                    jeunes qui sont devenus des leaders dans leurs domaines
+                    respectifs. Notre approche pédagogique unique allie
+                    tradition et innovation.
+                </p>
+                <!-- SECTION SUCCESSION DES CHEFS D'ÉTABLISSEMENT -->
+<div class="succession-wrapper" data-aos="fade-up">
+    <div class="container">
+        <div class="succession-header">
+            <h2 class="succession-title">SUCCESSION DES CHEFS D'ÉTABLISSEMENT</h2>
+            <p class="succession-subtitle">Les directeurs qui ont marqué l’histoire de notre établissement</p>
+        </div>
+
+        <div class="table-container">
+            <table class="succession-table">
+                <thead>
+                    <tr>
+                        <th>Nom et Prénoms</th>
+                        <th>Fonction</th>
+                        <th>Année de service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mme TORO Sophie B.</td>
+                        <td>Principal</td>
+                        <td>2009 – 2011</td>
+                    </tr>
+                    <tr>
+                        <td>Mme KONE Fatou E.</td>
+                        <td>Proviseur</td>
+                        <td>2011 – 2021</td>
+                    </tr>
+                    <tr>
+                        <td>Mr KONAN Yao H.</td>
+                        <td>Proviseur</td>
+                        <td>2021 – ...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+                <div class="about-values">
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Excellence académique</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Innovation pédagogique</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Épanouissement personnel</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Ouverture sur le monde</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="mission-vision">
+    <div class="container">
+        <div class="mv-grid">
+            <div class="mv-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="mv-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Notre Mission</h3>
+                <p>
+                    Offrir une éducation de qualité exceptionnelle qui développe
+                    le potentiel intellectuel, créatif et social de chaque
+                    élève, tout en inculquant des valeurs d'intégrité, de
+                    respect et de responsabilité.
+                </p>
+            </div>
+
+            <div class="mv-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="mv-icon icon-vision">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Notre Vision</h3>
+                <p>
+                    Devenir la référence en éducation secondaire, reconnue pour
+                    former des citoyens du monde compétents, créatifs et
+                    engagés, capables de relever les défis de demain avec
+                    confiance et humanité.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="0">
+                <i class="fas fa-user-graduate"></i>
+                <span class="stat-number" data-count="2000">+2000</span>
+                <span class="stat-label">Élèves inscrits</span>
+            </div>
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span class="stat-number" data-count="30">+30</span>
+                <span class="stat-label">Enseignants qualifiés</span>
+            </div>
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-percentage"></i>
+                <span class="stat-number" data-count="98">+98</span>
+                <span class="stat-label">% Taux de réussite</span>
+            </div>
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-award"></i>
+                <span class="stat-number" data-count="15">+15</span>
+                <span class="stat-label">Prix et distinctions</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="team-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Notre Équipe</span>
+            <h2 class="section-title">
+                Des Professionnels <span class="highlight">Passionnés</span>
+            </h2>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="team-image">
+                    <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="image absente" />
+                </div>
+                <div class="team-info">
+                    <h4>Mr Konan Yao Honoré</h4>
+                    <span class="team-role">Proviseur du lycée</span>
+                    <p>En charge de la gestion du Lycée depuis 2021</p>
+                </div>
+            </div>
+                  
+            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-image">
+                  <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="image absente" />
+                </div>
+                <div class="team-info">
+                    <h4>Mme Koné Rokia</h4>
+                    <span class="team-role">Sécretaire du Proviseur</span>
+                    <p>Femme dévouée, aide le proviseur dans sa gestion quotidienne des tâches</p>
+                </div>
+            </div>
+
+            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-image">
+                    
+                     <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="image absente"    
+                    />
+                </div>
+                <div class="team-info">
+                    <h4>M. Kondé </h4>
+                    <span class="team-role">Educateur</span>
+                    <p>éducateur compétent , privilégie l'amour du travail </p>
+                </div>
+            </div>
+
+            <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="team-image">
+                     <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="image absente"
+                    />
+                </div>
+                <div class="team-info">
+                    <h4>Mr Méa </h4>
+                    <span class="team-role">informaticien du lycée</span>
+                    <p>Méilleur dans le domaine des TIC</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

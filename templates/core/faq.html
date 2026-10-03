@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Foire aux questions – Parents – LYMAO{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Foire aux questions</h1>
+</div>
+
+<div class="faq-container">
+    <div class="faq-categorie">
+        <h2>📌 Vie scolaire et organisation</h2>
+        
+        <div class="faq-item">
+            <h3>➡ Quels sont les horaires de cours ?</h3>
+            <p>Les cours ont lieu du lundi au vendredi de 7h30 à 12h20 et de 13h05 à 16h20. Le samedi, des cours de soutien et des activités sportives sont proposés de 8h00 à 12h00 . Les portes du lycée ouvrent à 7h00 et ferment à 17h30.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>➡ Comment suivre les notes et absences de mon enfant ?</h3>
+            <p>Nous utilisons un carnet de correspondance papier et un espace parent en ligne(Ecole média). À l’inscription, vous recevez des identifiants pour vous connecter au portail famille. Vous y verrez les notes, les appréciations des professeurs, les absences justifiées ou non, et les retards. Nous recommandons de consulter cet espace au moins une fois par semaine.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>➡ Que faire en cas d’absence ou de retard de mon enfant ?</h3>
+            <p>Vous devez nous fournir un mot écrit ou un justificatif médical dans les 48 heures. Sans justificatif, l’absence est considérée comme injustifiée et peut entraîner une retrait de points sur la conduite. Pour les retards, un élève qui arrive après 7h35 doit se présenter au bureau de l'inspecteur d'education pour justifier son retard .</p>
+        </div>
+    </div>
+
+    <div class="faq-categorie">
+        <h2>🍽️ Restauration </h2>
+        
+        <div class="faq-item">
+            <h3>➡ Y a-t-il une cantine ? Quels sont les tarifs ?</h3>
+            <p>Oui, la cantine sert chaque jour un repas équilibré (entrée, plat chaud ...). Le tarif est de 3000 FCFA par mois.la cantine est ouverte pour les cas sociaux et les plus méritant</p>
+        </div>
+
+        
+    </div>
+
+    <div class="faq-categorie">
+        <h2>👨‍🏫 Vie pédagogique </h2>
+        
+        <div class="faq-item">
+            <h3>➡ Quelles sont les series proposées au lycée ?</h3>
+            <p>Nous proposons les séries générales : A1 , A2 , C , D</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>➡ Comment se passe le soutien scolaire ?</h3>
+            <p>.....</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>➡ Mon enfant a un trouble dys (ou autre handicap). Que faire ?</h3>
+            <p>Nous avons une équipe de suivi (enseignant référent,service social). Contactez la vie scolaire dès l’inscription pour mettre en place un projet d’accueil individualisé (PAI) ou un tiers‑temps pour les examens. Un dossier médical sera demandé.</p>
+        </div>
+    </div>
+
+    <div class="faq-categorie">
+        <h2>💰 Frais scolaires </h2>
+        
+        <div class="faq-item">
+            <h3>➡ Quels sont les frais de scolarité ?</h3>
+            <p>Le montant annuel pour l’année 2026‑2027 est de 3000 FCFA.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>➡ Existe-t-il des bourses ou aides financières ?</h3>
+            <p>Oui. Nous proposons des bourses d’excellence (réduction de 50 % pour les 10 meilleurs élèves de chaque niveau) et des bourses sociales (réduction dégressive selon le quotient familial). Les demandes sont à déposer avant le 30 juin. Un fonds d’urgence peut également aider en cas de difficulté passagère (sur dossier).</p>
+        </div>
+    </div>
+
+    <div class="faq-categorie">
+        <h2>🏫 Contacts et administration</h2>
+        
+        <div class="faq-item">
+            <h3>➡ Comment contacter un enseignant ou le proviseur ?</h3>
+            <p>Pour rencontrer un enseignant, passez par le carnet de correspondance ou demandez un rendez-vous via la vie scolaire.</p>
+        </div>
+        <div class="faq-item">
+            <h3>➡ Que faire si je perds le carnet de correspondance de mon enfant ?</h3>
+            <p>Vous devez acheter un nouveau carnet auprès des éducateurs (coût : 1 000 FCFA).Il est très important de toujours avoir un carnet à jour pour les communications entre l’école et la maison.</p>
+        </div>
+    </div>
+</div>
+
+<p class="faq-contact">Vous n’avez pas trouvé votre réponse ? N’hésitez pas à <a href="{% url 'contact' %}">nous contacter directement</a> ou à appeler le secrétariat.</p>
+
+<style>
+    .page-header {
+        background: #2c3e50;
+        color: white;
+        padding: auto;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .faq-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .faq-categorie {
+        margin-bottom: 2.5rem;
+    }
+    .faq-categorie h2 {
+        background: #f0f4f8;
+        padding: 0.5rem 1rem;
+        border-left: 5px solid #e67e22;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    .faq-item {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        transition: box-shadow 0.2s;
+    }
+    .faq-item:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .faq-item h3 {
+        margin: 0 0 0.5rem 0;
+        color: #2c3e50;
+        font-size: 1.2rem;
+    }
+    .faq-item p {
+        margin: 0;
+        line-height: 1.5;
+    }
+    .faq-contact {
+        text-align: center;
+        margin-top: 2rem;
+        background: #f9f9f9;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    .faq-contact a {
+        color: #e67e22;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .faq-contact a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

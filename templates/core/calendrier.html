@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Calendrier scolaire 2025-2026 – LYMAO{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Calendrier scolaire 2025-2026</h1>
+</div>
+
+<div class="calendrier-annee">
+    <div class="trimestre">
+        <h2>🎓 1<sup>er</sup> TRIMESTRE</h2>
+        <ul>
+            <li><strong>Rentrée des enseignants :</strong> lundi 22 septembre 2025</li>
+            <li><strong>Rentrée des élèves :</strong> jeudi 25 septembre 2025 (cours dès 7h30)</li>
+            <li><strong>Conseils de classe du 1<sup>er</sup> trimestre :</strong> du 17 au 21 novembre 2025</li>
+            <li><strong>Remise des bulletins :</strong> 24 novembre 2025</li>
+            <li><strong>Vacances de la Toussaint :</strong> du samedi 1<sup>er</sup> novembre 2025 au mercredi 5 novembre 2025 inclus (reprise des cours jeudi 6 novembre)</li>
+            <li><strong>Fin des cours du 1<sup>er</sup> trimestre :</strong> vendredi 19 décembre 2025 à 12h30</li>
+            <li><strong>Vacances de Noël :</strong> du 20 décembre 2025 au 4 janvier 2026 (reprise le lundi 5 janvier 2026)</li>
+        </ul>
+    </div>
+
+    <div class="trimestre">
+        <h2>📚 2<sup>e</sup> TRIMESTRE</h2>
+        <ul>
+            <li><strong>Reprise des cours :</strong> lundi 5 janvier 2026</li>
+            <li><strong>Examens blancs (BEPC / BAC) :</strong> du 9 au 13 février 2026</li>
+            <li><strong>Conseils de classe :</strong> du 2 au 6 mars 2026</li>
+            <li><strong>Remise des bulletins :</strong> 9 mars 2026</li>
+            <li><strong>Vacances d’hiver :</strong> du 22 février 2026 au 28 février 2026 inclus (reprise lundi 2 mars 2026)</li>
+            <li><strong>Journée portes ouvertes :</strong> samedi 14 mars 2026 (9h – 17h)</li>
+            <li><strong>Fin du 2<sup>e</sup> trimestre :</strong> vendredi 10 avril 2026</li>
+            <li><strong>Vacances de Pâques :</strong> du 11 avril 2026 au 19 avril 2026 inclus (reprise lundi 20 avril)</li>
+        </ul>
+    </div>
+
+    <div class="trimestre">
+        <h2>📖 3<sup>e</sup> TRIMESTRE</h2>
+        <ul>
+            <li><strong>Reprise des cours :</strong> lundi 20 avril 2026</li>
+            <li><strong>Fête du travail (chômé) :</strong> vendredi 1<sup>er</sup> mai 2026 – pas de cours</li>
+            <li><strong>Derniers conseils de classe de l’année :</strong> du 25 au 29 mai 2026</li>
+            <li><strong>Remise des bulletins du 3<sup>e</sup> trimestre :</strong> 1<sup>er</sup> juin 2026</li>
+            <li><strong>Fin des cours pour les classes de 3<sup>e</sup> et Terminale :</strong> vendredi 12 juin 2026 (préparation aux examens)</li>
+            <li><strong>Début des épreuves du BEPC :</strong> 15 juin 2026</li>
+            <li><strong>Début des épreuves du BAC :</strong> 22 juin 2026</li>
+            <li><strong>Fin des cours pour les autres niveaux :</strong> vendredi 10 juillet 2026 à 12h30</li>
+            <li><strong>Conseil de classe exceptionnel (orientation) :</strong> 13 juillet 2026</li>
+            <li><strong>Vacances d’été :</strong> du 11 juillet 2026 au 20 septembre 2026</li>
+        </ul>
+    </div>
+</div>
+
+<div class="evenements">
+    <h2>📅 Événements et dates clés à retenir</h2>
+    <div class="grid-evenements">
+        <div class="event">
+            <span class="date">3 mai 2026</span>
+            <span class="titre">Journée portes ouvertes du LYMAO</span>
+            <p>Rencontre avec les professeurs, visite des laboratoires, de la bibliothèque et démonstrations sportives.</p>
+        </div>
+        <div class="event">
+            <span class="date">25 mai 2026</span>
+            <span class="titre">Réunion d’orientation parents – élèves (post‑3e et post‑Terminale)</span>
+            <p>Salle polyvalente, 18h. Présentation des filières et des débouchés.</p>
+        </div>
+        <div class="event">
+            <span class="date">15 septembre 2026</span>
+            <span class="titre">Publication des résultats BEPC et BAC</span>
+            <p>Affichage au lycée et sur le site internet.</p>
+        </div>
+        <div class="event">
+            <span class="date">25 septembre 2026</span>
+            <span class="titre">Rentrée scolaire 2026-2027</span>
+            <p>Reprise des cours pour tous les niveaux.</p>
+        </div>
+    </div>
+</div>
+
+<div class="notes">
+    <h3>⚠️ Notes importantes</h3>
+    <ul>
+        <li>Le calendrier peut être modifié en cas d’intempéries ou de décision ministérielle.</li>
+        <li>Pour les classes d’examen, des cours de soutien sont organisés pendant les petites vacances (sur inscription).</li>
+    </ul>
+</div>
+
+
+<style>
+    .page-header {
+        background: #2c3e50;
+        color: white;
+        padding: auto;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .soustitre {
+        font-size: 0.9rem;
+        font-style: italic;
+        margin-top: 0.5rem;
+        color: #ddd;
+    }
+    .calendrier-annee {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    .trimestre {
+        flex: 1;
+        min-width: 250px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .trimestre h2 {
+        background: #f0f4f8;
+        margin: -1rem -1rem 1rem -1rem;
+        padding: 0.75rem;
+        border-bottom: 3px solid #e67e22;
+        border-radius: 8px 8px 0 0;
+        font-size: 1.4rem;
+        color: #2c3e50;
+    }
+    .trimestre ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .trimestre li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.2rem;
+        position: relative;
+        line-height: 1.4;
+    }
+    .trimestre li:before {
+        content: "•";
+        color: #e67e22;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+    .evenements {
+        background: #fef9e6;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+    .evenements h2 {
+        border-left: 5px solid #e67e22;
+        padding-left: 0.75rem;
+        margin-top: 0;
+    }
+    .grid-evenements {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .event {
+        background: white;
+        border-radius: 6px;
+        padding: 0.75rem;
+        border: 1px solid #eee;
+    }
+    .event .date {
+        display: inline-block;
+        background: #2c3e50;
+        color: white;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .event .titre {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+    .notes, .telechargement {
+        background: #f0f4f8;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+    .notes h3 {
+        margin-top: 0;
+        color: #c0392b;
+    }
+    .telechargement {
+        text-align: center;
+        background: #eef2f7;
+    }
+    .telechargement a {
+        background: #e67e22;
+        color: white;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    .telechargement a:hover {
+        background: #d35400;
+    }
+</style>
+{% endblock %}

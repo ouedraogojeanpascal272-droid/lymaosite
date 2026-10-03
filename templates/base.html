@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}LYMAO{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-Ho3c6MKURg+5sBzBLmEL4ciisnNz1ZTfV0vhKOWfUTrFHWfGS8l/SXVkoVb7u49I4V4yZ5fQHbnleA8+iUY2Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pE8b3tD8RdWQeF6Y8v1m3+IPJfXjVHvBt/QRzvD1/39g0N8CPOkDIkdS1aX4GchP2/zjYdGQfvxA9y7J8Dy6mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+    {% block content %}{% endblock %}
+    {% include 'includes/footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-1c4exC0vCMFlvyYxI6h24ZVhGIL5NVYTw6ZIpnLC9ut2JS6q0RBRfDoRiS7KbhyFz7YwCA5nja+g1ZZg8V4bKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    </script>
+</body>
+</html>
+

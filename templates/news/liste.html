@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block title %}Actualités — LYMAO
+{% endblock %} {% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="page-header-bg">
+        <div class="page-header-pattern"></div>
+    </div>
+    <div class="container">
+        <div class="page-header-content" data-aos="fade-up">
+            <nav class="breadcrumb">
+                <a href="{% url 'core:home' %}">Accueil</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Actualités</span>
+            </nav>
+            <h1>Nos <span class="text-gradient">Actualités</span></h1>
+            <p>Toute l'actualité de notre établissement en un seul endroit</p>
+        </div>
+    </div>
+</section>
+
+<!-- News List -->
+<section class="news-list-section">
+    <div class="container">
+        {% if actualites %}
+        <div class="news-grid news-grid-full">
+            {% for actualite in actualites %}
+            <article
+                class="news-card news-card-horizontal"
+                data-aos="fade-up"
+                data-aos-delay="{{ forloop.counter0|divisibleby:2|yesno:'0,100' }}"
+            >
+                <div class="news-image">
+                    {% if actualite.image %}
+                    <img
+                        src="{{ actualite.image.url }}"
+                        alt="{{ actualite.titre }}"
+                    />
+                    {% else %}
+                    <img
+                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop"
+                        alt="{{ actualite.titre }}"
+                    />
+                    {% endif %}
+                    <div class="news-date">
+                        <span class="day"
+                            >{{ actualite.date_publication|date:"d" }}</span
+                        >
+                        <span class="month"
+                            >{{ actualite.date_publication|date:"M" }}</span
+                        >
+                    </div>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category"
+                            ><i class="fas fa-tag"></i> Actualité</span
+                        >
+                        <span
+                            ><i class="fas fa-clock"></i> </span
+                        >
+                    </div>
+                    <h3>{{ actualite.titre }}</h3>
+                    <p>{{ actualite.contenu|truncatewords:35 }}</p>
+                    <a
+                        href="{% url 'detail_actualite' actualite.id %}"
+                        class="news-link"
+                    >
+                        Lire l'article complet
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state large" data-aos="fade-up">
+            <i class="fas fa-newspaper"></i>
+            <h3>Aucune actualité pour le moment</h3>
+            <p>
+                Revenez bientôt pour découvrir les dernières nouvelles de notre
+                établissement.
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

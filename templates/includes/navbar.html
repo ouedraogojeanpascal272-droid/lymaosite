@@ -1,0 +1,75 @@
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="nav-logo">
+            <div class="logo-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="logo-text">
+                <span class="logo-main">LYMAO</span>
+                <span class="logo-sub">LYCEE MODERNE ALASSANE OUATTARA</span>
+            </div>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+                <a
+                    href="{% url 'home' %}"
+                    class="nav-link {% if request.path == '/' %}active{% endif %}"
+                >
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                    href="{% url 'apropos' %}"
+                    class="nav-link {% if 'about' in request.path %}active{% endif %}"
+                >
+                    <i class="fas fa-school"></i>
+                    <span>Notre École</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                    href="{% url 'liste_actualites' %}"
+                    class="nav-link {% if 'actualite' in request.path %}active{% endif %}"
+                >
+                    <i class="fas fa-newspaper"></i>
+                    <span>Actualités</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                    href="{% url 'contact' %}"
+                    class="nav-link {% if 'contact' in request.path %}active{% endif %}"
+                >
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li class="nav-item nav-cta">
+                <a
+                    href="{% url 'admin:index' %}"
+                    class="btn btn-nav admin-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fas fa-lock"></i>
+                    <span>Administration</span>
+
+              
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+

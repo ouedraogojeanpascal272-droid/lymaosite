@@ -1,0 +1,124 @@
+<footer class="footer">
+    <div class="footer-wave">
+        <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0V120Z"
+                fill="var(--footer-wave)"
+            />
+        </svg>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-brand" data-aos="fade-up" data-aos-delay="0">
+                <div class="footer-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>LYMAO</span>
+                </div>
+                <p class="footer-desc">
+                    Former les leaders de demain dans un environnement
+                    d'excellence, d'innovation et de respect des valeurs.
+                </p>
+                <div class="footer-social">
+                    <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"
+                        ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    
+                 </div>
+            </div>
+
+            <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+                <h4>Navigation</h4>
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}"
+                            ><i class="fas fa-chevron-right"></i> Accueil</a
+                        >
+                    </li>
+                    <li>
+                        <a href="{% url 'apropos' %}"
+                            ><i class="fas fa-chevron-right"></i> Notre École</a
+                        >
+                    </li>
+                    <li>
+                        <a href="{% url 'liste_actualites' %}"
+                            ><i class="fas fa-chevron-right"></i> Actualités</a
+                        >
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}"
+                            ><i class="fas fa-chevron-right"></i> Contact</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
+                <h4>Informations</h4>
+                <ul>
+                    <li>
+                       <a href="{% url 'reglement'  %}"
+                       ><i class="fas fa-chevron-right"></i>
+                        Règlement</a>
+                       
+                    </li>
+                    <li>
+                        <a href="{% url 'calendrier'  %}"
+                            ><i class="fas fa-chevron-right"></i> Calendrier
+                            scolaire</a
+                        >
+                    </li>
+                    <li>
+                        <a href="{% url 'inscriptions'  %}"
+                            ><i class="fas fa-chevron-right"></i>
+                            Inscriptions</a
+                        >
+                    </li>
+                    <li>
+                        <a href="{% url 'faq'  %}"
+                            ><i class="fas fa-chevron-right"></i> FAQ Parents</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-contact" data-aos="fade-up" data-aos-delay="300">
+                <h4>Contact</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span
+                        >Boulevard Mohammed VI<br />rue 
+                        Anyama</span
+                    >
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+225 07 47 95 10 20</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ouedraogojeanpascal272@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Lun - Ven : 07h00 - 17h00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © {% now "Y" %} LYMAO. Tous droits
+                réservés.
+            </p>
+            <div class="footer-legal">
+                <a href="#">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
+            </div>
+        </div>
+    </div>
+</footer>

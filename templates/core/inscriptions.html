@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inscriptions – LYMAO – Lycée Moderne Alassane Ouattara{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Inscriptions 2026-2027</h1>
+</div>
+
+<section class="intro">
+    <p>Les inscriptions au Lycée Moderne Alassane Ouattara (LYMAO) pour l’année scolaire 2026-2027 sont ouvertes à tous les élèves désireux de rejoindre un cadre d’étude moderne, avec des enseignants qualifiés et un suivi personnalisé. Vous trouverez ci-dessous toutes les informations pratiques.</p>
+</section>
+
+<div class="inscription-grid">
+
+    <div class="card">
+        <h2>📅 Calendrier des inscriptions</h2>
+        <ul>
+            <li><strong>Dépôt des dossiers :</strong> du ............ au ........</li>
+            <li><strong>Inscriptions définitives (paiement, remise des pièces) :</strong> ........</li>
+            <li><strong>Rentrée des élèves :</strong> ... septembre 2026</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>📋 Pièces à fournir (dossier complet)</h2>
+        <ul>
+            <li>✓ Demande manuscrite adressée au proviseur</li>
+            <li>✓ Photocopie légalisée de l’acte de naissance ou extrait d’acte de naissance</li>
+            <li>✓ Relevés de notes des deux derniers trimestres (certifiés conformes)</li>
+            <li>✓ Certificat de scolarité de l’année précédente</li>
+            <li>✓ Fiche de transfert (pour transfert d’un autre établissement)</li>
+            <li>✓ 2 photos d’identité ( fond blanc, nom au dos)</li>
+            <li>✓ Fiche de renseignements (à retirer au secrétariat)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>💰 Frais de scolarité 2025-2026</h2>
+        <ul>
+            <li><strong>Droit d’inscription (une seule fois) :</strong> 35 000 FCFA</li>
+            <li><strong>Scolarité annuelle :</strong> 3 000 FCFA </li>
+            <li><strong>Assurance scolaire (obligatoire) :</strong> 5 000 FCFA</li>
+        </ul>
+        <p class="info">Les versements se font à l’intendance .</p>
+    </div>
+</div>
+
+<div class="bourses">
+    <h2>🎓  bourses</h2>
+    <p>les informations a ajouter plus tard(à demander à Monsieur le Proviseur )</p>
+</div>
+
+<div class="demarche">
+    <h2>📝 Marche à suivre pour s’inscrire</h2>
+    <ol>
+        <li>Retirer un dossier d’inscription au secrétariat .</li>
+        <li>Remplir la fiche de renseignements et rassembler toutes les pièces listées.</li>
+        <li>Déposer le dossier complet à la scolarité entre 8h et 16h du lundi au vendredi.</li>
+        <li>Procéder au paiement des frais (droit d’inscription ) à l’intendance.</li>
+        <li>Remettre le reçu de paiement à la scolarité pour valider l’inscription </li>
+    </ol>
+</div>
+
+<div class="contact-inscription">
+    <p><strong>Pour tout renseignement complémentaire :</strong><br>
+    📞 Tél : +225 07 47 95 10 20 ( Mme KONE ROKIA, responsable des inscriptions)<br>
+    📧 Email : ouedraogojeanpascal272@gmail.com<br>
+    🏫 Secrétariat ouvert de 8h à 16h (lundi – vendredi).</p>
+</div>
+
+<style>
+    .page-header {
+        background: #2c3e50;
+        color: white;
+        padding: auto;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .intro {
+        background: #f9f9f9;
+        padding: 1rem;
+        border-left: 5px solid #e67e22;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+    .inscription-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .card h2 {
+        background: #f0f4f8;
+        margin: -1rem -1rem 1rem -1rem;
+        padding: 0.75rem;
+        border-bottom: 2px solid #e67e22;
+        border-radius: 8px 8px 0 0;
+        font-size: 1.3rem;
+    }
+    .card ul, .card ol {
+        margin-left: 1.2rem;
+        line-height: 1.5;
+    }
+    .card li {
+        margin-bottom: 0.5rem;
+    }
+    .info {
+        font-size: 0.9rem;
+        background: #fef9e6;
+        padding: 0.5rem;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+    }
+    .bourses, .demarche, .contact-inscription {
+        background: #f9f9f9;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+    }
+    .bourses h2, .demarche h2 {
+        color: #2c3e50;
+        border-left: 5px solid #e67e22;
+        padding-left: 0.5rem;
+    }
+    .demarche ol {
+        margin-left: 1.5rem;
+    }
+    .contact-inscription {
+        text-align: center;
+        background: #eef2f7;
+    }
+    @media (max-width: 768px) {
+        .inscription-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
