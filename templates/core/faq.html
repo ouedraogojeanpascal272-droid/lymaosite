@@ -1,150 +1,730 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Foire aux questions – Parents – LYMAO{% endblock %}
+{% block title %}Foire aux Questions – LYMAO{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h1>Foire aux questions</h1>
+    <h1>Foire aux Questions</h1>
+    <p>Toutes les réponses aux questions fréquentes des parents et élèves</p>
 </div>
 
-<div class="faq-container">
-    <div class="faq-categorie">
-        <h2>📌 Vie scolaire et organisation</h2>
+<div class="faq-wrapper">
+    <!-- Barre de recherche -->
+    <div class="faq-search">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="faqSearch" placeholder="Rechercher une question..." onkeyup="filterFAQ()">
+    </div>
+
+    <!-- Navigation par catégories -->
+    <div class="faq-categories">
+        <button class="cat-btn active" onclick="filterCategory('all')">Toutes</button>
+        <button class="cat-btn" onclick="filterCategory('vie-scolaire')"> Vie scolaire</button>
+        <button class="cat-btn" onclick="filterCategory('restauration')">🍽️ Restauration</button>
+        <button class="cat-btn" onclick="filterCategory('pedagogie')">👨‍ Pédagogie</button>
+        <button class="cat-btn" onclick="filterCategory('frais')">💰 Frais & Bourses</button>
+        <button class="cat-btn" onclick="filterCategory('contact')">🏫 Contact</button>
+    </div>
+
+    <div class="faq-container">
         
-        <div class="faq-item">
-            <h3>➡ Quels sont les horaires de cours ?</h3>
-            <p>Les cours ont lieu du lundi au vendredi de 7h30 à 12h20 et de 13h05 à 16h20. Le samedi, des cours de soutien et des activités sportives sont proposés de 8h00 à 12h00 . Les portes du lycée ouvrent à 7h00 et ferment à 17h30.</p>
+        <!-- VIE SCOLAIRE -->
+        <div class="faq-categorie" data-category="vie-scolaire">
+            <h2 class="cat-title"> Vie scolaire et organisation</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quels sont les horaires de cours ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Les cours ont lieu du <strong>lundi au vendredi</strong> selon les horaires suivants :</p>
+                    <ul>
+                        <li><strong>Session du matin :</strong> 07h30 – 12h20</li>
+                        <li><strong>Session de l'après-midi :</strong> 13h05 – 16h20</li>
+                    </ul>
+                    <p>Le <strong>samedi</strong>, des cours de soutien et des activités sportives sont proposés de 08h00 à 12h00.</p>
+                    <p>Les portes du lycée ouvrent à <strong>07h00</strong> et ferment à <strong>17h30</strong>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Comment suivre les notes et absences de mon enfant ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Nous utilisons deux outils complémentaires :</p>
+                    <ul>
+                        <li><strong>Le carnet de correspondance</strong> : outil papier officiel pour les communications quotidiennes entre l'établissement et la famille.</li>
+                        <li><strong>L'espace parent en ligne (École Média)</strong> : portail numérique accessible avec les identifiants remis à l'inscription. Vous y consultez les notes, appréciations, absences et retards en temps réel.</li>
+                    </ul>
+                    <p>Nous recommandons de consulter cet espace <strong>au moins une fois par semaine</strong>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Que faire en cas d'absence ou de retard de mon enfant ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Pour une absence :</strong> Vous devez fournir un mot écrit justificatif ou un certificat médical dans un délai de <strong>48 heures</strong> suivant le retour de l'élève. Sans justificatif, l'absence est considérée comme injustifiée et peut entraîner un retrait de points sur la note de conduite.</p>
+                    <p><strong>Pour un retard :</strong> Tout élève arrivant après <strong>07h35</strong> doit se présenter au bureau de l'Inspecteur d'Éducation pour justifier son retard avant de rejoindre sa classe. Trois retards non justifiés dans un trimestre sont assimilés à une absence non justifiée.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quel est le règlement intérieur de l'établissement ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Le règlement intérieur du LYMAO définit les droits et devoirs de chaque membre de la communauté éducative. Il couvre l'assiduité, la tenue vestimentaire, le comportement, le travail scolaire et les sanctions disciplinaires.</p>
+                    <p>Un exemplaire est remis à chaque élève à la rentrée. Vous pouvez également le consulter sur notre site dans la section <a href="/reglement/" style="color: var(--accent); font-weight: 600;">Règlement intérieur</a>.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="faq-item">
-            <h3>➡ Comment suivre les notes et absences de mon enfant ?</h3>
-            <p>Nous utilisons un carnet de correspondance papier et un espace parent en ligne(Ecole média). À l’inscription, vous recevez des identifiants pour vous connecter au portail famille. Vous y verrez les notes, les appréciations des professeurs, les absences justifiées ou non, et les retards. Nous recommandons de consulter cet espace au moins une fois par semaine.</p>
+        <!-- RESTAURATION -->
+        <div class="faq-categorie" data-category="restauration">
+            <h2 class="cat-title">️ Restauration scolaire</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Y a-t-il une cantine ? Quels sont les tarifs ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Oui, le LYMAO dispose d'une cantine scolaire qui sert chaque jour un repas équilibré (entrée, plat chaud, dessert).</p>
+                    <p><strong>Tarif :</strong> <strong>[MONTANT À CONFIRMER] FCFA par mois</strong> (à régler auprès de l'intendance).</p>
+                    <p><strong>Accès prioritaire :</strong> Le service de cantine est prioritairement réservé aux élèves issus de familles à situation sociale précaire et aux élèves méritants, sur dossier validé par l'administration.</p>
+                    <p>Les inscriptions à la cantine se font en début d'année scolaire au secrétariat.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Mon enfant a des restrictions alimentaires (allergies, régime médical). Que faire ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Veuillez informer l'administration dès l'inscription en fournissant un <strong>certificat médical détaillé</strong> précisant les restrictions alimentaires. L'intendance étudiera chaque cas individuellement pour proposer des solutions adaptées dans la mesure du possible.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="faq-item">
-            <h3>➡ Que faire en cas d’absence ou de retard de mon enfant ?</h3>
-            <p>Vous devez nous fournir un mot écrit ou un justificatif médical dans les 48 heures. Sans justificatif, l’absence est considérée comme injustifiée et peut entraîner une retrait de points sur la conduite. Pour les retards, un élève qui arrive après 7h35 doit se présenter au bureau de l'inspecteur d'education pour justifier son retard .</p>
+        <!-- PÉDAGOGIE -->
+        <div class="faq-categorie" data-category="pedagogie">
+            <h2 class="cat-title">👨‍🏫 Vie pédagogique</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quelles sont les séries proposées au lycée ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Le LYMAO propose les séries générales du programme officiel ivoirien :</p>
+                    <ul>
+                        <li><strong>Série A1</strong> : Littéraire, langues vivantes renforcées</li>
+                        <li><strong>Série A2</strong> : Littéraire, arts et lettres</li>
+                        <li><strong>Série C</strong> : Mathématiques et Sciences Physiques</li>
+                        <li><strong>Série D</strong> : Sciences Expérimentales et Biologie</li>
+                    </ul>
+                    <p>L'orientation en série se fait à l'issue de la classe de Seconde, sur avis du conseil de classe et choix de l'élève et de sa famille.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Comment se passe le soutien scolaire ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Le LYMAO propose plusieurs dispositifs de soutien :</p>
+                    <ul>
+                        <li><strong>Cours de soutien intégrés :</strong> Organisés le samedi matin pour les élèves en difficulté, sur recommandation des professeurs.</li>
+                        <li><strong>Études dirigées :</strong> Sessions encadrées en soirée pour les élèves internes et demi-pensionnaires.</li>
+                        <li><strong>Préparation aux examens :</strong> Sessions intensives organisées durant les congés de fin de trimestre pour les classes de 3ème et Terminale (sur inscription volontaire à la Vie Scolaire).</li>
+                    </ul>
+                    <p>Les parents sont informés des difficultés de leur enfant via le carnet de correspondance et l'espace parent en ligne.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Mon enfant a un trouble dys ou un handicap. Que faire ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Le LYMAO est attentif à l'inclusion de tous les élèves. Nous disposons d'une équipe de suivi composée d'un enseignant référent et du service social.</p>
+                    <p>Dès l'inscription, contactez la Vie Scolaire pour mettre en place :</p>
+                    <ul>
+                        <li>Un <strong>Projet d'Accueil Individualisé (PAI)</strong> adapté aux besoins spécifiques de votre enfant.</li>
+                        <li>Des aménagements possibles : <strong>tiers-temps</strong> pour les examens, placement en classe, supports pédagogiques adaptés.</li>
+                    </ul>
+                    <p>Un <strong>dossier médical complet</strong> sera demandé pour constituer le dossier d'accompagnement.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quels sont les clubs et activités extrascolaires proposés ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Le LYMAO propose une riche vie parascolaire pour développer les talents de chaque élève :</p>
+                    <ul>
+                        <li>🖥️ Club Informatique et Robotique</li>
+                        <li> Club Lecture et Débat</li>
+                        <li>🎭 Club Théâtre et Arts dramatiques</li>
+                        <li>🎨 Club Arts plastiques</li>
+                        <li>⚽ Club Sports (football, basketball, athlétisme)</li>
+                        <li>🌱 Club Environnement et Développement durable</li>
+                    </ul>
+                    <p>Les inscriptions aux clubs se font en début d'année auprès des professeurs responsables.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAIS & BOURSES -->
+        <div class="faq-categorie" data-category="frais">
+            <h2 class="cat-title">💰 Frais scolaires et bourses</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quels sont les frais de scolarité ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Les frais de scolarité pour l'année scolaire <strong>2026-2027</strong> sont les suivants :</p>
+                    <ul>
+                        <li><strong>Droit d'inscription</strong> (à payer une seule fois) : <strong>35 000 FCFA</strong></li>
+                        <li><strong>Scolarité annuelle</strong> : <strong>[MONTANT À CONFIRMER] FCFA</strong></li>
+                        <li><strong>Assurance scolaire</strong> (obligatoire) : <strong>5 000 FCFA</strong></li>
+                    </ul>
+                    <p>Les versements s'effectuent exclusivement auprès de l'<strong>intendance</strong> du lycée. Un reçu officiel est remis pour chaque paiement.</p>
+                    <p>Pour le détail complet et les échéanciers de paiement, consultez la page <a href="/inscriptions/" style="color: var(--accent); font-weight: 600;">Inscriptions</a>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Existe-t-il des bourses ou aides financières ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Oui, le LYMAO propose plusieurs dispositifs d'aide :</p>
+                    <ul>
+                        <li><strong>Bourses d'excellence :</strong> Réduction de 50% sur les frais de scolarité pour les 10 meilleurs élèves de chaque niveau (sur avis du conseil de classe).</li>
+                        <li><strong>Bourses sociales :</strong> Réduction dégressive selon le quotient familial, attribuée sur étude du dossier social.</li>
+                        <li><strong>Fonds d'urgence :</strong> Aide ponctuelle en cas de difficulté financière passagère (sur dossier motivé).</li>
+                    </ul>
+                    <p>Les demandes de bourses sont à déposer <strong>avant le 30 juin</strong> auprès du secrétariat du Proviseur. Un dossier complet sera demandé (revenus du foyer, situation familiale, etc.).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quels sont les modes de paiement acceptés ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Les paiements s'effectuent exclusivement à l'intendance du lycée, aux horaires d'ouverture (lundi au vendredi, 08h00 – 16h00).</p>
+                    <p>Les modes de paiement acceptés :</p>
+                    <ul>
+                        <li>Espèces (avec reçu officiel)</li>
+                        <li>Virement bancaire (sur présentation de la preuve de virement)</li>
+                        <li>Mobile Money (Orange Money, MTN Money, Moov Money) – à confirmer auprès de l'intendance</li>
+                    </ul>
+                    <p>Conservez précieusement tous vos reçus de paiement.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="faq-categorie" data-category="contact">
+            <h2 class="cat-title">🏫 Contacts et administration</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Comment contacter un enseignant ou le Proviseur ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Pour contacter un enseignant :</p>
+                    <ul>
+                        <li>Utilisez le <strong>carnet de correspondance</strong> pour les communications courantes.</li>
+                        <li>Demandez un <strong>rendez-vous</strong> via la Vie Scolaire pour un entretien formel.</li>
+                    </ul>
+                    <p>Pour contacter le Proviseur :</p>
+                    <ul>
+                        <li>Prenez rendez-vous au secrétariat de l'établissement (du lundi au vendredi, 08h00 – 16h00).</li>
+                        <li>Les réceptions du Proviseur ont lieu sur rendez-vous uniquement.</li>
+                    </ul>
+                    <p><strong>Téléphone du secrétariat :</strong> +225 07 47 95 10 20</p>
+                    <p><strong>Email :</strong> lymao608@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Que faire si je perds le carnet de correspondance de mon enfant ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>En cas de perte du carnet de correspondance :</p>
+                    <ol>
+                        <li>Déclarez la perte immédiatement auprès de l'éducateur de la classe.</li>
+                        <li>Procédez à l'achat d'un nouveau carnet auprès des éducateurs au coût de <strong>1 000 FCFA</strong>.</li>
+                        <li>Les enseignants seront informés pour reporter les notes et appréciations en cours de trimestre.</li>
+                    </ol>
+                    <p>Il est très important de toujours avoir un carnet à jour, car il constitue le principal outil de communication entre l'école et la famille.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Quels sont les horaires d'ouverture du secrétariat ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Le secrétariat du LYMAO est ouvert :</p>
+                    <ul>
+                        <li><strong>Lundi au Vendredi :</strong> 08h00 – 16h00 (pause déjeuner de 12h00 à 13h00)</li>
+                        <li><strong>Samedi :</strong> 08h00 – 12h00 (uniquement pour les urgences et retraits de dossiers)</li>
+                        <li><strong>Fermé</strong> les dimanches et jours fériés</li>
+                    </ul>
+                    <p>Pour toute visite, il est recommandé de prendre rendez-vous au préalable.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Où se situe le LYMAO ? Comment s'y rendre ?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Adresse :</strong> Boulevard Mohammed VI, Rue Madeleine BOKA, Anyama (Côte d'Ivoire).</p>
+                    <p>Le lycée est accessible par les transports en commun (gbakas et taxis) depuis Abidjan. Des arrêts de bus se trouvent à proximité immédiate de l'établissement.</p>
+                    <p>Pour un itinéraire précis, contactez le secrétariat au +225 07 47 95 10 20.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Contact si pas de réponse trouvée -->
+    <div class="faq-contact-box">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <h3>Vous n'avez pas trouvé votre réponse ?</h3>
+        <p>Notre équipe est à votre disposition pour toute question supplémentaire.</p>
+        <div class="contact-buttons">
+            <a href="/contact/" class="btn-contact">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Nous contacter
+            </a>
+            <a href="tel:+2250747951020" class="btn-call">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                +225 07 47 95 10 20
+            </a>
         </div>
     </div>
 
-    <div class="faq-categorie">
-        <h2>🍽️ Restauration </h2>
-        
-        <div class="faq-item">
-            <h3>➡ Y a-t-il une cantine ? Quels sont les tarifs ?</h3>
-            <p>Oui, la cantine sert chaque jour un repas équilibré (entrée, plat chaud ...). Le tarif est de 3000 FCFA par mois.la cantine est ouverte pour les cas sociaux et les plus méritant</p>
-        </div>
-
-        
-    </div>
-
-    <div class="faq-categorie">
-        <h2>👨‍🏫 Vie pédagogique </h2>
-        
-        <div class="faq-item">
-            <h3>➡ Quelles sont les series proposées au lycée ?</h3>
-            <p>Nous proposons les séries générales : A1 , A2 , C , D</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>➡ Comment se passe le soutien scolaire ?</h3>
-            <p>.....</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>➡ Mon enfant a un trouble dys (ou autre handicap). Que faire ?</h3>
-            <p>Nous avons une équipe de suivi (enseignant référent,service social). Contactez la vie scolaire dès l’inscription pour mettre en place un projet d’accueil individualisé (PAI) ou un tiers‑temps pour les examens. Un dossier médical sera demandé.</p>
-        </div>
-    </div>
-
-    <div class="faq-categorie">
-        <h2>💰 Frais scolaires </h2>
-        
-        <div class="faq-item">
-            <h3>➡ Quels sont les frais de scolarité ?</h3>
-            <p>Le montant annuel pour l’année 2026‑2027 est de 3000 FCFA.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>➡ Existe-t-il des bourses ou aides financières ?</h3>
-            <p>Oui. Nous proposons des bourses d’excellence (réduction de 50 % pour les 10 meilleurs élèves de chaque niveau) et des bourses sociales (réduction dégressive selon le quotient familial). Les demandes sont à déposer avant le 30 juin. Un fonds d’urgence peut également aider en cas de difficulté passagère (sur dossier).</p>
-        </div>
-    </div>
-
-    <div class="faq-categorie">
-        <h2>🏫 Contacts et administration</h2>
-        
-        <div class="faq-item">
-            <h3>➡ Comment contacter un enseignant ou le proviseur ?</h3>
-            <p>Pour rencontrer un enseignant, passez par le carnet de correspondance ou demandez un rendez-vous via la vie scolaire.</p>
-        </div>
-        <div class="faq-item">
-            <h3>➡ Que faire si je perds le carnet de correspondance de mon enfant ?</h3>
-            <p>Vous devez acheter un nouveau carnet auprès des éducateurs (coût : 1 000 FCFA).Il est très important de toujours avoir un carnet à jour pour les communications entre l’école et la maison.</p>
-        </div>
-    </div>
 </div>
-
-<p class="faq-contact">Vous n’avez pas trouvé votre réponse ? N’hésitez pas à <a href="{% url 'contact' %}">nous contacter directement</a> ou à appeler le secrétariat.</p>
 
 <style>
-    .page-header {
-        background: #2c3e50;
-        color: white;
-        padding: auto;
-        text-align: center;
-        border-radius: 8px;
-        margin-bottom: 2rem;
+    :root {
+        --primary: #1a365d;
+        --accent: #dd6b20;
+        --bg-light: #f7fafc;
+        --text-main: #2d3748;
+        --text-muted: #718096;
+        --border: #e2e8f0;
     }
-    .faq-container {
-        max-width: 1000px;
+
+    .page-header {
+        background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+        color: white;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 15px -3px rgba(26, 54, 93, 0.1);
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .faq-wrapper {
+        max-width: 900px;
         margin: 0 auto;
     }
+
+    /* Barre de recherche */
+    .faq-search {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+
+    .faq-search input {
+        width: 100%;
+        padding: 1rem 1rem 1rem 3rem;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+        font-family: inherit;
+    }
+
+    .faq-search input:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+    }
+
+    /* Navigation catégories */
+    .faq-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .cat-btn {
+        padding: 0.6rem 1.2rem;
+        border: 2px solid var(--border);
+        background: white;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-main);
+        transition: all 0.2s;
+        font-family: inherit;
+    }
+
+    .cat-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .cat-btn.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+    }
+
+    /* Catégories */
     .faq-categorie {
         margin-bottom: 2.5rem;
     }
-    .faq-categorie h2 {
-        background: #f0f4f8;
-        padding: 0.5rem 1rem;
-        border-left: 5px solid #e67e22;
+
+    .cat-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary);
         margin-bottom: 1rem;
-        font-size: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--accent);
     }
+
+    /* Items FAQ */
     .faq-item {
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        padding: 1rem;
-        transition: box-shadow 0.2s;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 0.75rem;
+        overflow: hidden;
+        transition: all 0.2s;
     }
+
     .faq-item:hover {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .faq-item h3 {
-        margin: 0 0 0.5rem 0;
-        color: #2c3e50;
-        font-size: 1.2rem;
+
+    .faq-item.active {
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(221, 107, 32, 0.15);
     }
-    .faq-item p {
-        margin: 0;
+
+    .faq-question {
+        width: 100%;
+        padding: 1.25rem;
+        background: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--primary);
+        font-family: inherit;
+        transition: background 0.2s;
+    }
+
+    .faq-question:hover {
+        background: var(--bg-light);
+    }
+
+    .faq-icon {
+        flex-shrink: 0;
+        transition: transform 0.3s;
+        color: var(--accent);
+    }
+
+    .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0 1.25rem;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+
+    .faq-answer p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+        color: var(--text-main);
+    }
+
+    .faq-answer ul, .faq-answer ol {
+        margin-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+    }
+
+    .faq-answer li {
+        margin-bottom: 0.5rem;
         line-height: 1.5;
     }
-    .faq-contact {
-        text-align: center;
-        margin-top: 2rem;
-        background: #f9f9f9;
-        padding: 1rem;
-        border-radius: 8px;
+
+    .faq-answer strong {
+        color: var(--primary);
     }
-    .faq-contact a {
-        color: #e67e22;
+
+    .faq-answer a {
+        color: var(--accent);
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 600;
     }
-    .faq-contact a:hover {
+
+    .faq-answer a:hover {
         text-decoration: underline;
     }
+
+    /* Contact box */
+    .faq-contact-box {
+        background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        padding: 2.5rem;
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .faq-contact-box svg {
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+
+    .faq-contact-box h3 {
+        font-size: 1.4rem;
+        color: var(--primary);
+        margin-bottom: 0.75rem;
+    }
+
+    .faq-contact-box p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-contact, .btn-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+    .btn-contact {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-contact:hover {
+        background: #2c5282;
+        transform: translateY(-2px);
+    }
+
+    .btn-call {
+        background: var(--accent);
+        color: white;
+    }
+
+    .btn-call:hover {
+        background: #c05621;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .page-header h1 { font-size: 1.6rem; }
+        .faq-categories { gap: 0.4rem; }
+        .cat-btn { padding: 0.5rem 0.9rem; font-size: 0.85rem; }
+        .faq-question { font-size: 0.95rem; padding: 1rem; }
+        .contact-buttons { flex-direction: column; }
+        .btn-contact, .btn-call { width: 100%; justify-content: center; }
+    }
+
+    /* Animation pour filtrage */
+    .faq-categorie.hidden {
+        display: none;
+    }
+
+    .faq-item.hidden {
+        display: none;
+    }
 </style>
+
+<script>
+    // Accordéon FAQ
+    function toggleFAQ(button) {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Fermer tous les autres
+        document.querySelectorAll('.faq-item').forEach(el => {
+            el.classList.remove('active');
+        });
+        
+        // Ouvrir celui-ci si il n'était pas actif
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    }
+
+    // Filtrage par catégorie
+    function filterCategory(category) {
+        // Mettre à jour les boutons
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Filtrer les catégories
+        document.querySelectorAll('.faq-categorie').forEach(cat => {
+            if (category === 'all' || cat.dataset.category === category) {
+                cat.classList.remove('hidden');
+            } else {
+                cat.classList.add('hidden');
+            }
+        });
+    }
+
+    // Recherche en temps réel
+    function filterFAQ() {
+        const searchTerm = document.getElementById('faqSearch').value.toLowerCase();
+        
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+            
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+        
+        // Afficher/masquer les catégories selon si elles ont des items visibles
+        document.querySelectorAll('.faq-categorie').forEach(cat => {
+            const visibleItems = cat.querySelectorAll('.faq-item:not(.hidden)');
+            if (visibleItems.length === 0 && searchTerm !== '') {
+                cat.classList.add('hidden');
+            } else {
+                cat.classList.remove('hidden');
+            }
+        });
+    }
+</script>
 {% endblock %}
