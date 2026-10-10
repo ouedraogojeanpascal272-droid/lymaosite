@@ -3,20 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscriptions 2026-2027 – LYMAO (Lycée Moderne Alassane Ouattara)</title>
+    <title>Inscriptions – LYMAO (Lycée Moderne Alassane Ouattara)</title>
     <style>
-        /* Styles intégrés pour un rendu immédiat et propre */
+        /* --- NOUVEAU : Styles pour la bannière "Inscriptions Closes" --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes subtlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .inscription-closed-banner {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #e67e22;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeInDown 0.8s ease-out;
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.15);
+        }
+
+        .closed-icon {
+            width: 70px;
+            height: 70px;
+            background: #e67e22;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            animation: subtlePulse 3s infinite ease-in-out;
+        }
+
+        .closed-icon svg {
+            width: 35px;
+            height: 35px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .inscription-closed-banner h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .inscription-closed-banner p {
+            color: #495057;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .btn-contact-closed {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-contact-closed:hover {
+            background: #e67e22;
+        }
+
+        /* --- NOUVEAU : Style pour l'ancien contenu (effet "Archivé") --- */
+        .archived-content {
+            opacity: 0.75; /* Rend le vieux contenu légèrement transparent */
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+        
+        .archived-content:hover {
+            opacity: 1; /* Devient normal au survol pour la lecture */
+        }
+
+        .archive-badge {
+            display: inline-block;
+            background: #6c757d;
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- STYLES EXISTANTS (Conservés et légèrement nettoyés) --- */
         .page-header {
             background: #2c3e50;
             color: white;
-            padding: 2rem 1rem; /* Correction : 'auto' n'est pas une valeur valide pour padding */
+            padding: 2rem 1rem;
             text-align: center;
             border-radius: 8px;
             margin-bottom: 2rem;
-        }
-        .page-header h1 {
-            margin: 0;
-            font-size: 2rem;
         }
         .intro {
             background: #f9f9f9;
@@ -39,11 +133,6 @@
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease;
-        }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         .card h2 {
             background: #f0f4f8;
@@ -59,9 +148,7 @@
             line-height: 1.6;
             color: #444;
         }
-        .card li {
-            margin-bottom: 0.75rem;
-        }
+        .card li { margin-bottom: 0.75rem; }
         .info {
             font-size: 0.95rem;
             background: #fef9e6;
@@ -84,14 +171,6 @@
             padding-left: 0.75rem;
             margin-top: 0;
         }
-        .demarche ol {
-            margin-left: 1.5rem;
-            line-height: 1.6;
-            color: #444;
-        }
-        .demarche li {
-            margin-bottom: 0.75rem;
-        }
         .contact-inscription {
             text-align: center;
             background: #eef2f7;
@@ -101,92 +180,103 @@
             font-size: 1.1rem;
             line-height: 1.8;
         }
-        .contact-inscription strong {
-            color: #e67e22;
-        }
-        .placeholder-text {
-            color: #e74c3c;
-            font-weight: bold;
-            background: #fadbd8;
-            padding: 0 4px;
-            border-radius: 3px;
-        }
+        .contact-inscription strong { color: #e67e22; }
+
         @media (max-width: 768px) {
-            .inscription-grid {
-                grid-template-columns: 1fr;
-            }
-            .page-header h1 {
-                font-size: 1.5rem;
-            }
+            .inscription-grid { grid-template-columns: 1fr; }
+            .inscription-closed-banner { padding: 1.5rem 1rem; }
+            .inscription-closed-banner h2 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="page-header">
-        <h1>Inscriptions – Année scolaire 2026-2027</h1>
-    </div>
-
-    <section class="intro">
-        <p>Les inscriptions au Lycée Moderne Alassane Ouattara (LYMAO) pour l’année scolaire 2026-2027 sont ouvertes. Rejoignez un cadre d’étude moderne, encadré par des enseignants qualifiés et bénéficiant d'un suivi pédagogique personnalisé. Vous trouverez ci-dessous toutes les informations pratiques pour constituer votre dossier.</p>
+    <!-- NOUVEAU : Bannière principale animée "Inscriptions Closes" -->
+    <section class="inscription-closed-banner">
+        <div class="closed-icon">
+            <!-- Icône SVG de cadenas/check intégrée (pas de dépendance externe) -->
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                <polyline points="9 16 11 18 15 14"></polyline> <!-- Petit check à l'intérieur -->
+            </svg>
+        </div>
+        <h2>Campagne d'inscription terminée</h2>
+        <p>Les inscriptions pour l'année scolaire <strong>2026-2027</strong> sont désormais closes. Nous remercions les nouvelles familles pour leur confiance.</p>
+        <p style="font-size: 0.95rem; color: #6c757d;">Le secrétariat reste à votre disposition pour toute question administrative exceptionnelle.</p>
+        <a href="/contact/" class="btn-contact-closed">Contacter le secrétariat</a>
     </section>
 
-    <div class="inscription-grid">
-
-        <div class="card">
-            <h2>📅 Calendrier des inscriptions</h2>
-            <ul>
-                <li><strong>Dépôt des dossiers :</strong> du <span class="placeholder-text">[Date de début]</span> au <span class="placeholder-text">[Date de fin]</span></li>
-                <li><strong>Inscriptions définitives :</strong> <span class="placeholder-text">[Date limite de paiement]</span></li>
-                <li><strong>Rentrée des élèves :</strong> <span class="placeholder-text">[Jour]</span> septembre 2026</li>
-            </ul>
+    <!-- ANCIEN CONTENU : Conservé mais marqué comme "Référence" -->
+    <div class="archived-content">
+        <div style="text-align: center;">
+            <span class="archive-badge">ℹ️ Informations conservées à titre de référence (Campagne 2026-2027)</span>
         </div>
 
-        <div class="card">
-            <h2>📋 Pièces à fournir (dossier complet)</h2>
-            <ul>
-                <li>✓ Demande manuscrite adressée au Proviseur</li>
-                <li>✓ Photocopie légalisée de l’acte de naissance</li>
-                <li>✓ Relevés de notes des deux derniers trimestres (certifiés conformes)</li>
-                <li>✓ Certificat de scolarité de l’année précédente</li>
-                <li>✓ Fiche de transfert (uniquement pour les élèves provenant d’un autre établissement)</li>
-                <li>✓ 2 photos d’identité récentes (sur fond blanc, avec le nom au dos)</li>
-                <li>✓ Fiche de renseignements (à retirer au secrétariat)</li>
-            </ul>
+        <div class="page-header">
+            <h1>Procédure d'inscription (Archive)</h1>
         </div>
 
-        <div class="card">
-            <h2>💰 Frais de scolarité 2026-2027</h2>
-            <ul>
-                <li><strong>Droit d’inscription (à payer une seule fois) :</strong> 35 000 FCFA</li>
-                <li><strong>Scolarité annuelle :</strong> <span class="placeholder-text">[Montant à confirmer, ex: 300 000]</span> FCFA</li>
-                <li><strong>Assurance scolaire (obligatoire) :</strong> 5 000 FCFA</li>
-            </ul>
-            <p class="info">ℹ️ Les versements s'effectuent exclusivement à l’intendance de l'établissement.</p>
+        <section class="intro">
+            <p>Les inscriptions au Lycée Moderne Alassane Ouattara (LYMAO) se déroulaient selon les modalités ci-dessous. Cette section est conservée pour permettre aux familles de consulter la liste des pièces habituellement requises en prévision de la prochaine campagne.</p>
+        </section>
+
+        <div class="inscription-grid">
+            <div class="card">
+                <h2>📅 Calendrier (Terminé)</h2>
+                <ul>
+                    <li><strong>Dépôt des dossiers :</strong> Période close</li>
+                    <li><strong>Inscriptions définitives :</strong> Période close</li>
+                    <li><strong>Rentrée des élèves :</strong> Septembre 2026</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>📋 Pièces habituellement requises</h2>
+                <ul>
+                    <li>✓ Demande manuscrite adressée au Proviseur</li>
+                    <li>✓ Photocopie légalisée de l’acte de naissance</li>
+                    <li>✓ Relevés de notes des deux derniers trimestres</li>
+                    <li>✓ Certificat de scolarité de l’année précédente</li>
+                    <li>✓ Fiche de transfert (si applicable)</li>
+                    <li>✓ 2 photos d’identité (fond blanc, nom au dos)</li>
+                    <li>✓ Fiche de renseignements</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>💰 Frais de scolarité (Référence)</h2>
+                <ul>
+                    <li><strong>Droit d’inscription :</strong> 35 000 FCFA</li>
+                    <li><strong>Scolarité annuelle :</strong> [Montant] FCFA</li>
+                    <li><strong>Assurance scolaire :</strong> 5 000 FCFA</li>
+                </ul>
+                <p class="info">ℹ️ Les versements s'effectuent exclusivement à l’intendance.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="bourses">
-        <h2>🎓 Bourses et aides financières</h2>
-        <p>Des bourses d’excellence et d’aide sociale sont disponibles pour les élèves méritants ou en situation de besoin. Veuillez vous rapprocher du secrétariat du Proviseur pour connaître les conditions d’éligibilité et retirer un dossier de demande.</p>
-    </div>
+        <div class="bourses">
+            <h2>🎓 Bourses et aides financières</h2>
+            <p>Des bourses d’excellence et d’aide sociale sont étudiées chaque année. Veuillez vous rapprocher du secrétariat du Proviseur en début d'année pour connaître les conditions d’éligibilité.</p>
+        </div>
 
-    <div class="demarche">
-        <h2>📝 Marche à suivre pour s’inscrire</h2>
-        <ol>
-            <li>Retirer un dossier d’inscription au secrétariat.</li>
-            <li>Remplir la fiche de renseignements et rassembler toutes les pièces listées ci-dessus.</li>
-            <li>Déposer le dossier complet à la scolarité entre 8h00 et 16h00, du lundi au vendredi.</li>
-            <li>Procéder au paiement des frais (droit d’inscription) à l’intendance.</li>
-            <li>Remettre le reçu de paiement à la scolarité pour valider définitivement l’inscription.</li>
-        </ol>
-    </div>
+        <div class="demarche">
+            <h2>📝 Marche à suivre (Pour mémoire)</h2>
+            <ol>
+                <li>Retrait du dossier au secrétariat.</li>
+                <li>Constitution du dossier avec toutes les pièces requises.</li>
+                <li>Dépôt du dossier complet à la scolarité (8h00 - 16h00, lun-ven).</li>
+                <li>Paiement des frais à l’intendance.</li>
+                <li>Validation finale à la scolarité avec le reçu de paiement.</li>
+            </ol>
+        </div>
 
-    <div class="contact-inscription">
-        <p><strong>Pour tout renseignement complémentaire :</strong><br>
-        📞 <strong>Tél :</strong> +225 07 47 95 10 20 (Mme KONE ROKIA, Responsable des inscriptions)<br>
-        📧 <strong>Email :</strong> lymao608@gmail.com <em>(ou adresse professionnelle dédiée)</em><br>
-        🏫 <strong>Horaires du secrétariat :</strong> Lundi au vendredi, de 8h00 à 16h00.</p>
+        <div class="contact-inscription">
+            <p><strong>Pour tout renseignement exceptionnel :</strong><br>
+            📞 <strong>Tél :</strong> +225 07 47 95 10 20 (Mme KONE ROKIA)<br>
+            📧 <strong>Email :</strong> lymao608@gmail.com<br>
+            🏫 <strong>Horaires :</strong> Lundi au vendredi, 8h00 - 16h00</p>
+        </div>
     </div>
 
 </body>
