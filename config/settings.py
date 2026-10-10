@@ -1,3 +1,10 @@
+import os
+from dotenv import load_dotenv
+import dj_database_url
+
+# Charge les variables du fichier .env (pour ton ordinateur local)
+load_dotenv()
+
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,10 +82,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True  # OBLIGATOIRE pour Neon
+    )
 }
 
 
@@ -133,3 +141,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Assure-toi que le dossi
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_AUTOREFRESH = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
