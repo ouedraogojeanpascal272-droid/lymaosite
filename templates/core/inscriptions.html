@@ -1,148 +1,193 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}Inscriptions – LYMAO – Lycée Moderne Alassane Ouattara{% endblock %}
-
-{% block content %}
-<div class="page-header">
-    <h1>Inscriptions 2026-2027</h1>
-</div>
-
-<section class="intro">
-    <p>Les inscriptions au Lycée Moderne Alassane Ouattara (LYMAO) pour l’année scolaire 2026-2027 sont ouvertes à tous les élèves désireux de rejoindre un cadre d’étude moderne, avec des enseignants qualifiés et un suivi personnalisé. Vous trouverez ci-dessous toutes les informations pratiques.</p>
-</section>
-
-<div class="inscription-grid">
-
-    <div class="card">
-        <h2>📅 Calendrier des inscriptions</h2>
-        <ul>
-            <li><strong>Dépôt des dossiers :</strong> du ............ au ........</li>
-            <li><strong>Inscriptions définitives (paiement, remise des pièces) :</strong> ........</li>
-            <li><strong>Rentrée des élèves :</strong> ... septembre 2026</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>📋 Pièces à fournir (dossier complet)</h2>
-        <ul>
-            <li>✓ Demande manuscrite adressée au proviseur</li>
-            <li>✓ Photocopie légalisée de l’acte de naissance ou extrait d’acte de naissance</li>
-            <li>✓ Relevés de notes des deux derniers trimestres (certifiés conformes)</li>
-            <li>✓ Certificat de scolarité de l’année précédente</li>
-            <li>✓ Fiche de transfert (pour transfert d’un autre établissement)</li>
-            <li>✓ 2 photos d’identité ( fond blanc, nom au dos)</li>
-            <li>✓ Fiche de renseignements (à retirer au secrétariat)</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>💰 Frais de scolarité 2025-2026</h2>
-        <ul>
-            <li><strong>Droit d’inscription (une seule fois) :</strong> 35 000 FCFA</li>
-            <li><strong>Scolarité annuelle :</strong> 3 000 FCFA </li>
-            <li><strong>Assurance scolaire (obligatoire) :</strong> 5 000 FCFA</li>
-        </ul>
-        <p class="info">Les versements se font à l’intendance .</p>
-    </div>
-</div>
-
-<div class="bourses">
-    <h2>🎓  bourses</h2>
-    <p>les informations a ajouter plus tard(à demander à Monsieur le Proviseur )</p>
-</div>
-
-<div class="demarche">
-    <h2>📝 Marche à suivre pour s’inscrire</h2>
-    <ol>
-        <li>Retirer un dossier d’inscription au secrétariat .</li>
-        <li>Remplir la fiche de renseignements et rassembler toutes les pièces listées.</li>
-        <li>Déposer le dossier complet à la scolarité entre 8h et 16h du lundi au vendredi.</li>
-        <li>Procéder au paiement des frais (droit d’inscription ) à l’intendance.</li>
-        <li>Remettre le reçu de paiement à la scolarité pour valider l’inscription </li>
-    </ol>
-</div>
-
-<div class="contact-inscription">
-    <p><strong>Pour tout renseignement complémentaire :</strong><br>
-    📞 Tél : +225 07 47 95 10 20 ( Mme KONE ROKIA, responsable des inscriptions)<br>
-    📧 Email : ouedraogojeanpascal272@gmail.com<br>
-    🏫 Secrétariat ouvert de 8h à 16h (lundi – vendredi).</p>
-</div>
-
-<style>
-    .page-header {
-        background: #2c3e50;
-        color: white;
-        padding: auto;
-        text-align: center;
-        border-radius: 8px;
-        margin-bottom: 2rem;
-    }
-    .intro {
-        background: #f9f9f9;
-        padding: 1rem;
-        border-left: 5px solid #e67e22;
-        margin-bottom: 2rem;
-        font-size: 1.1rem;
-    }
-    .inscription-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    .card {
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 1rem;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .card h2 {
-        background: #f0f4f8;
-        margin: -1rem -1rem 1rem -1rem;
-        padding: 0.75rem;
-        border-bottom: 2px solid #e67e22;
-        border-radius: 8px 8px 0 0;
-        font-size: 1.3rem;
-    }
-    .card ul, .card ol {
-        margin-left: 1.2rem;
-        line-height: 1.5;
-    }
-    .card li {
-        margin-bottom: 0.5rem;
-    }
-    .info {
-        font-size: 0.9rem;
-        background: #fef9e6;
-        padding: 0.5rem;
-        border-radius: 4px;
-        margin-top: 0.5rem;
-    }
-    .bourses, .demarche, .contact-inscription {
-        background: #f9f9f9;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-        border-radius: 8px;
-    }
-    .bourses h2, .demarche h2 {
-        color: #2c3e50;
-        border-left: 5px solid #e67e22;
-        padding-left: 0.5rem;
-    }
-    .demarche ol {
-        margin-left: 1.5rem;
-    }
-    .contact-inscription {
-        text-align: center;
-        background: #eef2f7;
-    }
-    @media (max-width: 768px) {
-        .inscription-grid {
-            grid-template-columns: 1fr;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscriptions 2026-2027 – LYMAO (Lycée Moderne Alassane Ouattara)</title>
+    <style>
+        /* Styles intégrés pour un rendu immédiat et propre */
+        .page-header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 1rem; /* Correction : 'auto' n'est pas une valeur valide pour padding */
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
         }
-    }
-</style>
-{% endblock %}
+        .page-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .intro {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-left: 5px solid #e67e22;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        .inscription-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            background: #f0f4f8;
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #e67e22;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.25rem;
+            color: #2c3e50;
+        }
+        .card ul, .card ol {
+            margin-left: 1.2rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        .card li {
+            margin-bottom: 0.75rem;
+        }
+        .info {
+            font-size: 0.95rem;
+            background: #fef9e6;
+            color: #856404;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            border: 1px solid #ffeeba;
+        }
+        .bourses, .demarche, .contact-inscription {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .bourses h2, .demarche h2 {
+            color: #2c3e50;
+            border-left: 5px solid #e67e22;
+            padding-left: 0.75rem;
+            margin-top: 0;
+        }
+        .demarche ol {
+            margin-left: 1.5rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        .demarche li {
+            margin-bottom: 0.75rem;
+        }
+        .contact-inscription {
+            text-align: center;
+            background: #eef2f7;
+            padding: 2rem;
+            border-radius: 8px;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .contact-inscription strong {
+            color: #e67e22;
+        }
+        .placeholder-text {
+            color: #e74c3c;
+            font-weight: bold;
+            background: #fadbd8;
+            padding: 0 4px;
+            border-radius: 3px;
+        }
+        @media (max-width: 768px) {
+            .inscription-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-header">
+        <h1>Inscriptions – Année scolaire 2026-2027</h1>
+    </div>
+
+    <section class="intro">
+        <p>Les inscriptions au Lycée Moderne Alassane Ouattara (LYMAO) pour l’année scolaire 2026-2027 sont ouvertes. Rejoignez un cadre d’étude moderne, encadré par des enseignants qualifiés et bénéficiant d'un suivi pédagogique personnalisé. Vous trouverez ci-dessous toutes les informations pratiques pour constituer votre dossier.</p>
+    </section>
+
+    <div class="inscription-grid">
+
+        <div class="card">
+            <h2>📅 Calendrier des inscriptions</h2>
+            <ul>
+                <li><strong>Dépôt des dossiers :</strong> du <span class="placeholder-text">[Date de début]</span> au <span class="placeholder-text">[Date de fin]</span></li>
+                <li><strong>Inscriptions définitives :</strong> <span class="placeholder-text">[Date limite de paiement]</span></li>
+                <li><strong>Rentrée des élèves :</strong> <span class="placeholder-text">[Jour]</span> septembre 2026</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📋 Pièces à fournir (dossier complet)</h2>
+            <ul>
+                <li>✓ Demande manuscrite adressée au Proviseur</li>
+                <li>✓ Photocopie légalisée de l’acte de naissance</li>
+                <li>✓ Relevés de notes des deux derniers trimestres (certifiés conformes)</li>
+                <li>✓ Certificat de scolarité de l’année précédente</li>
+                <li>✓ Fiche de transfert (uniquement pour les élèves provenant d’un autre établissement)</li>
+                <li>✓ 2 photos d’identité récentes (sur fond blanc, avec le nom au dos)</li>
+                <li>✓ Fiche de renseignements (à retirer au secrétariat)</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>💰 Frais de scolarité 2026-2027</h2>
+            <ul>
+                <li><strong>Droit d’inscription (à payer une seule fois) :</strong> 35 000 FCFA</li>
+                <li><strong>Scolarité annuelle :</strong> <span class="placeholder-text">[Montant à confirmer, ex: 300 000]</span> FCFA</li>
+                <li><strong>Assurance scolaire (obligatoire) :</strong> 5 000 FCFA</li>
+            </ul>
+            <p class="info">ℹ️ Les versements s'effectuent exclusivement à l’intendance de l'établissement.</p>
+        </div>
+    </div>
+
+    <div class="bourses">
+        <h2>🎓 Bourses et aides financières</h2>
+        <p>Des bourses d’excellence et d’aide sociale sont disponibles pour les élèves méritants ou en situation de besoin. Veuillez vous rapprocher du secrétariat du Proviseur pour connaître les conditions d’éligibilité et retirer un dossier de demande.</p>
+    </div>
+
+    <div class="demarche">
+        <h2>📝 Marche à suivre pour s’inscrire</h2>
+        <ol>
+            <li>Retirer un dossier d’inscription au secrétariat.</li>
+            <li>Remplir la fiche de renseignements et rassembler toutes les pièces listées ci-dessus.</li>
+            <li>Déposer le dossier complet à la scolarité entre 8h00 et 16h00, du lundi au vendredi.</li>
+            <li>Procéder au paiement des frais (droit d’inscription) à l’intendance.</li>
+            <li>Remettre le reçu de paiement à la scolarité pour valider définitivement l’inscription.</li>
+        </ol>
+    </div>
+
+    <div class="contact-inscription">
+        <p><strong>Pour tout renseignement complémentaire :</strong><br>
+        📞 <strong>Tél :</strong> +225 07 47 95 10 20 (Mme KONE ROKIA, Responsable des inscriptions)<br>
+        📧 <strong>Email :</strong> lymao608@gmail.com <em>(ou adresse professionnelle dédiée)</em><br>
+        🏫 <strong>Horaires du secrétariat :</strong> Lundi au vendredi, de 8h00 à 16h00.</p>
+    </div>
+
+</body>
+</html>
