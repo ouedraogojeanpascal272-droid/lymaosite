@@ -174,3 +174,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   lazyImages.forEach((img) => imageObserver.observe(img));
 });
+
+// ==========================================
+// GESTION DU MENU MOBILE (HAMBURGER)
+// ==========================================
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navOverlay = document.querySelector('.nav-overlay');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        if (navOverlay) {
+            navOverlay.classList.toggle('active');
+        }
+    });
+}
+
+// Fermer le menu si on clique sur l'overlay (fond noir)
+if (navOverlay) {
+    navOverlay.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        navOverlay.classList.remove('active');
+    });
+}
