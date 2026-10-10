@@ -2453,3 +2453,38 @@ img {
     .succession-table td:nth-child(3)::before { content: "Année de service"; }
 }
    SUCCESSION TABLE
+/* ==========================================
+   SÉCURITÉ RESPONSIVE GLOBALE (OBLIGATOIRE)
+   ========================================== */
+html, body {
+    overflow-x: hidden; /* Empêche le défilement horizontal indésirable */
+    max-width: 100vw;
+}
+
+/* Force toutes les images, vidéos et iframes à ne jamais dépasser l'écran */
+img, video, iframe, table, .succession-table {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+/* S'assure que les conteneurs principaux ont des marges sur mobile */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    
+    /* Force les grilles à passer en 1 colonne sur mobile */
+    .features-grid, 
+    .news-grid, 
+    .testimonials-grid, 
+    .team-grid, 
+    .stats-grid, 
+    .mv-grid, 
+    .about-grid, 
+    .contact-grid,
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
