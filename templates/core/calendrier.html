@@ -3,194 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier Scolaire 2025-2026 – LYMAO</title>
+    <title>Calendrier Scolaire Officiel 2026-2027 – LYMAO</title>
     <style>
-        /* --- RESET & BASE --- */
         :root {
-            --primary: #1a365d;       /* Bleu institutionnel profond */
-            --accent: #dd6b20;        /* Orange dynamique (rappel charte) */
-            --bg-light: #f7fafc;      /* Fond très clair */
-            --text-main: #2d3748;     /* Gris foncé pour la lisibilité */
-            --text-muted: #718096;    /* Gris moyen pour les détails */
-            --border: #e2e8f0;        /* Bordures subtiles */
-            --success-bg: #f0fff4;
-            --success-text: #22543d;
-            --warning-bg: #fffaf0;
-            --warning-text: #744210;
+            --primary: #1a5f3a;       /* Vert institutionnel (couleur MENA) */
+            --primary-dark: #0f3d24;
+            --accent: #e87722;        /* Orange officiel ivoirien */
+            --bg-light: #f8faf9;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --warning-bg: #fffbeb;
+            --warning-text: #92400e;
+            --success-bg: #ecfdf5;
+            --success-text: #065f46;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: var(--bg-light);
             color: var(--text-main);
             line-height: 1.6;
             padding: 2rem 1rem;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* En-tête officiel */
+        .official-header {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 8px;
         }
 
-        /* --- EN-TÊTE --- */
+        .official-header .republic {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .official-header .motto {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .official-header .ministry {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .page-header {
-            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 2.5rem 2rem;
             border-radius: 12px;
             text-align: center;
             margin-bottom: 2.5rem;
-            box-shadow: 0 10px 15px -3px rgba(26, 54, 93, 0.1);
+            box-shadow: 0 10px 20px rgba(26, 95, 58, 0.15);
         }
 
         .page-header h1 {
             font-size: 2.2rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
         }
 
-        .page-header p {
+        .page-header .subtitle {
             font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 400;
+            opacity: 0.95;
+            font-weight: 500;
         }
 
-        /* --- GRILLE DES TRIMESTRES --- */
-        .calendrier-grid {
+        .page-header .arrete {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Section Découpage des trimestres */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .trimestres-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
         .trimestre-card {
             background: white;
-            border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .trimestre-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
         }
 
         .trimestre-header {
-            background: var(--bg-light);
+            background: var(--primary);
+            color: white;
             padding: 1.25rem;
-            border-bottom: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            text-align: center;
         }
 
         .trimestre-header h2 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: var(--primary);
+            letter-spacing: 1px;
         }
 
         .trimestre-body {
             padding: 1.5rem;
+            text-align: center;
         }
 
-        .trimestre-body ul {
-            list-style: none;
-        }
-
-        .trimestre-body li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .trimestre-body li:last-child {
-            margin-bottom: 0;
-        }
-
-        .trimestre-body li::before {
-            content: "•";
-            color: var(--accent);
-            font-weight: 900;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        .trimestre-body strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* --- ÉVÉNEMENTS CLÉS --- */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .evenements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 3rem;
-        }
-
-        .event-card {
-            background: white;
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-            padding: 1.25rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-        }
-
-        .event-date {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .event-title {
-            font-weight: 700;
+        .trimestre-dates {
             font-size: 1.1rem;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .event-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            font-weight: 600;
+            color: var(--primary-dark);
             line-height: 1.5;
         }
 
-        /* --- NOTES ET TÉLÉCHARGEMENT --- */
+        .trimestre-dates .du { color: var(--accent); }
+
+        /* Section Congés */
+        .conges-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .conges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .conge-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .conge-name {
+            font-weight: 700;
+            color: var(--primary-dark);
+            min-width: 140px;
+            font-size: 0.95rem;
+        }
+
+        .conge-dates {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        /* Section Examens */
+        .examens-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .examen-card {
+            background: linear-gradient(135deg, var(--success-bg) 0%, white 100%);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .examen-card:last-child { margin-bottom: 0; }
+
+        .examen-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .examen-content { flex: 1; }
+
+        .examen-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .examen-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .examen-dates {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Notes importantes */
         .info-box {
             background: var(--warning-bg);
-            border: 1px solid #fbd38d;
+            border: 1px solid #fcd34d;
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -202,7 +264,6 @@
         .info-icon {
             font-size: 1.5rem;
             flex-shrink: 0;
-            margin-top: 2px;
         }
 
         .info-content h3 {
@@ -218,161 +279,227 @@
             font-size: 0.95rem;
         }
 
-        .info-content li {
-            margin-bottom: 0.5rem;
-        }
+        .info-content li { margin-bottom: 0.5rem; }
 
+        /* Bouton téléchargement */
         .download-section {
             text-align: center;
             background: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 12px;
-            border: 1px dashed var(--border);
+            border: 2px dashed var(--primary);
+            margin-top: 2rem;
+        }
+
+        .download-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
         }
 
         .btn-download {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--primary);
+            gap: 0.75rem;
+            background: var(--accent);
             color: white;
             text-decoration: none;
-            padding: 0.85rem 1.75rem;
+            padding: 1rem 2rem;
             border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.2s ease, transform 0.1s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(232, 119, 34, 0.3);
         }
 
         .btn-download:hover {
-            background: #2c5282;
-            transform: translateY(-1px);
+            background: #c8621a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(232, 119, 34, 0.4);
         }
 
-        /* --- RESPONSIVE --- */
+        .download-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Impression */
+        @media print {
+            body { background: white; padding: 0; }
+            .download-section { display: none !important; }
+            .page-header { background: white; color: black; box-shadow: none; border: 2px solid var(--primary); }
+            .trimestre-card, .conges-section, .examens-section { 
+                box-shadow: none; 
+                border: 1px solid #ccc;
+                break-inside: avoid;
+            }
+            .trimestre-header { background: var(--primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
         @media (max-width: 768px) {
-            body { padding: 1rem; }
-            .page-header { padding: 2rem 1rem; }
-            .page-header h1 { font-size: 1.75rem; }
-            .calendrier-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 1.6rem; }
+            .trimestres-grid { grid-template-columns: 1fr; }
+            .conge-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .examen-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        
-        <!-- En-tête -->
+
+        <!-- En-tête officiel -->
+        <div class="official-header">
+            <div class="republic">RÉPUBLIQUE DE CÔTE D'IVOIRE</div>
+            <div class="motto">Union – Discipline – Travail</div>
+            <div class="ministry">Ministère de l'Éducation Nationale, de l'Alphabétisation et de l'Enseignement Technique</div>
+        </div>
+
+        <!-- Titre principal -->
         <header class="page-header">
-            <h1>Calendrier Scolaire 2025-2026</h1>
-            <p>Lycée Moderne Alassane Ouattara (LYMAO) – Anyama</p>
+            <h1>Calendrier Scolaire Officiel</h1>
+            <div class="subtitle">Année Scolaire 2026-2027 – Lycée Moderne Alassane Ouattara (LYMAO)</div>
+            <div class="arrete">Arrêté n° 3548/MENAET/CAB/DELC du 03 septembre 2026</div>
         </header>
 
-        <!-- Grille des Trimestres -->
-        <div class="calendrier-grid">
-            
-            <!-- Trimestre 1 -->
+        <!-- Découpage des trimestres -->
+        <h2 class="section-title">📅 Découpage de l'année scolaire</h2>
+        <div class="trimestres-grid">
+
             <article class="trimestre-card">
                 <div class="trimestre-header">
-                    <h2>🎓 1<sup>er</sup> Trimestre</h2>
+                    <h2>PREMIER TRIMESTRE</h2>
                 </div>
                 <div class="trimestre-body">
-                    <ul>
-                        <li><strong>Rentrée du personnel :</strong> Lundi 22 septembre 2025</li>
-                        <li><strong>Rentrée effective des élèves :</strong> Jeudi 25 septembre 2025 (cours à partir de 07h30)</li>
-                        <li><strong>Congé de la Toussaint :</strong> Du samedi 1<sup>er</sup> au mercredi 5 novembre 2025 inclus. <em>(Reprise le jeudi 6 novembre)</em></li>
-                        <li><strong>Conseils de classe :</strong> Du 17 au 21 novembre 2025</li>
-                        <li><strong>Délivrance des bulletins :</strong> Lundi 24 novembre 2025</li>
-                        <li><strong>Arrêt des cours du 1<sup>er</sup> trimestre :</strong> Vendredi 19 décembre 2025 à 12h30</li>
-                        <li><strong>Congé de fin d'année :</strong> Du 20 décembre 2025 au dimanche 4 janvier 2026 inclus. <em>(Reprise le lundi 5 janvier 2026)</em></li>
-                    </ul>
+                    <div class="trimestre-dates">
+                        <span class="du">Du 14 septembre</span><br>
+                        <span>au 04 décembre 2026</span>
+                    </div>
                 </div>
             </article>
 
-            <!-- Trimestre 2 -->
             <article class="trimestre-card">
                 <div class="trimestre-header">
-                    <h2>📚 2<sup>e</sup> Trimestre</h2>
+                    <h2>DEUXIÈME TRIMESTRE</h2>
                 </div>
                 <div class="trimestre-body">
-                    <ul>
-                        <li><strong>Reprise des cours :</strong> Lundi 5 janvier 2026</li>
-                        <li><strong>Composition du 2<sup>e</sup> trimestre (Blancs) :</strong> Du 9 au 13 février 2026</li>
-                        <li><strong>Congé de Pâques :</strong> Du samedi 4 au dimanche 19 avril 2026 inclus. <em>(Reprise le lundi 20 avril)</em></li>
-                        <li><strong>Conseils de classe :</strong> Du 23 au 27 mars 2026</li>
-                        <li><strong>Délivrance des bulletins :</strong> Lundi 30 mars 2026</li>
-                        <li><strong>Journée Portes Ouvertes :</strong> Samedi 14 mars 2026 (09h00 – 17h00)</li>
-                        <li><strong>Arrêt des cours du 2<sup>e</sup> trimestre :</strong> Vendredi 10 avril 2026 à 12h30</li>
-                    </ul>
+                    <div class="trimestre-dates">
+                        <span class="du">Du 07 décembre 2026</span><br>
+                        <span>au 12 mars 2027</span>
+                    </div>
                 </div>
             </article>
 
-            <!-- Trimestre 3 -->
             <article class="trimestre-card">
                 <div class="trimestre-header">
-                    <h2>📖 3<sup>e</sup> Trimestre</h2>
+                    <h2>TROISIÈME TRIMESTRE</h2>
                 </div>
                 <div class="trimestre-body">
-                    <ul>
-                        <li><strong>Reprise des cours :</strong> Lundi 20 avril 2026</li>
-                        <li><strong>Fête du Travail :</strong> Vendredi 1<sup>er</sup> mai 2026 (Jour férié)</li>
-                        <li><strong>Fin des cours (3<sup>e</sup> et Terminale) :</strong> Vendredi 12 juin 2026 (Préparation aux examens)</li>
-                        <li><strong>Épreuves officielles du BEPC :</strong> À partir du 15 juin 2026</li>
-                        <li><strong>Épreuves officielles du BAC :</strong> À partir du 22 juin 2026</li>
-                        <li><strong>Arrêt des cours (autres niveaux) :</strong> Vendredi 10 juillet 2026 à 12h30</li>
-                        <li><strong>Conseils de classe finaux :</strong> Du 13 au 17 juillet 2026</li>
-                        <li><strong>Début des grandes vacances :</strong> Samedi 18 juillet 2026</li>
-                    </ul>
+                    <div class="trimestre-dates">
+                        <span class="du">Du 15 mars</span><br>
+                        <span>au 11 juin 2027</span>
+                    </div>
                 </div>
             </article>
 
         </div>
 
-        <!-- Événements Clés -->
-        <h2 class="section-title">📅 Événements et dates clés</h2>
-        <div class="evenements-grid">
-            <div class="event-card">
-                <span class="event-date">14 Mars 2026</span>
-                <span class="event-title">Journée Portes Ouvertes</span>
-                <p class="event-desc">Rencontre avec les équipes pédagogiques, visite des laboratoires et de la bibliothèque, démonstrations des clubs sportifs et culturels.</p>
-            </div>
-            <div class="event-card">
-                <span class="event-date">25 Mai 2026</span>
-                <span class="event-title">Réunion d'orientation</span>
-                <p class="event-desc">Salle polyvalente à 18h00. Présentation des filières du cycle secondaire et des débouchés pour les élèves de 3<sup>e</sup> et de Première.</p>
-            </div>
-            <div class="event-card">
-                <span class="event-date">15 Septembre 2026</span>
-                <span class="event-title">Publication des résultats</span>
-                <p class="event-desc">Affichage officiel des résultats du BEPC et du BAC au sein de l'établissement et sur le portail numérique du lycée.</p>
-            </div>
-            <div class="event-card">
-                <span class="event-date">24 Septembre 2026</span>
-                <span class="event-title">Rentrée 2026-2027</span>
-                <p class="event-desc">Reprise effective des cours pour l'ensemble des niveaux conformément à l'arrêté ministériel.</p>
+        <!-- Congés scolaires -->
+        <div class="conges-section">
+            <h2 class="section-title" style="margin-bottom: 0.5rem;"> Dates des congés scolaires</h2>
+            <div class="conges-grid">
+
+                <div class="conge-item">
+                    <div class="conge-name">TOUSSAINT</div>
+                    <div class="conge-dates">Du 23 octobre 2026 au 01 novembre 2026 inclus</div>
+                </div>
+
+                <div class="conge-item">
+                    <div class="conge-name">NOËL</div>
+                    <div class="conge-dates">Du 18 décembre 2026 au 03 janvier 2027 inclus</div>
+                </div>
+
+                <div class="conge-item">
+                    <div class="conge-name">CONGÉ DE FÉVRIER</div>
+                    <div class="conge-dates">Du 05 février 2027 au 14 février 2027 inclus</div>
+                </div>
+
+                <div class="conge-item">
+                    <div class="conge-name">PÂQUES</div>
+                    <div class="conge-dates">Du 19 mars 2027 au 04 avril 2027 inclus</div>
+                </div>
+
+                <div class="conge-item">
+                    <div class="conge-name">GRANDES VACANCES</div>
+                    <div class="conge-dates">Du 30 juillet 2027 au 12 septembre 2027 inclus</div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Notes Importantes -->
+        <!-- Partiel et Examens Blancs -->
+        <div class="examens-section">
+            <h2 class="section-title" style="margin-bottom: 0.5rem;">📝 Partiel et Examens Blancs (BEPC et BAC)</h2>
+
+            <div class="examen-card">
+                <div class="examen-icon">📋</div>
+                <div class="examen-content">
+                    <div class="examen-title">PARTIEL</div>
+                    <div class="examen-subtitle">Épreuves du premier trimestre</div>
+                    <div class="examen-dates">Du lundi 14 au vendredi 18 décembre 2026</div>
+                </div>
+            </div>
+
+            <div class="examen-card">
+                <div class="examen-icon">️</div>
+                <div class="examen-content">
+                    <div class="examen-title">EXAMEN BLANC – Épreuves orales et physiques</div>
+                    <div class="examen-subtitle">Préparation BEPC et BAC</div>
+                    <div class="examen-dates">Du lundi 05 au vendredi 09 avril 2027</div>
+                </div>
+            </div>
+
+            <div class="examen-card">
+                <div class="examen-icon"></div>
+                <div class="examen-content">
+                    <div class="examen-title">EXAMEN BLANC – Épreuves écrites</div>
+                    <div class="examen-subtitle">Préparation BEPC et BAC</div>
+                    <div class="examen-dates">Du lundi 12 au vendredi 16 avril 2027</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Notes importantes -->
         <div class="info-box">
             <div class="info-icon">⚠️</div>
             <div class="info-content">
-                <h3>Notes importantes à l'attention des parents et élèves</h3>
+                <h3>Notes importantes</h3>
                 <ul>
-                    <li>Ce calendrier est établi sous réserve de modifications éventuelles par le Ministère de l'Éducation Nationale et de l'Alphabétisation (MENA).</li>
-                    <li>Des séances de soutien et de préparation intensive aux examens (BEPC/BAC) seront organisées durant les congés de fin de trimestre, sur la base du volontariat et d'une inscription préalable à la Vie Scolaire.</li>
-                    <li>Toute absence doit être impérativement justifiée par un mot des parents ou un certificat médical dans un délai de 48 heures suivant le retour de l'élève.</li>
+                    <li>Ce calendrier est publié conformément à l'<strong>Arrêté n° 3548/MENAET/CAB/DELC du 03 septembre 2026</strong> portant harmonisation du calendrier du partiel et de l'examen blanc dans l'enseignement secondaire général.</li>
+                    <li>Les dates des épreuves officielles du <strong>BEPC</strong> et du <strong>BAC</strong> seront communiquées ultérieurement par le Ministère.</li>
+                    <li>Toute absence doit être impérativement justifiée par un mot des parents ou un certificat médical dans un délai de 48 heures.</li>
+                    <li>Des séances de soutien pour les classes d'examen peuvent être organisées durant les congés, sur inscription à la Vie Scolaire.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Téléchargement -->
+        <!-- Bouton de téléchargement -->
         <div class="download-section">
-            <p style="margin-bottom: 1rem; color: var(--text-muted);">Vous souhaitez conserver une version imprimable de ce document ?</p>
-            <a href="#" class="btn-download">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <p>Vous souhaitez conserver une version imprimable de ce document officiel ?</p>
+            <button class="btn-download" onclick="window.print()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
                 Télécharger le calendrier en PDF
-            </a>
+            </button>
+            <p class="download-note">Dans la fenêtre d'impression, choisissez "Enregistrer au format PDF" comme destination.</p>
         </div>
 
     </div>
