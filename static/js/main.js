@@ -1,77 +1,67 @@
 document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
+  // ===== AOS Initialization =====
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100,
+    easing: "ease-out-cubic",
+  });
 
-  // ===== 1. AOS Initialization =====
-  if (typeof AOS !== "undefined") {
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100,
-      easing: "ease-out-cubic",
-    });
-  }
+  // ===== Navbar Scroll Effect =====
+  const navbar = document.getElementById("navbar");
+  let lastScroll = 0;
 
-  // ===== 2. Navbar Scroll Effect =====
-  // Utilisation de querySelector pour plus de sécurité si l'ID change
-  const navbar = document.querySelector(".navbar") || document.getElementById("navbar");
-  
-  if (navbar) {
-    window.addEventListener("scroll", function () {
-      if (window.pageYOffset > 50) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    });
-  }
+  window.addEventListener("scroll", function () {
+    const currentScroll = window.pageYOffset;
 
-  // ===== 3. Mobile Menu Toggle (UNIFIÉ ET SANS DOUBLON) =====
-  const navToggle = document.querySelector(".nav-toggle") || document.getElementById("navToggle");
-  const navMenu = document.querySelector(".nav-menu") || document.getElementById("navMenu");
-  const navOverlay = document.querySelector(".nav-overlay") || document.getElementById("navOverlay");
-
-  // Fonction pour fermer le menu proprement
-  function closeMobileMenu() {
-    if (navToggle) navToggle.classList.remove("active");
-    if (navMenu) navMenu.classList.remove("active");
-    if (navOverlay) navOverlay.classList.remove("active");
-    document.body.style.overflow = ""; // Réactive le scroll sur mobile
-  }
-
-  if (navToggle && navMenu) {
-    // Ouvrir / Fermer au clic sur le hamburger
-    navToggle.addEventListener("click", function () {
-      const isActive = navMenu.classList.contains("active");
-      
-      if (!isActive) {
-        navToggle.classList.add("active");
-        navMenu.classList.add("active");
-        if (navOverlay) navOverlay.classList.add("active");
-        document.body.style.overflow = "hidden"; // Empêche le scroll du fond sur mobile
-      } else {
-        closeMobileMenu();
-      }
-    });
-
-    // Fermer au clic sur l'overlay (fond noir)
-    if (navOverlay) {
-      navOverlay.addEventListener("click", closeMobileMenu);
+    if (currentScroll > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
     }
 
-    // Fermer le menu quand on clique sur un lien (très important pour le responsive)
-    const navLinks = navMenu.querySelectorAll("a");
+    lastScroll = currentScroll;
+  });
+
+  // ===== Mobile Menu Toggle =====
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
+  const navOverlay = document.getElementById("navOverlay");
+
+  if (navToggle && navMenu && navOverlay) {
+    navToggle.addEventListener("click", function () {
+      navToggle.classList.toggle("active");
+      navMenu.classList.toggle("active");
+      navOverlay.classList.toggle("active");
+      document.body.style.overflow = navMenu.classList.contains("active")
+        ? "hidden"
+        : "";
+    });
+
+    navOverlay.addEventListener("click", function () {
+      navToggle.classList.remove("active");
+      navMenu.classList.remove("active");
+      navOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+
+    // Close menu on link click
+    const navLinks = navMenu.querySelectorAll(".nav-link");
     navLinks.forEach((link) => {
-      link.addEventListener("click", closeMobileMenu);
+      link.addEventListener("click", function () {
+        navToggle.classList.remove("active");
+        navMenu.classList.remove("active");
+        navOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
     });
   }
 
-  // ===== 4. Animated Counter (Stats) =====
+  // ===== Animated Counter (Stats) =====
   const statNumbers = document.querySelectorAll("[data-count]");
 
   const animateCounter = (el) => {
-    const target = parseInt(el.getAttribute("data-count"), 10);
-    if (isNaN(target)) return;
-
+    const target = parseInt(el.getAttribute("data-count"));
     const duration = 2000;
     const step = target / (duration / 16);
     let current = 0;
@@ -79,24 +69,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const updateCounter = () => {
       current += step;
       if (current < target) {
-        el.textContent = Math.floor(current).toLocaleString("fr-FR");
+        el.textContent = Math.floor(current).toLocaleString();
         requestAnimationFrame(updateCounter);
       } else {
-        el.textContent = target.toLocaleString("fr-FR");
-        // Ajout des suffixes + ou % si nécessaire
+        el.textContent = target.toLocaleString();
+        // Add + or % suffix if needed
         if (el.closest(".stat-box")) {
-          const label = el.nextElementSibling ? el.nextElementSibling.textContent : "";
+          const label = el.nextElementSibling.textContent;
           if (label.includes("%")) {
             el.textContent = target + "%";
           } else if (label.includes("+") || target > 1000) {
-            el.textContent = target.toLocaleString("fr-FR") + "+";
+            el.textContent = target.toLocaleString() + "+";
           }
         }
       }
     };
+
     updateCounter();
   };
 
+  // Intersection Observer for counters
   const counterObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -106,24 +98,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.5 },
   );
 
   statNumbers.forEach((stat) => counterObserver.observe(stat));
 
-  // ===== 5. Smooth Scroll for Anchor Links =====
+  // ===== Smooth Scroll for Anchor Links =====
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
-      if (targetId === "#") return;
-
-      const target = document.querySelector(targetId);
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
       if (target) {
-        e.preventDefault();
-        // Calcul dynamique de la hauteur de la navbar pour un scroll précis
-        const navHeight = navbar ? navbar.offsetHeight : 80;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        
+        const offset = 80;
+        const targetPosition =
+          target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({
           top: targetPosition,
           behavior: "smooth",
@@ -132,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ===== 6. Form Validation Enhancement =====
+  // ===== Form Validation Enhancement =====
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -142,60 +130,73 @@ document.addEventListener("DOMContentLoaded", function () {
       requiredFields.forEach((field) => {
         if (!field.value.trim()) {
           isValid = false;
-          field.style.borderColor = "var(--danger, #ef4444)";
-          
-          // Retire l'erreur dès que l'utilisateur tape
-          field.addEventListener("input", function () {
-            this.style.borderColor = "";
-          }, { once: true });
+          field.style.borderColor = "var(--danger)";
+          field.addEventListener(
+            "input",
+            function () {
+              this.style.borderColor = "";
+            },
+            { once: true },
+          );
         }
       });
 
       if (!isValid) {
         e.preventDefault();
-        // Amélioration responsive : scroller vers le premier champ en erreur
-        const firstError = contactForm.querySelector("[required]:invalid, [style*='border-color']");
-        if (firstError) {
-          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-          firstError.focus();
-        }
       }
     });
   }
 
-  // ===== 7. Parallax Effect for Hero Shapes =====
+  // ===== Parallax Effect for Hero Shapes =====
   const heroShapes = document.querySelectorAll(".shape");
-  // Désactivé sur mobile (< 768px) pour éviter les saccades et économiser la batterie
-  if (heroShapes.length > 0 && window.innerWidth > 768) {
-    window.addEventListener("scroll", function () {
-      const scrolled = window.pageYOffset;
-      heroShapes.forEach((shape, index) => {
-        const speed = 0.2 + index * 0.1;
-        shape.style.transform = `translateY(${scrolled * speed}px)`;
-      });
-    });
-  }
 
-  // ===== 8. Lazy Loading Images =====
+  window.addEventListener("scroll", function () {
+    const scrolled = window.pageYOffset;
+    heroShapes.forEach((shape, index) => {
+      const speed = 0.2 + index * 0.1;
+      shape.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+  });
+
+  // ===== Lazy Loading Images =====
   const lazyImages = document.querySelectorAll("img[data-src]");
 
-  if ("IntersectionObserver" in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute("data-src");
-          imageObserver.unobserve(img);
-        }
-      });
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.removeAttribute("data-src");
+        imageObserver.unobserve(img);
+      }
     });
-    lazyImages.forEach((img) => imageObserver.observe(img));
-  } else {
-    // Fallback pour les très vieux navigateurs
-    lazyImages.forEach((img) => {
-      img.src = img.dataset.src;
-    });
-  }
+  });
 
+  lazyImages.forEach((img) => imageObserver.observe(img));
 });
+
+// ==========================================
+// GESTION DU MENU MOBILE (HAMBURGER)
+// ==========================================
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navOverlay = document.querySelector('.nav-overlay');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        if (navOverlay) {
+            navOverlay.classList.toggle('active');
+        }
+    });
+}
+
+// Fermer le menu si on clique sur l'overlay (fond noir)
+if (navOverlay) {
+    navOverlay.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        navOverlay.classList.remove('active');
+    });
+}
