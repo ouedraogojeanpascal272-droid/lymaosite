@@ -1,37 +1,42 @@
-{% extends 'base.html' %} {% block title %}Contact — Lycée Moderne Alassane Ouattara d'Anyama
-Excellence{% endblock %} {% block content %}
+{% extends 'base.html' %} 
 
+{% block title %}Contact — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %} 
+
+{% block content %}
+
+<!-- ===== PAGE HEADER ===== -->
 <section class="page-header">
     <div class="page-header-bg">
         <div class="page-header-pattern"></div>
     </div>
     <div class="container">
         <div class="page-header-content" data-aos="fade-up">
-            <nav class="breadcrumb">
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
                 <a href="{% url 'home' %}">Accueil</a>
                 <i class="fas fa-chevron-right"></i>
                 <span>Contact</span>
             </nav>
             <h1>Contactez-<span class="text-gradient">Nous</span></h1>
             <p>
-                Nous sommes à votre écoute pour toute question ou demande
-                d'information
+                Notre équipe administrative est à votre écoute pour toute question 
+                concernant les inscriptions, la vie scolaire ou tout autre renseignement.
             </p>
         </div>
     </div>
 </section>
 
+<!-- ===== CONTACT SECTION ===== -->
 <section class="contact-section">
     <div class="container">
         <div class="contact-grid">
-            <!-- Contact Info -->
-            <div class="contact-info" data-aos="fade-right">
-                <span class="section-tag">Coordonnées</span>
+            
+            <!-- Colonne 1 : Informations de contact -->
+            <div class="contact-info" data-aos="fade-right" data-aos-delay="100">
+                <span class="section-tag">Nos Coordonnées</span>
                 <h2>Restons en <span class="highlight">Contact</span></h2>
-                <p>
-                    Notre équipe administrative est disponible pour répondre à
-                    toutes vos questions concernant les inscriptions, la vie
-                    scolaire ou tout autre renseignement.
+                <p class="contact-intro">
+                    N'hésitez pas à nous rendre visite ou à nous contacter par téléphone 
+                    ou email. Nous nous engageons à vous répondre dans les plus brefs délais.
                 </p>
 
                 <div class="contact-details">
@@ -41,20 +46,17 @@ Excellence{% endblock %} {% block content %}
                         </div>
                         <div class="contact-text">
                             <strong>Adresse</strong>
-                            <span
-                                >Boulevards Mohammed VI<br />Rue Madeleine BOKA,
-                                Anyama</span
-                            >
+                            <span>Boulevard Mohammed VI,<br>Rue Madeleine BOKA, Anyama</span>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-text">
                             <strong>Téléphone</strong>
-                            <span>+225 07 47 95 10 20</span>
+                            <a href="tel:+2250747951020" class="contact-link">+225 07 47 95 10 20</a>
                         </div>
                     </div>
 
@@ -64,7 +66,7 @@ Excellence{% endblock %} {% block content %}
                         </div>
                         <div class="contact-text">
                             <strong>Email</strong>
-                            <span>lymao608@gmail.com</span>
+                            <a href="mailto:lymao608@gmail.com" class="contact-link">lymao608@gmail.com</a>
                         </div>
                     </div>
 
@@ -73,32 +75,34 @@ Excellence{% endblock %} {% block content %}
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-text">
-                            <strong>Horaires</strong>
-                            <span
-                                >Lundi - Vendredi : 7h15 - 16h30<br</span
-                            >
+                            <strong>Horaires d'ouverture</strong>
+                            <span>Lundi - Vendredi : 7h15 - 16h30<br />
+                            Samedi : 8h00 - 12h00 (Urgences uniquement)</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="contact-social">
-                    <span>Suivez-nous :</span>
-                    <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" class="social-link"
-                        ><i class="fab fa-facebook-f"></i
-                    ></a>
-                   
+                    <span>Suivez notre actualité :</span>
+                    <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Groupe Facebook du LYMAO">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="contact-form-wrapper" data-aos="fade-left">
-                <form method="post" class="contact-form" id="contactForm">
+            <!-- Colonne 2 : Formulaire de contact -->
+            <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">
+                <form method="post" class="contact-form" id="contactForm" novalidate>
                     {% csrf_token %}
 
+                    <!-- Messages Django (Succès / Erreur) -->
                     {% if messages %}
                     <div class="contact-messages">
                         {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        <div class="alert alert-{{ message.tags }}">
+                            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
                         {% endfor %}
                     </div>
                     {% endif %}
@@ -111,6 +115,7 @@ Excellence{% endblock %} {% block content %}
 
                     <h3>Envoyez-nous un message</h3>
 
+                    <!-- Champ Nom -->
                     <div class="form-group">
                         <label for="{{ form.nom.id_for_label }}">{{ form.nom.label }}</label>
                         <div class="input-wrapper">
@@ -118,10 +123,11 @@ Excellence{% endblock %} {% block content %}
                             {{ form.nom }}
                         </div>
                         {% if form.nom.errors %}
-                        <span class="error-text">{{ form.nom.errors.0 }}</span>
+                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.nom.errors.0 }}</span>
                         {% endif %}
                     </div>
 
+                    <!-- Champ Email -->
                     <div class="form-group">
                         <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
                         <div class="input-wrapper">
@@ -129,10 +135,11 @@ Excellence{% endblock %} {% block content %}
                             {{ form.email }}
                         </div>
                         {% if form.email.errors %}
-                        <span class="error-text">{{ form.email.errors.0 }}</span>
+                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.email.errors.0 }}</span>
                         {% endif %}
                     </div>
 
+                    <!-- Champ Sujet -->
                     <div class="form-group">
                         <label for="{{ form.sujet.id_for_label }}">{{ form.sujet.label }}</label>
                         <div class="input-wrapper">
@@ -140,10 +147,11 @@ Excellence{% endblock %} {% block content %}
                             {{ form.sujet }}
                         </div>
                         {% if form.sujet.errors %}
-                        <span class="error-text">{{ form.sujet.errors.0 }}</span>
+                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.sujet.errors.0 }}</span>
                         {% endif %}
                     </div>
 
+                    <!-- Champ Message -->
                     <div class="form-group">
                         <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
                         <div class="input-wrapper textarea-wrapper">
@@ -151,11 +159,11 @@ Excellence{% endblock %} {% block content %}
                             {{ form.message }}
                         </div>
                         {% if form.message.errors %}
-                        <span class="error-text">{{ form.message.errors.0 }}</span>
+                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.message.errors.0 }}</span>
                         {% endif %}
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg submit-btn">
                         <i class="fas fa-paper-plane"></i>
                         <span>Envoyer le message</span>
                     </button>
@@ -165,20 +173,106 @@ Excellence{% endblock %} {% block content %}
     </div>
 </section>
 
-<!-- Map -->
-<!--<section class="map-section">
+<!-- ===== MAP SECTION (Activée et centrée sur Anyama) ===== -->
+<section class="map-section">
     <div class="map-container">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937604!2d2.2922926!3d48.8583701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15887.123456789!2d-4.0500!3d5.4900!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ea5311959121%3A0x3fe70ddce19221a6!2sAnyama%2C%20C%C3%B4te%20d'Ivoire!5e0!3m2!1sfr!2sci!4v1700000000000!5m2!1sfr!2sci"
             width="100%"
             height="450"
-            style="border: 0"
+            style="border: 0;"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-        >
+            title="Localisation du LYMAO à Anyama"
+            aria-label="Carte Google Maps montrant l'emplacement du lycée à Anyama">
         </iframe>
     </div>
-</section>-->
+</section>
+
+<!-- ===== CSS SPÉCIFIQUE POUR GARANTIR LA PERFECTION DU FORMULAIRE ===== -->
+<style>
+    /* Force les champs Django à être parfaits sans toucher au forms.py */
+    .input-wrapper input,
+    .input-wrapper select,
+    .input-wrapper textarea {
+        width: 100%;
+        padding: 14px 16px 14px 48px; /* Espace pour l'icône à gauche */
+        border: 2px solid rgba(0, 0, 0, 0.08);
+        border-radius: var(--radius-sm, 8px);
+        background: var(--white, #ffffff);
+        font-family: var(--font-body, inherit);
+        font-size: 1rem;
+        color: var(--dark, #1e293b);
+        transition: all 0.3s ease;
+        -webkit-appearance: none;
+    }
+
+    .input-wrapper textarea {
+        padding-top: 16px;
+        resize: vertical;
+        min-height: 140px;
+    }
+
+    .input-wrapper input:focus,
+    .input-wrapper select:focus,
+    .input-wrapper textarea:focus {
+        outline: none;
+        border-color: var(--primary, #6366f1);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    }
+
+    /* Lien de téléphone et email cliquables et stylisés */
+    .contact-link {
+        color: var(--gray, #64748b);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .contact-link:hover {
+        color: var(--primary, #6366f1);
+    }
+
+    /* Bouton Facebook stylisé */
+    .social-link.facebook {
+        background: #1877F2;
+        color: white;
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .social-link.facebook:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
+        color: white;
+    }
+
+    /* Responsive Mobile Parfait */
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px;
+        }
+        
+        .contact-form-wrapper {
+            padding: 24px !important;
+        }
+
+        /* Zone de clic (touch target) suffisante pour mobile */
+        .input-wrapper input,
+        .input-wrapper textarea {
+            font-size: 16px; /* Empêche le zoom auto sur iOS */
+            min-height: 48px;
+        }
+
+        .map-container iframe {
+            height: 300px;
+        }
+    }
+</style>
 
 {% endblock %}
