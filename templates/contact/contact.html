@@ -1,165 +1,203 @@
 
 {% extends 'base.html' %}
-
+ 
 {% block title %}Contact — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %}
-
+ 
 {% block content %}
+           
+           
+       
+       
+           
+                                  Accueil                   **                   Contact                              
+# Contactez-Nous
+               
+                   Notre équipe administrative est à votre écoute pour toute question                    concernant les inscriptions, la vie scolaire ou tout autre renseignement.               
+           
+       
+                
+           
+   
+```
+        <!-- Colonne 1 : Informations de contact -->  
+        <div class="contact-info" data-aos="fade-right" data-aos-delay="100">  
+            <span class="section-tag">Nos Coordonnées</span>  
+            <h2>Restons en <span class="highlight">Contact</span></h2>  
+            <p class="contact-intro">  
+                N'hésitez pas à nous rendre visite ou à nous contacter par téléphone   
+                ou email. Nous nous engageons à vous répondre dans les plus brefs délais.  
+            </p>  
 
-<div class="container">
-    <div class="breadcrumb">
-        Accueil <span>»</span> Contact
-    </div>
+            <div class="contact-details">  
+                <div class="contact-item">  
+                    <div class="contact-icon">  
+                        <i class="fas fa-map-marker-alt"></i>  
+                    </div>  
+                    <div class="contact-text">  
+                        <strong>Adresse</strong>  
+                        <span>Boulevard Mohammed VI,<br>Rue Madeleine BOKA, Anyama</span>  
+                    </div>  
+                </div>  
 
-    <h1>Contactez-Nous</h1>
-    <p>
-        Notre équipe administrative est à votre écoute pour toute question
-        concernant les inscriptions, la vie scolaire ou tout autre renseignement.
-    </p>
+                <div class="contact-item">  
+                    <div class="contact-icon">  
+                        <i class="fas fa-phone-alt"></i>  
+                    </div>  
+                    <div class="contact-text">  
+                        <strong>Téléphone</strong>  
+                        <a href="tel:+2250747951020" class="contact-link">+225 07 47 95 10 20</a>  
+                    </div>  
+                </div>  
 
-    <div class="contact-container">
+                <div class="contact-item">  
+                    <div class="contact-icon">  
+                        <i class="fas fa-envelope"></i>  
+                    </div>  
+                    <div class="contact-text">  
+                        <strong>Email</strong>  
+                        <a href="mailto:lymao608@gmail.com" class="contact-link">lymao608@gmail.com</a>  
+                    </div>  
+                </div>  
 
-        <!-- Colonne 1 : Informations de contact -->
-        <div class="contact-info" data-aos="fade-right" data-aos-delay="100">
-            <span class="section-tag">Nos Coordonnées</span>
-            <h2>Restons en <span class="highlight">Contact</span></h2>
-            <p class="contact-intro">
-                N'hésitez pas à nous rendre visite ou à nous contacter par téléphone
-                ou email. Nous nous engageons à vous répondre dans les plus brefs délais.
-            </p>
+                <div class="contact-item">  
+                    <div class="contact-icon">  
+                        <i class="fas fa-clock"></i>  
+                    </div>  
+                    <div class="contact-text">  
+                        <strong>Horaires d'ouverture</strong>  
+                        <span>Lundi - Vendredi : 7h15 - 16h30<br />  
+                        Samedi : 8h00 - 12h00 (Urgences uniquement)</span>  
+                    </div>  
+                </div>  
+            </div>  
 
-            <div class="contact-details">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Adresse</strong>
-                        <span>GW5W+V9J, Anyama,<br>Côte d'Ivoire</span>
-                    </div>
-                </div>
+            <div class="contact-social">  
+                <span>Suivez notre actualité :</span>  
+                <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Groupe Facebook du LYMAO">  
+                    <i class="fab fa-facebook-f"></i>  
+                </a>  
+            </div>  
+        </div>  
 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Téléphone</strong>
-                        <a href="tel:+2250747951020" class="contact-link">+225 07 47 95 10 20</a>
-                    </div>
-                </div>
+        <!-- Colonne 2 : Formulaire de contact -->  
+        <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">  
+            <form method="post" class="contact-form" id="contactForm" novalidate>  
+                {% csrf_token %}  
 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Email</strong>
-                        <a href="mailto:lymao608@gmail.com" class="contact-link">lymao608@gmail.com</a>
-                    </div>
-                </div>
+                <!-- Messages Django (Succès / Erreur) -->  
+                {% if messages %}  
+                <div class="contact-messages">  
+                    {% for message in messages %}  
+                    <div class="alert alert-{{ message.tags }}">  
+                        <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>  
+                        {{ message }}  
+                    </div>  
+                    {% endfor %}  
+                </div>  
+                {% endif %}  
 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Horaires d'ouverture</strong>
-                        <span>Lundi - Vendredi : 7h15 - 16h30<br />
-                        Samedi : 8h00 - 12h00 (Urgences uniquement)</span>
-                    </div>
-                </div>
-            </div>
+                {% if form.non_field_errors %}  
+                <div class="alert alert-error">  
+                    {{ form.non_field_errors }}  
+                </div>  
+                {% endif %}  
 
-            <div class="contact-social">
-                <span>Suivez notre actualité :</span>
-                <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Groupe Facebook du LYMAO">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
+                <h3>Envoyez-nous un message</h3>  
+
+                <!-- Champ Nom -->  
+                <div class="form-group">  
+                    <label for="{{ form.nom.id_for_label }}">{{ form.nom.label }}</label>  
+                    <div class="input-wrapper">  
+                        <i class="fas fa-user"></i>  
+                        {{ form.nom }}  
+                    </div>  
+                    {% if form.nom.errors %}  
+                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.nom.errors.0 }}</span>  
+                    {% endif %}  
+                </div>  
+
+                <!-- Champ Email -->  
+                <div class="form-group">  
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>  
+                    <div class="input-wrapper">  
+                        <i class="fas fa-envelope"></i>  
+                        {{ form.email }}  
+                    </div>  
+                    {% if form.email.errors %}  
+                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.email.errors.0 }}</span>  
+                    {% endif %}  
+                </div>  
+
+                <!-- Champ Sujet -->  
+                <div class="form-group">  
+                    <label for="{{ form.sujet.id_for_label }}">{{ form.sujet.label }}</label>  
+                    <div class="input-wrapper">  
+                        <i class="fas fa-tag"></i>  
+                        {{ form.sujet }}  
+                    </div>  
+                    {% if form.sujet.errors %}  
+                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.sujet.errors.0 }}</span>  
+                    {% endif %}  
+                </div>  
+
+                <!-- Champ Message -->  
+                <div class="form-group">  
+                    <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>  
+                    <div class="input-wrapper textarea-wrapper">  
+                        <i class="fas fa-comment-alt"></i>  
+                        {{ form.message }}  
+                    </div>  
+                    {% if form.message.errors %}  
+                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.message.errors.0 }}</span>  
+                    {% endif %}  
+                </div>  
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg submit-btn">  
+                    <i class="fas fa-paper-plane"></i>  
+                    <span>Envoyer le message</span>  
+                </button>  
+            </form>  
+        </div>  
+    </div>  
+</div>  
+
+
+<!-- Carte Google Maps du LYMAO -->
+<section class="lymao-map-section" style="margin: 50px 0 30px; width: 100%;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <span class="section-tag">Nous trouver</span>
+            <h2 style="margin-top: 10px;">Localisation du <span class="highlight">LYMAO</span></h2>
+            <p>Retrouvez le Lycée Moderne Alassane Ouattara d'Anyama sur la carte.</p>
         </div>
 
-        <!-- Colonne 2 : Formulaire de contact -->
-        <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">
-            <form method="post" class="contact-form" id="contactForm" novalidate>
-                {% csrf_token %}
+        <div style="position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);">
+            <iframe
+                title="Localisation du Lycée Moderne Alassane Ouattara d'Anyama"
+                src="https://maps.google.com/maps?q=5.50969%2C-4.0538&z=17&output=embed"
+                width="100%"
+                height="100%"
+                style="border: 0; display: block;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+            </iframe>
+        </div>
 
-                <!-- Messages Django (Succès / Erreur) -->
-                {% if messages %}
-                <div class="contact-messages">
-                    {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if form.non_field_errors %}
-                <div class="alert alert-error">
-                    {{ form.non_field_errors }}
-                </div>
-                {% endif %}
-
-                <h3>Envoyez-nous un message</h3>
-
-                <!-- Champ Nom -->
-                <div class="form-group">
-                    <label for="{{ form.nom.id_for_label }}">{{ form.nom.label }}</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-user"></i>
-                        {{ form.nom }}
-                    </div>
-                    {% if form.nom.errors %}
-                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.nom.errors.0 }}</span>
-                    {% endif %}
-                </div>
-
-                <!-- Champ Email -->
-                <div class="form-group">
-                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-envelope"></i>
-                        {{ form.email }}
-                    </div>
-                    {% if form.email.errors %}
-                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.email.errors.0 }}</span>
-                    {% endif %}
-                </div>
-
-                <!-- Champ Sujet -->
-                <div class="form-group">
-                    <label for="{{ form.sujet.id_for_label }}">{{ form.sujet.label }}</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-tag"></i>
-                        {{ form.sujet }}
-                    </div>
-                    {% if form.sujet.errors %}
-                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.sujet.errors.0 }}</span>
-                    {% endif %}
-                </div>
-
-                <!-- Champ Message -->
-                <div class="form-group">
-                    <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
-                    <div class="input-wrapper textarea-wrapper">
-                        <i class="fas fa-comment-alt"></i>
-                        {{ form.message }}
-                    </div>
-                    {% if form.message.errors %}
-                    <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.message.errors.0 }}</span>
-                    {% endif %}
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block btn-lg submit-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    <span>Envoyer le message</span>
-                </button>
-            </form>
+        <div style="text-align: center; margin-top: 18px;">
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=5.50969%2C-4.0538"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary">
+                <i class="fas fa-map-marker-alt"></i>
+                Ouvrir dans Google Maps
+            </a>
         </div>
     </div>
-</div>
+</section>
 
+
+                  
+            
 {% endblock %}
-
-        
