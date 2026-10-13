@@ -1,278 +1,777 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block title %}Contact — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %} 
+{% block title %}Contact — Lycée Moderne Alassane Ouattara d’Anyama{% endblock %}
 
 {% block content %}
 
-<!-- ===== PAGE HEADER ===== -->
-<section class="page-header">
-    <div class="page-header-bg">
+<!-- =========================
+     EN-TÊTE DE LA PAGE
+========================== -->
+<section class="page-header" aria-labelledby="contact-page-title">
+    <div class="page-header-bg" aria-hidden="true">
         <div class="page-header-pattern"></div>
     </div>
+
     <div class="container">
         <div class="page-header-content" data-aos="fade-up">
-            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+
+            <nav class="breadcrumb" aria-label="Fil d’Ariane">
                 <a href="{% url 'home' %}">Accueil</a>
-                <i class="fas fa-chevron-right"></i>
-                <span>Contact</span>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Contact</span>
             </nav>
-            <h1>Contactez-<span class="text-gradient">Nous</span></h1>
+
+            <h1 id="contact-page-title">
+                Contactez-<span class="text-gradient">nous</span>
+            </h1>
+
             <p>
-                Notre équipe administrative est à votre écoute pour toute question 
-                concernant les inscriptions, la vie scolaire ou tout autre renseignement.
+                Une question concernant les inscriptions, la vie scolaire
+                ou les activités du lycée ? Notre équipe est à votre écoute.
             </p>
         </div>
     </div>
 </section>
 
-<!-- ===== CONTACT SECTION ===== -->
-<section class="contact-section">
+
+<!-- =========================
+     COORDONNÉES ET FORMULAIRE
+========================== -->
+<section class="contact-section" aria-labelledby="contact-section-title">
     <div class="container">
+
         <div class="contact-grid">
-            
-            <!-- Colonne 1 : Informations de contact -->
-            <div class="contact-info" data-aos="fade-right" data-aos-delay="100">
-                <span class="section-tag">Nos Coordonnées</span>
-                <h2>Restons en <span class="highlight">Contact</span></h2>
+
+            <!-- INFORMATIONS DE CONTACT -->
+            <div class="contact-info" data-aos="fade-right">
+
+                <span class="section-tag">Nos coordonnées</span>
+
+                <h2 id="contact-section-title">
+                    Restons en <span class="highlight">contact</span>
+                </h2>
+
                 <p class="contact-intro">
-                    N'hésitez pas à nous rendre visite ou à nous contacter par téléphone 
-                    ou email. Nous nous engageons à vous répondre dans les plus brefs délais.
+                    Retrouvez les informations utiles pour contacter
+                    le Lycée Moderne Alassane Ouattara d’Anyama.
+                    Pour éviter tout déplacement inutile, confirmez
+                    les horaires et les coordonnées auprès de l’établissement.
                 </p>
 
                 <div class="contact-details">
+
+                    <!-- ADRESSE -->
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
+
                         <div class="contact-text">
-                            <strong>Adresse</strong>
-                            <span>Boulevard Mohammed VI,<br>Rue Madeleine BOKA, Anyama</span>
+                            <strong>Localisation</strong>
+
+                            <span>
+                                Lycée Moderne Alassane Ouattara (LYMAO)<br>
+                                Anyama, Abidjan, Côte d’Ivoire
+                            </span>
+
+                            <a
+                                href="https://www.google.com/maps/search/?api=1&amp;query=5.50969%2C-4.0538"
+                                class="contact-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Voir la localisation cartographique du lycée sur Google Maps"
+                            >
+                                <i class="fas fa-directions" aria-hidden="true"></i>
+                                Voir la localisation sur Google Maps
+                            </a>
                         </div>
                     </div>
 
+
+                    <!-- TÉLÉPHONE -->
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-phone-alt"></i>
                         </div>
+
                         <div class="contact-text">
                             <strong>Téléphone</strong>
-                            <a href="tel:+2250747951020" class="contact-link">+225 07 47 95 10 20</a>
+
+                            <!-- Numéro issu d'un annuaire tiers : à confirmer -->
+                            <a
+                                href="tel:+22523556709"
+                                class="contact-link"
+                            >
+                                +225 23 55 67 09
+                            </a>
+
+                            <small>
+                                Numéro répertorié en ligne, à confirmer
+                                auprès de l’administration.
+                            </small>
                         </div>
                     </div>
 
+
+                    <!-- EMAIL -->
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-envelope"></i>
                         </div>
+
                         <div class="contact-text">
-                            <strong>Email</strong>
-                            <a href="mailto:lymao608@gmail.com" class="contact-link">lymao608@gmail.com</a>
+                            <strong>Adresse électronique</strong>
+
+                            <a
+                                href="mailto:lymao608@gmail.com"
+                                class="contact-link"
+                            >
+                                lymao608@gmail.com
+                            </a>
+
+                            <small>
+                                Adresse reprise de l’ancien site ;
+                                disponibilité non vérifiée.
+                            </small>
                         </div>
                     </div>
 
+
+                    <!-- HORAIRES -->
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-clock"></i>
                         </div>
+
                         <div class="contact-text">
-                            <strong>Horaires d'ouverture</strong>
-                            <span>Lundi - Vendredi : 7h15 - 16h30<br />
-                            Samedi : 8h00 - 12h00 (Urgences uniquement)</span>
+                            <strong>Horaires d’accueil</strong>
+
+                            <span>
+                                Les horaires d’ouverture et d’accueil
+                                du public sont à confirmer directement
+                                auprès de l’établissement.
+                            </span>
                         </div>
                     </div>
+
                 </div>
 
+
+                <!-- RÉSEAUX SOCIAUX -->
                 <div class="contact-social">
-                    <span>Suivez notre actualité :</span>
-                    <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Groupe Facebook du LYMAO">
-                        <i class="fab fa-facebook-f"></i>
+                    <span>Retrouvez également notre communauté :</span>
+
+                    <a
+                        href="https://web.facebook.com/groups/795953487795874?locale=fr_FR"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link facebook"
+                        aria-label="Consulter le groupe Facebook associé au LYMAO"
+                    >
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
                     </a>
                 </div>
+
             </div>
 
-            <!-- Colonne 2 : Formulaire de contact -->
-            <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">
-                <form method="post" class="contact-form" id="contactForm" novalidate>
+
+            <!-- FORMULAIRE DE CONTACT -->
+            <div
+                class="contact-form-wrapper"
+                data-aos="fade-left"
+                data-aos-delay="100"
+            >
+
+                <form
+                    method="post"
+                    class="contact-form"
+                    id="contactForm"
+                    aria-labelledby="contact-form-title"
+                >
                     {% csrf_token %}
 
-                    <!-- Messages Django (Succès / Erreur) -->
+                    <h3 id="contact-form-title">
+                        Envoyez-nous un message
+                    </h3>
+
+                    <p class="form-description">
+                        Remplissez les champs ci-dessous.
+                        Les champs obligatoires sont indiqués.
+                    </p>
+
+
+                    <!-- MESSAGES DJANGO -->
                     {% if messages %}
-                    <div class="contact-messages">
+                    <div class="contact-messages" aria-live="polite">
                         {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                        <div
+                            class="alert alert-{{ message.tags }}"
+                            role="status"
+                        >
+                            <i
+                                class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"
+                                aria-hidden="true"
+                            ></i>
+
                             {{ message }}
                         </div>
                         {% endfor %}
                     </div>
                     {% endif %}
 
+
+                    <!-- ERREURS GÉNÉRALES -->
                     {% if form.non_field_errors %}
-                    <div class="alert alert-error">
+                    <div class="alert alert-error" role="alert">
                         {{ form.non_field_errors }}
                     </div>
                     {% endif %}
 
-                    <h3>Envoyez-nous un message</h3>
 
-                    <!-- Champ Nom -->
+                    <!-- NOM -->
                     <div class="form-group">
-                        <label for="{{ form.nom.id_for_label }}">{{ form.nom.label }}</label>
+                        <label for="{{ form.nom.id_for_label }}">
+                            {{ form.nom.label|default:"Nom complet" }}
+                        </label>
+
                         <div class="input-wrapper">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user" aria-hidden="true"></i>
                             {{ form.nom }}
                         </div>
+
                         {% if form.nom.errors %}
-                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.nom.errors.0 }}</span>
+                        <div class="error-text" role="alert">
+                            {{ form.nom.errors }}
+                        </div>
                         {% endif %}
                     </div>
 
-                    <!-- Champ Email -->
+
+                    <!-- EMAIL -->
                     <div class="form-group">
-                        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                        <label for="{{ form.email.id_for_label }}">
+                            {{ form.email.label|default:"Adresse e-mail" }}
+                        </label>
+
                         <div class="input-wrapper">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             {{ form.email }}
                         </div>
+
                         {% if form.email.errors %}
-                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.email.errors.0 }}</span>
+                        <div class="error-text" role="alert">
+                            {{ form.email.errors }}
+                        </div>
                         {% endif %}
                     </div>
 
-                    <!-- Champ Sujet -->
+
+                    <!-- SUJET -->
                     <div class="form-group">
-                        <label for="{{ form.sujet.id_for_label }}">{{ form.sujet.label }}</label>
+                        <label for="{{ form.sujet.id_for_label }}">
+                            {{ form.sujet.label|default:"Sujet du message" }}
+                        </label>
+
                         <div class="input-wrapper">
-                            <i class="fas fa-tag"></i>
+                            <i class="fas fa-tag" aria-hidden="true"></i>
                             {{ form.sujet }}
                         </div>
+
                         {% if form.sujet.errors %}
-                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.sujet.errors.0 }}</span>
+                        <div class="error-text" role="alert">
+                            {{ form.sujet.errors }}
+                        </div>
                         {% endif %}
                     </div>
 
-                    <!-- Champ Message -->
+
+                    <!-- MESSAGE -->
                     <div class="form-group">
-                        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+                        <label for="{{ form.message.id_for_label }}">
+                            {{ form.message.label|default:"Votre message" }}
+                        </label>
+
                         <div class="input-wrapper textarea-wrapper">
-                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-comment-alt" aria-hidden="true"></i>
                             {{ form.message }}
                         </div>
+
                         {% if form.message.errors %}
-                        <span class="error-text"><i class="fas fa-exclamation-triangle"></i> {{ form.message.errors.0 }}</span>
+                        <div class="error-text" role="alert">
+                            {{ form.message.errors }}
+                        </div>
                         {% endif %}
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block btn-lg submit-btn">
-                        <i class="fas fa-paper-plane"></i>
+
+                    <!-- BOUTON D'ENVOI -->
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-block btn-lg submit-btn"
+                    >
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
                         <span>Envoyer le message</span>
                     </button>
+
+                    <p class="form-privacy-note">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        Vos informations doivent être traitées conformément
+                        aux règles de confidentialité du site.
+                    </p>
+
                 </form>
+
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- ===== MAP SECTION (Activée et centrée sur Anyama) ===== -->
-<section class="map-section">
+
+<!-- =========================
+     CARTE DE LOCALISATION
+========================== -->
+<section class="map-section" aria-labelledby="map-title">
+
+    <div class="container map-heading">
+        <span class="section-tag">Nous trouver</span>
+
+        <h2 id="map-title">
+            Localisation du <span class="highlight">LYMAO</span>
+        </h2>
+
+        <p>
+            Consultez la carte et vérifiez le point affiché avant
+            de vous déplacer.
+        </p>
+    </div>
+
     <div class="map-container">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15887.123456789!2d-4.0500!3d5.4900!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ea5311959121%3A0x3fe70ddce19221a6!2sAnyama%2C%20C%C3%B4te%20d'Ivoire!5e0!3m2!1sfr!2sci!4v1700000000000!5m2!1sfr!2sci"
-            width="100%"
-            height="450"
-            style="border: 0;"
-            allowfullscreen=""
+            src="https://maps.google.com/maps?q=5.50969%2C-4.0538&amp;z=16&amp;output=embed"
+            title="Carte de localisation du Lycée Moderne Alassane Ouattara à Anyama"
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Localisation du LYMAO à Anyama"
-            aria-label="Carte Google Maps montrant l'emplacement du lycée à Anyama">
-        </iframe>
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
     </div>
+
+    <div class="container map-footer">
+        <a
+            href="https://www.google.com/maps/search/?api=1&amp;query=Lyc%C3%A9e+Moderne+Alassane+Ouattara+Anyama"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-directions-link"
+        >
+            <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+            Rechercher le lycée sur Google Maps
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+        </a>
+    </div>
+
 </section>
 
-<!-- ===== CSS SPÉCIFIQUE POUR GARANTIR LA PERFECTION DU FORMULAIRE ===== -->
+
+<!-- =========================
+     STYLES DE LA PAGE CONTACT
+========================== -->
 <style>
-    /* Force les champs Django à être parfaits sans toucher au forms.py */
+    .contact-section {
+        padding: 80px 0;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 48px;
+        align-items: start;
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        min-width: 0;
+    }
+
+    .contact-info h2 {
+        margin: 12px 0 16px;
+    }
+
+    .contact-intro {
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    .contact-details {
+        display: grid;
+        gap: 22px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        min-width: 0;
+    }
+
+    .contact-icon {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(99, 102, 241, 0.10);
+        color: var(--primary, #4f46e5);
+        font-size: 1.1rem;
+    }
+
+    .contact-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+        min-width: 0;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-text strong {
+        color: var(--dark, #1e293b);
+        font-weight: 700;
+    }
+
+    .contact-text small {
+        color: var(--gray, #64748b);
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .contact-link {
+        color: var(--primary, #4f46e5);
+        text-decoration: none;
+        overflow-wrap: anywhere;
+        transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+        text-decoration: underline;
+    }
+
+    .contact-link:focus-visible,
+    .social-link:focus-visible,
+    .map-directions-link:focus-visible {
+        outline: 3px solid var(--primary, #4f46e5);
+        outline-offset: 4px;
+    }
+
+    .contact-social {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 32px;
+    }
+
+    .social-link.facebook {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #1877f2;
+        color: #fff;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .social-link.facebook:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(24, 119, 242, 0.25);
+    }
+
+
+    /* FORMULAIRE */
+
+    .contact-form-wrapper {
+        padding: 36px;
+        border: 1px solid rgba(100, 116, 139, 0.16);
+        border-radius: var(--radius-lg, 16px);
+        background: var(--white, #fff);
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+    }
+
+    .contact-form h3 {
+        margin: 0 0 10px;
+        color: var(--dark, #1e293b);
+    }
+
+    .form-description {
+        margin-bottom: 24px;
+        color: var(--gray, #64748b);
+        line-height: 1.7;
+    }
+
+    .contact-form .form-group {
+        margin-bottom: 22px;
+    }
+
+    .contact-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark, #1e293b);
+    }
+
+    .input-wrapper {
+        position: relative;
+        min-width: 0;
+    }
+
+    .input-wrapper > i {
+        position: absolute;
+        top: 17px;
+        left: 16px;
+        z-index: 1;
+        color: var(--gray, #64748b);
+        pointer-events: none;
+    }
+
     .input-wrapper input,
     .input-wrapper select,
     .input-wrapper textarea {
+        display: block;
         width: 100%;
-        padding: 14px 16px 14px 48px; /* Espace pour l'icône à gauche */
-        border: 2px solid rgba(0, 0, 0, 0.08);
+        max-width: 100%;
+        min-height: 50px;
+        padding: 13px 16px 13px 46px;
+        border: 1px solid #dbe2ea;
         border-radius: var(--radius-sm, 8px);
-        background: var(--white, #ffffff);
-        font-family: var(--font-body, inherit);
-        font-size: 1rem;
+        background: var(--white, #fff);
         color: var(--dark, #1e293b);
-        transition: all 0.3s ease;
-        -webkit-appearance: none;
+        font: inherit;
+        line-height: 1.5;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .input-wrapper textarea {
-        padding-top: 16px;
+        min-height: 150px;
         resize: vertical;
-        min-height: 140px;
+        padding-top: 14px;
+    }
+
+    .input-wrapper textarea + i {
+        top: 17px;
     }
 
     .input-wrapper input:focus,
     .input-wrapper select:focus,
     .input-wrapper textarea:focus {
         outline: none;
-        border-color: var(--primary, #6366f1);
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        border-color: var(--primary, #4f46e5);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
     }
 
-    /* Lien de téléphone et email cliquables et stylisés */
-    .contact-link {
+    .input-wrapper input::placeholder,
+    .input-wrapper textarea::placeholder {
+        color: #8792a2;
+        opacity: 1;
+    }
+
+    .error-text {
+        display: block;
+        margin-top: 7px;
+        color: #b91c1c;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    .error-text ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .alert {
+        padding: 13px 15px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    .alert-success {
+        background: #ecfdf5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+    }
+
+    .alert-error,
+    .alert-danger {
+        background: #fef2f2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+    }
+
+    .alert-warning {
+        background: #fffbeb;
+        color: #92400e;
+        border: 1px solid #fde68a;
+    }
+
+    .alert-info {
+        background: #eff6ff;
+        color: #1e40af;
+        border: 1px solid #bfdbfe;
+    }
+
+    .submit-btn {
+        width: 100%;
+        min-height: 50px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    .form-privacy-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin: 18px 0 0;
         color: var(--gray, #64748b);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    .contact-link:hover {
-        color: var(--primary, #6366f1);
+        font-size: 0.82rem;
+        line-height: 1.6;
     }
 
-    /* Bouton Facebook stylisé */
-    .social-link.facebook {
-        background: #1877F2;
-        color: white;
-        width: 44px;
-        height: 44px;
+    .form-privacy-note i {
+        margin-top: 3px;
+        flex: 0 0 auto;
+    }
+
+
+    /* CARTE */
+
+    .map-section {
+        padding: 0 0 64px;
+    }
+
+    .map-heading {
+        margin-bottom: 24px;
+    }
+
+    .map-heading h2 {
+        margin: 10px 0;
+    }
+
+    .map-heading p {
+        line-height: 1.7;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 430px;
+        overflow: hidden;
+        background: #eef2f7;
+    }
+
+    .map-container iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .map-footer {
+        padding-top: 18px;
+    }
+
+    .map-directions-link {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        font-size: 1.1rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .social-link.facebook:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
-        color: white;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--primary, #4f46e5);
+        text-decoration: none;
+        font-weight: 600;
+        line-height: 1.6;
     }
 
-    /* Responsive Mobile Parfait */
-    @media (max-width: 768px) {
+    .map-directions-link:hover {
+        text-decoration: underline;
+    }
+
+
+    /* TABLETTES ET TÉLÉPHONES */
+
+    @media (max-width: 900px) {
         .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 40px;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 36px;
         }
-        
+
         .contact-form-wrapper {
-            padding: 24px !important;
+            padding: 28px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .contact-section {
+            padding: 48px 0;
         }
 
-        /* Zone de clic (touch target) suffisante pour mobile */
+        .contact-grid {
+            gap: 30px;
+        }
+
+        .contact-form-wrapper {
+            padding: 22px 18px;
+            border-radius: 12px;
+        }
+
+        .contact-item {
+            gap: 12px;
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            flex-basis: 42px;
+            border-radius: 10px;
+        }
+
         .input-wrapper input,
+        .input-wrapper select,
         .input-wrapper textarea {
-            font-size: 16px; /* Empêche le zoom auto sur iOS */
-            min-height: 48px;
+            font-size: 16px;
         }
 
-        .map-container iframe {
-            height: 300px;
+        .map-section {
+            padding-bottom: 42px;
+        }
+
+        .map-container {
+            height: 320px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .contact-link,
+        .social-link.facebook,
+        .input-wrapper input,
+        .input-wrapper select,
+        .input-wrapper textarea {
+            transition: none;
+        }
+
+        .social-link.facebook:hover {
+            transform: none;
         }
     }
 </style>
 
 {% endblock %}
+        
