@@ -2436,3 +2436,118 @@ iframe {
 .nav-toggle.active .hamburger:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+/* ==========================================
+   MENU MOBILE — LISIBILITÉ GARANTIE
+   (mode clair ET mode sombre)
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Fond du menu : toujours clair et opaque */
+    .nav-menu {
+        background: #ffffff !important;
+        width: min(85%, 340px);
+        padding: 100px 20px 32px;
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
+        overflow-y: auto;
+    }
+
+    /* 2. Chaque lien = une carte bien visible */
+    .nav-menu .nav-link {
+        display: flex !important;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px !important;
+        margin-bottom: 10px;
+        background: #f1f5f9 !important;
+        color: #1e293b !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        text-decoration: none;
+        width: 100%;
+        transition: all 0.2s ease;
+    }
+
+    /* 3. Icônes : carrés colorés propres, taille fixe */
+    .nav-menu .nav-link i {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+        color: #ffffff !important;
+        border-radius: 10px !important;
+        font-size: 0.95rem !important;
+        flex-shrink: 0;
+    }
+
+    /* 4. Effet au toucher */
+    .nav-menu .nav-link:hover,
+    .nav-menu .nav-link:active,
+    .nav-menu .nav-link.active {
+        background: rgba(99, 102, 241, 0.12) !important;
+        color: #6366f1 !important;
+        transform: translateX(-2px);
+    }
+
+    /* 5. Le bouton CTA et Administration pleine largeur */
+    .nav-menu .nav-cta {
+        margin-left: 0 !important;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .nav-menu .btn-nav {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 20px;
+        font-size: 1rem;
+    }
+
+    /* 6. Éléments en liste : espacement uniforme */
+    .nav-menu li {
+        list-style: none;
+        width: 100%;
+    }
+
+    /* 7. Empêcher tout débordement horizontal */
+    .nav-menu * {
+        max-width: 100%;
+    }
+
+    /* 8. Overlay plus visible pour bien marquer la séparation */
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+}
+
+/* ==========================================
+   CAS PARTICULIER : téléphone en mode sombre
+   (le navigateur applique prefers-color-scheme)
+   ========================================== */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+
+    /* On garde le menu CLAIR pour la lisibilité,
+       même si le reste du site est en sombre */
+    .nav-menu {
+        background: #ffffff !important;
+    }
+
+    .nav-menu .nav-link {
+        background: #f1f5f9 !important;
+        color: #1e293b !important;
+    }
+
+    .nav-menu .nav-link i {
+        background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+        color: #ffffff !important;
+    }
+}
