@@ -2551,3 +2551,66 @@ iframe {
         color: #ffffff !important;
     }
 }
+
+/* ==========================================
+   CORRECTION DU MENU MOBILE LYMAO
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    /* Éviter que le flou de la navbar perturbe
+       le positionnement du menu fixe */
+    .navbar {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    /* Menu mobile correctement positionné */
+    .navbar .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+
+        width: min(85vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100dvh;
+
+        background: #ffffff !important;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1002;
+
+        padding: 100px 20px 32px;
+    }
+
+    /* Afficher le menu quand JavaScript ajoute active */
+    .navbar .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    /* Fond sombre derrière le menu */
+    .nav-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 998;
+    }
+
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Le bouton reste accessible */
+    .navbar .nav-toggle {
+        position: relative;
+        z-index: 1003;
+    }
+}
