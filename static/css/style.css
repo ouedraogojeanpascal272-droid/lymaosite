@@ -235,20 +235,14 @@ img {
     transition: var(--transition);
 }
 
-/* CORRECTION CRITIQUE : Overlay visible mais transparent par défaut pour l'animation */
 .nav-overlay {
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 998;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
+    transition: opacity 0.3s ease;
 }
 
 /* Lien Administration */
@@ -2098,11 +2092,10 @@ img {
         display: flex;
     }
 
-    /* CORRECTION CRITIQUE : Utilisation de transform au lieu de right pour la performance */
     .nav-menu {
         position: fixed;
         top: 0;
-        right: 0;
+        right: -100%;
         width: 80%;
         max-width: 350px;
         height: 100vh;
@@ -2111,13 +2104,12 @@ img {
         padding: 100px 32px 32px;
         gap: 8px;
         box-shadow: var(--shadow-xl);
-        transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
     }
 
     .nav-menu.active {
-        transform: translateX(0);
+        right: 0;
     }
 
     .nav-link {
@@ -2132,6 +2124,11 @@ img {
 
     .btn-nav {
         justify-content: center;
+    }
+
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
     }
 
     .hero-container {
@@ -2454,40 +2451,4 @@ img {
     .succession-table td:nth-child(1)::before { content: "Nom et Prénoms"; }
     .succession-table td:nth-child(2)::before { content: "Fonction"; }
     .succession-table td:nth-child(3)::before { content: "Année de service"; }
-}
-
-/* ==========================================
-   SÉCURITÉ RESPONSIVE GLOBALE (OBLIGATOIRE)
-   ========================================== */
-html, body {
-    overflow-x: hidden; /* Empêche le défilement horizontal indésirable */
-    max-width: 100vw;
-}
-
-/* Force toutes les images, vidéos et iframes à ne jamais dépasser l'écran */
-img, video, iframe, table, .succession-table {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block;
-}
-
-/* S'assure que les conteneurs principaux ont des marges sur mobile */
-@media (max-width: 768px) {
-    .container {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-    
-    /* Force les grilles à passer en 1 colonne sur mobile */
-    .features-grid, 
-    .news-grid, 
-    .testimonials-grid, 
-    .team-grid, 
-    .stats-grid, 
-    .mv-grid, 
-    .about-grid, 
-    .contact-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
 }
