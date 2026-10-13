@@ -2294,7 +2294,69 @@ iframe {
         background: white;
     }
 }
+/* ==========================================
+   AMÉLIORATION DU MENU MOBILE — LISIBILITÉ
+   ========================================== */
 
+@media (max-width: 768px) {
+
+    /* 1. Menu plus large et fond opaque */
+    .nav-menu {
+        width: min(85%, 360px);
+        background: #ffffff;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+        padding: 100px 24px 32px;
+    }
+
+    /* 2. Liens plus contrastés, plus grands, plus espacés */
+    .nav-link {
+        color: var(--dark);           /* texte foncé au lieu de gris clair */
+        font-size: 1.05rem;           /* texte plus grand */
+        font-weight: 600;             /* plus gras */
+        padding: 16px 20px;           /* zone tactile plus grande */
+        gap: 14px;                    /* espace entre icône et texte */
+        border-radius: 12px;
+        transition: all 0.2s ease;
+    }
+
+    /* 3. Icônes plus visibles */
+    .nav-link i {
+        font-size: 1.1rem;            /* icônes plus grandes */
+        width: 24px;                  /* largeur fixe pour alignement parfait */
+        text-align: center;
+        color: var(--primary);        /* icônes colorées pour la hiérarchie */
+    }
+
+    /* 4. Effet visuel au survol/toucher */
+    .nav-link:hover,
+    .nav-link:active,
+    .nav-link.active {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+    }
+
+    /* 5. Séparateur entre les items */
+    .nav-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    /* 6. Bouton Administration plus visible */
+    .admin-link {
+        margin-top: 16px;
+        padding: 16px 24px;
+        font-size: 1rem;
+        justify-content: center;
+    }
+
+    /* 7. Empêcher le débordement horizontal */
+    .nav-menu {
+        overflow-x: hidden;
+    }
+}
 /* Petits mobiles */
 @media (max-width: 480px) {
     .container,
