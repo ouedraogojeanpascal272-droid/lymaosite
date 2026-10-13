@@ -1,24 +1,26 @@
 
 {% extends 'base.html' %}
- 
+
 {% block title %}Contact — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %}
- 
+
 {% block content %}
-           
-           
-       
-       
-           
-                                  Accueil                   **                   Contact                              
-# Contactez-Nous
-               
-                   Notre équipe administrative est à votre écoute pour toute question                    concernant les inscriptions, la vie scolaire ou tout autre renseignement.               
-           
-       
-                
-           
-   
-```
+
+<div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="{% url 'home' %}">Accueil</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Contact</span>
+    </nav>
+
+    <section class="page-header">
+        <h1>Contactez-Nous</h1>
+        <p>
+            Notre équipe administrative est à votre écoute pour toute question
+            concernant les inscriptions, la vie scolaire ou tout autre renseignement.
+        </p>
+    </section>
+</div>
+
         <!-- Colonne 1 : Informations de contact -->  
         <div class="contact-info" data-aos="fade-right" data-aos-delay="100">  
             <span class="section-tag">Nos Coordonnées</span>  
