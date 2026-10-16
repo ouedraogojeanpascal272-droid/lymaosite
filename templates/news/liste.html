@@ -1,115 +1,88 @@
-{% extends 'base.html' %}
-{% load static %}
+Améliore celui ci  réfléchis à fond {% extends 'base.html' %} {% block title %}Actualités — LYMAO
+{% endblock %} {% block content %}
 
-{% block title %}Actualités — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %}
-
-{% block content %}
-
-{# ------------------------------------------------------------------
-   À VÉRIFIER :
-   - Le nom de l'URL de détail doit être identique partout. La page
-     d'accueil utilisait « actualite_detail » et cette page utilise
-     « detail_actualite ». Une seule des deux existe probablement :
-     corriger l'autre pour éviter une erreur NoReverseMatch.
-   - La pagination ne s'affiche que si la vue active Paginator
-     (is_paginated, page_obj).
-   ------------------------------------------------------------------ #}
-
-<!-- ===== EN-TÊTE DE PAGE ===== -->
+<!-- Page Header -->
 <section class="page-header">
-    <div class="page-header-bg" aria-hidden="true">
+    <div class="page-header-bg">
         <div class="page-header-pattern"></div>
     </div>
     <div class="container">
-        <div class="page-header-content">
-            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <div class="page-header-content" data-aos="fade-up">
+            <nav class="breadcrumb">
                 <a href="{% url 'core:home' %}">Accueil</a>
-                <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                <span aria-current="page">Actualités</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Actualités</span>
             </nav>
-            <h1>Nos <span class="text-gradient">actualités</span></h1>
-            <p>Toute l'actualité de notre établissement en un seul endroit.</p>
+            <h1>Nos <span class="text-gradient">Actualités</span></h1>
+            <p>Toute l'actualité de notre établissement en un seul endroit</p>
         </div>
     </div>
 </section>
 
-<!-- ===== LISTE DES ACTUALITÉS ===== -->
-<section class="news-list-section" id="contenu">
+<!-- News List -->
+<section class="news-list-section">
     <div class="container">
-
         {% if actualites %}
         <div class="news-grid news-grid-full">
             {% for actualite in actualites %}
-            <article class="news-card news-card-horizontal" data-aos="fade-up">
-
+            <article
+                class="news-card news-card-horizontal"
+                data-aos="fade-up"
+                data-aos-delay="{{ forloop.counter0|divisibleby:2|yesno:'0,100' }}"
+            >
                 <div class="news-image">
+                    {% if actualite.image %}
                     <img
-                        src="{% if actualite.image %}{{ actualite.image.url }}{% else %}{% static 'images/lymao-p.jpg' %}{% endif %}"
+                        src="{{ actualite.image.url }}"
                         alt="{{ actualite.titre }}"
-                        loading="lazy"
                     />
-                    <div class="news-date" aria-hidden="true">
-                        <span class="day">{{ actualite.date_publication|date:"d" }}</span>
-                        <span class="month">{{ actualite.date_publication|date:"M" }}</span>
+                    {% else %}
+                    <img
+                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop"
+                        alt="{{ actualite.titre }}"
+                    />
+                    {% endif %}
+                    <div class="news-date">
+                        <span class="day"
+                            >{{ actualite.date_publication|date:"d" }}</span
+                        >
+                        <span class="month"
+                            >{{ actualite.date_publication|date:"M" }}</span
+                        >
                     </div>
                 </div>
-
                 <div class="news-content">
                     <div class="news-meta">
-                        <span>
-                            <i class="fas fa-clock" aria-hidden="true"></i>
-                            <time datetime="{{ actualite.date_publication|date:'Y-m-d' }}">{{ actualite.date_publication|date:"d/m/Y" }}</time>
-                        </span>
+                        <span class="news-category"
+                            ><i class="fas fa-tag"></i> Actualité</span
+                        >
+                        <span
+                            ><i class="fas fa-clock"></i> </span
+                        >
                     </div>
                     <h3>{{ actualite.titre }}</h3>
-                    <p>{{ actualite.contenu|striptags|truncatewords:35 }}</p>
-                    <a href="{% url 'detail_actualite' actualite.id %}" class="news-link">
+                    <p>{{ actualite.contenu|truncatewords:35 }}</p>
+                    <a
+                        href="{% url 'detail_actualite' actualite.id %}"
+                        class="news-link"
+                    >
                         Lire l'article complet
-                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-
             </article>
             {% endfor %}
         </div>
-
-        {% if is_paginated %}
-        <nav class="text-center" aria-label="Pages des actualités">
-            {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline">
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                <span>Précédentes</span>
-            </a>
-            {% endif %}
-            <span class="news-meta">Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}</span>
-            {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline">
-                <span>Suivantes</span>
-                <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-            {% endif %}
-        </nav>
-        {% endif %}
-
         {% else %}
         <div class="empty-state large" data-aos="fade-up">
-            <i class="fas fa-newspaper" aria-hidden="true"></i>
+            <i class="fas fa-newspaper"></i>
             <h3>Aucune actualité pour le moment</h3>
             <p>
-                Les nouvelles de l'établissement apparaîtront ici. En attendant,
-                retrouvez les informations pratiques sur notre école.
+                Revenez bientôt pour découvrir les dernières nouvelles de notre
+                établissement.
             </p>
-            <div class="cta-buttons">
-                <a href="{% url 'core:home' %}" class="btn btn-outline">
-                    <span>Retour à l'accueil</span>
-                </a>
-                <a href="{% url 'contact' %}" class="btn btn-primary">
-                    <span>Nous contacter</span>
-                </a>
-            </div>
         </div>
         {% endif %}
-
     </div>
 </section>
 
