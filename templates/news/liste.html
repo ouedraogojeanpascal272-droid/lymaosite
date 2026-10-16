@@ -1,89 +1,654 @@
-Améliore celui ci  réfléchis à fond {% extends 'base.html' %} {% block title %}Actualités — LYMAO
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
-<!-- Page Header -->
-<section class="page-header">
-    <div class="page-header-bg">
+{% block title %}Actualités — LYMAO{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     EN-TÊTE DE LA PAGE
+========================= -->
+<section class="page-header news-page-header">
+    <div class="page-header-bg" aria-hidden="true">
         <div class="page-header-pattern"></div>
     </div>
+
     <div class="container">
         <div class="page-header-content" data-aos="fade-up">
-            <nav class="breadcrumb">
+
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
                 <a href="{% url 'core:home' %}">Accueil</a>
-                <i class="fas fa-chevron-right"></i>
-                <span>Actualités</span>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Actualités</span>
             </nav>
-            <h1>Nos <span class="text-gradient">Actualités</span></h1>
-            <p>Toute l'actualité de notre établissement en un seul endroit</p>
+
+            <span class="news-eyebrow">
+                <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                LA VIE DE NOTRE ÉTABLISSEMENT
+            </span>
+
+            <h1>
+                Nos <span class="text-gradient">actualités</span>
+            </h1>
+
+            <p>
+                Découvrez les nouvelles, les événements et les moments
+                importants qui font vivre le Lycée Moderne Alassane
+                Ouattara d’Anyama.
+            </p>
+
+            {% if actualites %}
+            <div class="news-header-stats">
+                <i class="fas fa-newspaper" aria-hidden="true"></i>
+                <span>
+                    {{ actualites|length }}
+                    actualité{{ actualites|length|pluralize }}
+                    disponible{{ actualites|length|pluralize }}
+                </span>
+            </div>
+            {% endif %}
+
         </div>
     </div>
 </section>
 
-<!-- News List -->
-<section class="news-list-section">
+
+<!-- =========================
+     LISTE DES ACTUALITÉS
+========================= -->
+<section class="news-list-section" aria-label="Liste des actualités">
     <div class="container">
+
         {% if actualites %}
+
+        <div class="news-section-heading" data-aos="fade-up">
+            <div>
+                <span class="news-section-kicker">RESTEZ INFORMÉS</span>
+                <h2>À la une de notre lycée</h2>
+                <p>
+                    Retrouvez les informations et les événements
+                    de la communauté scolaire.
+                </p>
+            </div>
+        </div>
+
         <div class="news-grid news-grid-full">
+
             {% for actualite in actualites %}
+
             <article
                 class="news-card news-card-horizontal"
                 data-aos="fade-up"
                 data-aos-delay="{{ forloop.counter0|divisibleby:2|yesno:'0,100' }}"
             >
+
+                <!-- IMAGE OU VISUEL DE REMPLACEMENT LOCAL -->
                 <div class="news-image">
+
                     {% if actualite.image %}
-                    <img
-                        src="{{ actualite.image.url }}"
-                        alt="{{ actualite.titre }}"
-                    />
+
+                        <img
+                            src="{{ actualite.image.url }}"
+                            alt="Illustration de l’actualité : {{ actualite.titre }}"
+                            loading="lazy"
+                            decoding="async"
+                        >
+
                     {% else %}
-                    <img
-                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop"
-                        alt="{{ actualite.titre }}"
-                    />
+
+                        <div
+                            class="news-image-placeholder"
+                            role="img"
+                            aria-label="Illustration graphique de remplacement pour cette actualité"
+                        >
+                            <div class="news-placeholder-decoration decoration-one"></div>
+                            <div class="news-placeholder-decoration decoration-two"></div>
+
+                            <div class="news-placeholder-content">
+                                <span class="news-placeholder-icon">
+                                    <i class="fas fa-newspaper" aria-hidden="true"></i>
+                                </span>
+
+                                <span class="news-placeholder-title">
+                                    ACTUALITÉS
+                                </span>
+
+                                <span class="news-placeholder-subtitle">
+                                    LYMAO · ANYAMA
+                                </span>
+                            </div>
+
+                            <span class="news-placeholder-watermark"
+                                  aria-hidden="true">
+                                L
+                            </span>
+                        </div>
+
                     {% endif %}
+
                     <div class="news-date">
-                        <span class="day"
-                            >{{ actualite.date_publication|date:"d" }}</span
-                        >
-                        <span class="month"
-                            >{{ actualite.date_publication|date:"M" }}</span
-                        >
+                        <span class="day">
+                            {{ actualite.date_publication|date:"d" }}
+                        </span>
+                        <span class="month">
+                            {{ actualite.date_publication|date:"M" }}
+                        </span>
                     </div>
+
                 </div>
+
+
+                <!-- CONTENU DE L'ACTUALITÉ -->
                 <div class="news-content">
+
                     <div class="news-meta">
-                        <span class="news-category"
-                            ><i class="fas fa-tag"></i> Actualité</span
-                        >
-                        <span
-                            ><i class="fas fa-clock"></i> </span
-                        >
+                        <span class="news-category">
+                            <i class="fas fa-tag" aria-hidden="true"></i>
+                            Actualité
+                        </span>
+
+                        <span class="news-reading-date">
+                            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                            {{ actualite.date_publication|date:"d/m/Y" }}
+                        </span>
                     </div>
-                    <h3>{{ actualite.titre }}</h3>
-                    <p>{{ actualite.contenu|truncatewords:35 }}</p>
+
+                    <h3>
+                        <a
+                            class="news-title-link"
+                            href="{% url 'detail_actualite' actualite.id %}"
+                        >
+                            {{ actualite.titre }}
+                        </a>
+                    </h3>
+
+                    <p class="news-excerpt">
+                        {{ actualite.contenu|striptags|truncatewords:35 }}
+                    </p>
+
                     <a
                         href="{% url 'detail_actualite' actualite.id %}"
                         class="news-link"
+                        aria-label="Lire l'article complet : {{ actualite.titre }}"
                     >
-                        Lire l'article complet
-                        <i class="fas fa-arrow-right"></i>
+                        <span>Lire l'article complet</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
+
                 </div>
+
             </article>
+
             {% endfor %}
+
         </div>
+
         {% else %}
-        <div class="empty-state large" data-aos="fade-up">
-            <i class="fas fa-newspaper"></i>
-            <h3>Aucune actualité pour le moment</h3>
+
+        <!-- ÉTAT VIDE -->
+        <div class="empty-state large news-empty-state" data-aos="fade-up">
+
+            <div class="news-empty-icon">
+                <i class="far fa-newspaper" aria-hidden="true"></i>
+            </div>
+
+            <span class="news-section-kicker">
+                INFORMATIONS SCOLAIRES
+            </span>
+
+            <h2>Aucune actualité pour le moment</h2>
+
             <p>
-                Revenez bientôt pour découvrir les dernières nouvelles de notre
-                établissement.
+                Les dernières nouvelles de notre établissement
+                seront publiées ici. Revenez bientôt pour les découvrir.
             </p>
+
+            <a href="{% url 'core:home' %}" class="news-link">
+                Retour à l'accueil
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+
         </div>
+
         {% endif %}
+
     </div>
 </section>
+
+
+<!-- =========================
+     STYLES DE CETTE PAGE
+========================= -->
+<style>
+/* En-tête */
+.news-page-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.news-eyebrow,
+.news-section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #6366f1;
+}
+
+.news-eyebrow {
+    margin: 18px 0 8px;
+}
+
+.news-header-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    padding: 9px 15px;
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    border-radius: 30px;
+    background: rgba(99, 102, 241, 0.07);
+    color: #4f46e5;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Introduction de la liste */
+.news-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.news-section-heading h2 {
+    margin: 8px 0;
+    color: #1e293b;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.25;
+}
+
+.news-section-heading p {
+    margin: 0;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+/* Cartes */
+.news-grid-full {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.news-card-horizontal {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.045);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.news-card-horizontal:hover {
+    transform: translateY(-5px);
+    border-color: #c7d2fe;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
+}
+
+/* Zone image */
+.news-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #eef2ff;
+}
+
+.news-image > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.news-card-horizontal:hover .news-image > img {
+    transform: scale(1.035);
+}
+
+/* Remplacement sans image externe */
+.news-image-placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 170px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(103, 232, 249, 0.23),
+            transparent 34%
+        ),
+        linear-gradient(135deg, #172554 0%, #3730a3 55%, #4f46e5 100%);
+}
+
+.news-placeholder-decoration {
+    position: absolute;
+    z-index: -1;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+}
+
+.decoration-one {
+    top: -100px;
+    right: -35px;
+    width: 240px;
+    height: 240px;
+}
+
+.decoration-two {
+    bottom: -145px;
+    left: -50px;
+    width: 230px;
+    height: 230px;
+}
+
+.news-placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    padding: 20px;
+    text-align: center;
+}
+
+.news-placeholder-icon {
+    display: grid;
+    width: 55px;
+    height: 55px;
+    place-items: center;
+    margin-bottom: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.55rem;
+}
+
+.news-placeholder-title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 850;
+    letter-spacing: 3px;
+}
+
+.news-placeholder-subtitle {
+    color: #c7d2fe;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.news-placeholder-watermark {
+    position: absolute;
+    right: 14px;
+    bottom: -30px;
+    color: rgba(255, 255, 255, 0.055);
+    font-size: 11rem;
+    font-weight: 900;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* Badge de date */
+.news-date {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 55px;
+    padding: 9px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.12);
+}
+
+.news-date .day {
+    color: #312e81;
+    font-size: 1.4rem;
+    font-weight: 850;
+    line-height: 1.15;
+}
+
+.news-date .month {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.7rem;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+/* Texte des cartes */
+.news-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 23px;
+}
+
+.news-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    margin-bottom: 13px;
+    color: #64748b;
+    font-size: 0.78rem;
+}
+
+.news-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-weight: 750;
+}
+
+.news-reading-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.news-content h3 {
+    margin: 0 0 12px;
+    color: #1e293b;
+    font-size: 1.18rem;
+    font-weight: 800;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.news-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-title-link:hover {
+    color: #4f46e5;
+}
+
+.news-title-link:focus-visible,
+.news-link:focus-visible {
+    outline: 3px solid #818cf8;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.news-excerpt {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 0.94rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.news-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: auto;
+    padding-top: 5px;
+    color: #4f46e5;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.news-link i {
+    transition: transform 0.2s ease;
+}
+
+.news-link:hover {
+    color: #3730a3;
+}
+
+.news-link:hover i {
+    transform: translateX(4px);
+}
+
+/* État vide */
+.news-empty-state {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 50px 25px;
+    border: 1px solid #e8edf5;
+    border-radius: 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.news-empty-icon {
+    display: grid;
+    width: 76px;
+    height: 76px;
+    place-items: center;
+    margin: 0 auto 22px;
+    border-radius: 22px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 2rem;
+}
+
+.news-empty-state h2 {
+    margin: 12px 0;
+    color: #1e293b;
+    font-size: 1.6rem;
+}
+
+.news-empty-state p {
+    max-width: 470px;
+    margin: 0 auto 24px;
+    color: #64748b;
+    line-height: 1.8;
+}
+
+/* Responsive : tablettes et téléphones */
+@media (max-width: 900px) {
+    .news-grid-full {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .news-content {
+        padding: 18px;
+    }
+
+    .news-content h3 {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .news-grid-full {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .news-section-heading {
+        margin-bottom: 20px;
+    }
+
+    .news-content {
+        padding: 20px;
+    }
+
+    .news-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .news-excerpt {
+        font-size: 0.91rem;
+    }
+
+    .news-date {
+        top: 12px;
+        left: 12px;
+    }
+
+    .news-image-placeholder {
+        min-height: 180px;
+    }
+
+    .news-empty-state {
+        padding: 36px 20px;
+    }
+}
+
+/* Respect des préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    .news-card-horizontal,
+    .news-image > img,
+    .news-link i {
+        transition: none;
+    }
+
+    .news-card-horizontal:hover {
+        transform: none;
+    }
+
+    .news-card-horizontal:hover .news-image > img {
+        transform: none;
+    }
+
+    .news-link:hover i {
+        transform: none;
+    }
+}
+</style>
 
 {% endblock %}
