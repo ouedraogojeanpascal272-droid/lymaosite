@@ -29,5 +29,10 @@ def information_page(request, slug):
     return render(request, template_name, {'slug': slug})
 
 
+def galerie(request):
+    """Vue pour la page galerie"""
+    return render(request, 'core/galerie.html')
+
+
 
 
