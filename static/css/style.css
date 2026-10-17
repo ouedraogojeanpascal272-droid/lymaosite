@@ -28,7 +28,8 @@
    1. IMPORTS
    ========================================================================== */
 
-/* Font Awesome est chargé dans base.html (un seul chargement). */
+/* Icônes Font Awesome : rechargées ici pour rester affichées même si la balise <link> de base.html est bloquée. */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 
