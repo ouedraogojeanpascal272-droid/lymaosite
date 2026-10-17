@@ -9,3 +9,7 @@ class InformationPageAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ("title", "slug")
     ordering = ("title",)
+
+admin.site.site_header = "LYMAO — Administration"
+admin.site.site_title = "LYMAO"
+admin.site.index_title = "Gestion du site"
