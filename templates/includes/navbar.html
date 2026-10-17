@@ -58,6 +58,19 @@
                 </a>
             </li>
 
+            <!-- ✅ LIEN GALERIE AJOUTÉ ICI -->
+            <li class="nav-item">
+                <a
+                    href="{% url 'galerie' %}"
+                    class="nav-link{% if 'galerie' in request.path %} active{% endif %}"
+                    {% if 'galerie' in request.path %}aria-current="page"{% endif %}
+                >
+                    <i class="fas fa-images" aria-hidden="true"></i>
+                    <span>Galerie</span>
+                </a>
+            </li>
+            <!-- ✅ FIN LIEN GALERIE -->
+
             <li class="nav-item">
                 <a
                     href="{% url 'contact' %}"
