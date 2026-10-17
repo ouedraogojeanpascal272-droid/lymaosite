@@ -155,11 +155,6 @@
 </section>
 
 <!-- ===== CHIFFRES CLÉS ===== -->
-{% comment %}
-   Les valeurs affichées avant l'animation (ex. « 2 000+ ») sont celles qui
-   restent si JavaScript est désactivé : elles doivent rester identiques
-   à la valeur finale. À SOURCER : « 15+ Prix et distinctions ».
-{% endcomment %}
 <section class="stats-section">
     <div class="container">
         <div class="stats-grid">
@@ -211,7 +206,7 @@
 
             <article class="team-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="team-image">
-                     <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de Mme Koné Rokia, secrétaire du proviseur" loading="lazy" decoding="async" />
+                    <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de Mme Koné Rokia, secrétaire du proviseur" loading="lazy" decoding="async" />
                 </div>
                 <div class="team-info">
                     <h3>Mme Koné Rokia</h3>
@@ -222,8 +217,9 @@
 
             <article class="team-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="team-image">
-                     <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de M. Kondé, éducateur" loading="lazy" decoding="async" />
-                    <div class="team-initials" aria-hidden="true"><i class="fas fa-user"></i></div>
+                    <div class="team-initials" aria-hidden="true">
+                        <i class="fas fa-user"></i>
+                    </div>
                 </div>
                 <div class="team-info">
                     <h3>M. Kondé</h3>
@@ -234,8 +230,9 @@
 
             <article class="team-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="team-image">
-                     <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de M. Méa, informaticien du lycée" loading="lazy" decoding="async" />
-                    <div class="team-initials" aria-hidden="true"><i class="fas fa-user"></i></div>
+                    <div class="team-initials" aria-hidden="true">
+                        <i class="fas fa-user"></i>
+                    </div>
                 </div>
                 <div class="team-info">
                     <h3>M. Méa</h3>
@@ -247,4 +244,648 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ============================================
+   PAGE NOTRE ÉCOLE — STYLES COMPLETS
+   ============================================ */
+
+/* --- Utilitaires --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+    color: #6366f1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   EN-TÊTE DE PAGE
+   ============================================ */
+.page-header {
+    position: relative;
+    padding: 80px 0 60px;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.page-header-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.page-header-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.breadcrumb a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #4f46e5;
+}
+
+.breadcrumb i {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+.breadcrumb span[aria-current="page"] {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 16px;
+    line-height: 1.2;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ============================================
+   SECTION HISTOIRE
+   ============================================ */
+.about-history {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image-main {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
+}
+
+.about-image-main img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    padding: 20px 28px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 16px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.exp-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.exp-text {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 4px;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.section-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #6366f1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.about-content h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 20px;
+    line-height: 1.3;
+}
+
+.about-content p {
+    color: #64748b;
+    line-height: 1.8;
+    margin: 0 0 16px;
+    font-size: 1rem;
+}
+
+.about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: all 0.25s ease;
+}
+
+.value-item:hover {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    transform: translateX(4px);
+}
+
+.value-item i {
+    color: #6366f1;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.value-item span {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+/* ============================================
+   SUCCESSION DES CHEFS
+   ============================================ */
+.succession-wrapper {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.succession-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.succession-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 12px;
+}
+
+.succession-subtitle {
+    color: #64748b;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+.succession-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.succession-table thead {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #fff;
+}
+
+.succession-table th {
+    padding: 18px 24px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.succession-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+.succession-table tbody tr {
+    transition: background 0.2s;
+}
+
+.succession-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.succession-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ============================================
+   MISSION & VISION
+   ============================================ */
+.mission-vision {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.mv-card {
+    padding: 40px 32px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    transition: all 0.3s ease;
+}
+
+.mv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+    border-color: #c7d2fe;
+}
+
+.mv-icon {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+}
+
+.mv-icon.icon-vision {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+}
+
+.mv-card h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 14px;
+}
+
+.mv-card p {
+    color: #64748b;
+    line-height: 1.8;
+    margin: 0;
+    font-size: 0.98rem;
+}
+
+/* ============================================
+   CHIFFRES CLÉS (STATS)
+   ============================================ */
+.stats-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #fff;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.stat-box i {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+    opacity: 0.95;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* ============================================
+   ÉQUIPE — CORRECTIONS MAJEURES
+   ============================================ */
+.team-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #1e293b;
+    margin: 12px 0 0;
+}
+
+/* GRID ÉQUIPE — alignement parfait */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+/* CARTE — hauteur uniforme */
+.team-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+    border-color: #c7d2fe;
+}
+
+/* IMAGE — ratio fixe pour alignement */
+.team-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.team-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* INITIALS — fallback quand pas d'image */
+.team-initials {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #fff;
+    font-size: 4rem;
+}
+
+.team-initials i {
+    opacity: 0.9;
+}
+
+/* INFO — remplit l'espace restant */
+.team-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.team-info h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 6px;
+    line-height: 1.3;
+}
+
+.team-role {
+    display: inline-block;
+    color: #6366f1;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.team-info p {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — TABLETTES
+   ============================================ */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .experience-badge {
+        right: 20px;
+        bottom: -20px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILES
+   ============================================ */
+@media (max-width: 640px) {
+    .page-header {
+        padding: 60px 0 40px;
+    }
+
+    .about-history,
+    .succession-wrapper,
+    .mission-vision,
+    .stats-section,
+    .team-section {
+        padding: 60px 0;
+    }
+
+    .about-values {
+        grid-template-columns: 1fr;
+    }
+
+    .mv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .succession-table th,
+    .succession-table td {
+        padding: 14px 16px;
+        font-size: 0.88rem;
+    }
+
+    .experience-badge {
+        padding: 16px 22px;
+        right: 10px;
+        bottom: -15px;
+    }
+
+    .exp-number {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITÉ — RÉDUCTION DE MOUVEMENT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .team-card:hover,
+    .mv-card:hover,
+    .stat-box:hover,
+    .value-item:hover {
+        transform: none;
+    }
+}
+</style>
 {% endblock %}
