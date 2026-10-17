@@ -28,7 +28,7 @@
    1. IMPORTS
    ========================================================================== */
 
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+/* Font Awesome est chargé dans base.html (un seul chargement). */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 
@@ -2862,5 +2862,155 @@ iframe {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ==========================================================================
+   28. CORRECTIFS ET CLASSES MANQUANTES (ajoutés à la relecture)
+   ========================================================================== */
+
+/* Masquage natif : indispensable pour les filtres et la recherche */
+[hidden] {
+    display: none !important;
+}
+
+/* Bouton hamburger : transformation en croix quand le menu est ouvert */
+.nav-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Messages Django de niveau « info » */
+.alert-info {
+    border-left-color: var(--primary);
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--primary-dark);
+}
+
+/* Champs invalides (renseigné par main.js) */
+.input-wrapper input[aria-invalid="true"],
+.input-wrapper select[aria-invalid="true"],
+.input-wrapper textarea[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+/* Titre du formulaire de contact (devenu un h2 pour la hiérarchie des titres) */
+.contact-form-title {
+    margin-bottom: 32px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--dark);
+}
+
+.contact-intro {
+    margin-bottom: 40px;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+.contact-link {
+    color: var(--primary-dark);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+
+/* Liens de contact du pied de page : même couleur que le texte */
+.footer-contact .contact-item a {
+    color: inherit;
+}
+
+.footer-contact .contact-item a:hover {
+    color: var(--white);
+}
+
+/* Titres de membres de l'équipe (h3 dans la page À propos) */
+.team-info h3 {
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* Avatar sans photo : initiales ou icône, sur le dégradé du site */
+.team-initials {
+    width: 100%;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    color: var(--white);
+    font-size: 3.5rem;
+    font-weight: 700;
+    border-radius: inherit;
+}
+
+/* Bloc carte (page Contact) */
+.map-block {
+    padding: clamp(56px, 8vw, 88px) 0;
+    background: var(--lighter);
+}
+
+.map-header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.map-header h2 {
+    margin: 10px 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--dark);
+}
+
+.map-header p {
+    color: var(--gray);
+}
+
+.map-frame {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.map-actions {
+    margin-top: 18px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .map-frame {
+        height: 300px;
+    }
+}
+
+/* Carte d'accueil : pas d'animation au survol sans souris (déjà géré plus haut) */
+@media (prefers-reduced-motion: reduce) {
+    .hero-visual,
+    .hero-content {
+        animation: none;
     }
 }
