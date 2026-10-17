@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block title %} {{ actualite.titre }} — Actualités
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% block title %} {{ actualite.titre }} — Actualités {% endblock %}
+{% block content %}
 
 <section class="page-header page-header-small">
     <div class="page-header-bg">
@@ -8,7 +9,8 @@
     <div class="container">
         <div class="page-header-content" data-aos="fade-up">
             <nav class="breadcrumb">
-                <a href="{% url 'home' %}">Accueil</a>
+                <!-- CORRECTION ICI : 'home' -> 'core:home' -->
+                <a href="{% url 'core:home' %}">Accueil</a>
                 <i class="fas fa-chevron-right"></i>
                 <a href="{% url 'liste_actualites' %}">Actualités</a>
                 <i class="fas fa-chevron-right"></i>
@@ -56,6 +58,7 @@
         </div>
 
         <div class="article-nav" data-aos="fade-up">
+            <!-- Le lien 'liste_actualites' est déjà correct -->
             <a href="{% url 'liste_actualites' %}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i>
                 <span>Retour aux actualités</span>
