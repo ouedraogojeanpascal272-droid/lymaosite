@@ -1,29 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ page.title }} | LYMAO{% endblock %}
+{% block title %}{{ page.title }} — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %}
 
 {% block content %}
+
+<!-- ===== EN-TÊTE ===== -->
 <section class="page-header page-header-small">
-    <div class="page-header-bg"></div>
-    <div class="page-header-pattern"></div>
-    <div class="container page-header-content">
-        <div class="breadcrumb">
-            <a href="{% url 'home' %}">Accueil</a>
-            <i class="fas fa-chevron-right"></i>
-            <span>{{ page.title }}</span>
+    <div class="page-header-bg" aria-hidden="true">
+        <div class="page-header-pattern"></div>
+    </div>
+    <div class="container">
+        <div class="page-header-content">
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                <a href="{% url 'home' %}">Accueil</a>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">{{ page.title }}</span>
+            </nav>
+            <h1>{{ page.title }}</h1>
+            <p>Retrouvez les informations importantes pour votre établissement.</p>
         </div>
-        <h1>{{ page.title }}</h1>
-        <p>Retrouvez toutes les informations importantes pour votre établissement.</p>
     </div>
 </section>
 
+<!-- ===== CONTENU ===== -->
 <section class="article-section">
-    <div class="container article-container">
-        <div class="article-content">
+    <div class="container">
+        <div class="article-container">
             <div class="article-body">
                 {{ page.content|linebreaks }}
             </div>
         </div>
     </div>
 </section>
+
 {% endblock %}
