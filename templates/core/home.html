@@ -1,321 +1,243 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Lycée Moderne Alassane Ouattara — Bienvenue{% endblock %}
+{% block title %}Lycée Moderne Alassane Ouattara d'Anyama — Bienvenue{% endblock %}
 
 {% block content %}
 
-<!-- ===== HERO SECTION ===== -->
-<section class="hero">  
-    <div class="hero-bg">  
-        <div class="hero-pattern"></div>  
-        <div class="hero-shapes">  
-            <div class="shape shape-1"></div>  
-            <div class="shape shape-2"></div>  
-            <div class="shape shape-3"></div>  
-        </div>  
-    </div>
-    
-    <div class="hero-container">  
-        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">  
-            <div class="hero-badge">  
-                <i class="fas fa-star"></i>  
-                <span>École d'Excellence depuis 2009</span>  
-            </div>  
-            <h1 class="hero-title">  
-                L'Éducation qui <span class="text-gradient">Inspire</span><br />  
-                et <span class="text-gradient">Transforme</span>  
-            </h1>  
-            <p class="hero-subtitle">  
-                Un environnement d'apprentissage moderne où chaque élève  
-                découvre son potentiel, développe ses talents et construit son  
-                avenir avec confiance.  
-            </p>  
-            <div class="hero-buttons">  
-                <a href="{% url 'apropos' %}" class="btn btn-primary btn-lg">  
-                    <span>Découvrir notre école</span>  
-                    <i class="fas fa-arrow-right"></i>  
-                </a>
-            </div>  
-            <div class="hero-stats">  
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">  
-                    <span class="stat-number">2000+</span>  
-                    <span class="stat-label">Élèves</span>  
-                </div>  
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">  
-                    <span class="stat-number">100+</span>  
-                    <span class="stat-label">Enseignants</span>  
-                </div>  
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">  
-                    <span class="stat-number">98%</span>  
-                    <span class="stat-label">Réussite</span>  
-                </div>  
-            </div>  
-        </div>  
+{% comment %}
+   À VÉRIFIER AVANT MISE EN LIGNE (non visible sur le site) :
+   - Le carrousel attend 4 photos. La 4e image « images/hero-4.jpg » n'existe pas
+     encore : téléversez-la dans le dossier static/images/ (même format que les autres).
+   - Les textes alternatifs des photos décrivent leur sujet supposé : corrigez-les
+     si une photo ne correspond pas à la description.
+   - Chiffres du hero (2000+, 100+, 98 %) : à harmoniser avec la page « Notre école »
+     (+30 enseignants, +98 % taux de réussite).
+   - URLs utilisées : home, apropos, contact.
+{% endcomment %}
 
-        <!-- CARROUSEL D'IMAGES - VERSION FONDU ENCHAÎNÉ RESPONSIVE -->
-        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200">  
-            <div class="hero-slider-container">
-                <!-- Slide 1 -->
-                <div class="hero-slide active" data-index="0">
-                    <img src="{% static 'images/lymao-p.jpg' %}" alt="Lycée Moderne Alassane Ouattara" />
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+        <div class="hero-pattern"></div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star" aria-hidden="true"></i>
+                <span>École d'Excellence depuis 2009</span>
+            </div>
+
+            <h1 class="hero-title">
+                L'Éducation qui <span class="text-gradient">Inspire</span><br />
+                et <span class="text-gradient">Transforme</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Un environnement d'apprentissage moderne où chaque élève
+                découvre son potentiel, développe ses talents et construit son
+                avenir avec confiance.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'apropos' %}" class="btn btn-primary btn-lg">
+                    <span>Découvrir notre école</span>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">
+                    <span>Nous contacter</span>
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">2000+</span>
+                    <span class="stat-label">Élèves</span>
                 </div>
-                
-                <!-- Slide 2 -->
-                <div class="hero-slide" data-index="1">
-                    <img src="{% static 'images/vf-R.jpg' %}" alt="Lycée Moderne Alassane Ouattara" />
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Enseignants</span>
                 </div>
-                
-                <!-- Slide 3 -->
-                <div class="hero-slide" data-index="2">
-                    <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Lycée Moderne Alassane Ouattara" />
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="hero-slide" data-index="3">
-                    <img src="{% static 'images/lymao-p.jpg' %}" alt="Lycée Moderne Alassane Ouattara" />
-                </div>
-                
-                <!-- Dots de navigation -->
-                <div class="slider-dots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
+                <div class="stat-item">
+                    <span class="stat-number">98 %</span>
+                    <span class="stat-label">Réussite</span>
                 </div>
             </div>
         </div>
-    </div>  
-</section>
 
-<!-- ===== ABOUT PREVIEW ===== -->
-<section class="about-preview" id="about-preview">  
-    <div class="container">  
-        <div class="section-header" data-aos="fade-up">  
-            <span class="section-tag">Notre École</span>  
-            <h2 class="section-title">  
-                Un Lieu d'Apprentissage  
-                <span class="highlight">Exceptionnel</span>  
-            </h2>  
-            <p class="section-desc">  
-                Nous croyons en une éducation qui va au-delà des manuels scolaires  
-            </p>  
-        </div>  
-        
-        <div class="features-grid">  
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="0">  
-                <div class="feature-icon">  
-                    <i class="fas fa-brain"></i>  
-                </div>  
-                <h3>Pédagogie Innovante</h3>  
-                <p>  
-                    Apprentissage inclusif, classes spacieuses et méthodes  
-                    actives pour développer la pensée critique de chaque élève.  
-                </p>  
-            </div>  
-          
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">  
-              <div class="feature-icon icon-green">  
-                  <i class="fas fa-chalkboard-user"></i>   
-               </div>  
-               <h3>Clubs et Activités scolaires</h3>  
-               <p>  
-                    le LYMAO propose des activités scolaires comme des jeux et des événements pour offrir aux élèves des opportunités pour leurs futures carrières, salles informatiques  
-                    des clubs sont à la disposition des élèves pour un meilleur suivi et le développement de plusieurs compétences.  
-                </p>  
-            </div>  
+        <!-- ===== CARROUSEL D'IMAGES ===== -->
+        <div class="hero-visual">
+            <div
+                class="hero-slider"
+                data-slider
+                data-interval="5000"
+                role="region"
+                aria-roledescription="carrousel"
+                aria-label="Photos de l'établissement"
+            >
+                <div class="slider-track">
 
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">  
-                <div class="feature-icon icon-orange">  
-                    <i class="fas fa-palette"></i>  
-                </div>  
-                <h3>Arts & Créativité</h3>  
-                <p>  
-                    Ateliers artistiques, musique, théâtre et développement du  
-                    talent créatif de chaque élève.  
-                </p>  
-            </div>  
+                    <div class="slider-slide is-active" role="group" aria-roledescription="diapositive" aria-label="1 sur 4">
+                        <img
+                            src="{% static 'images/lymao-p.jpg' %}"
+                            alt="Vue d'ensemble du Lycée Moderne Alassane Ouattara d'Anyama"
+                            fetchpriority="high"
+                            decoding="async"
+                        />
+                    </div>
 
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">  
-                <div class="feature-icon icon-purple">  
-                    <i class="fas fa-running"></i>  
-                </div>  
-                <h3>Sport & Bien-être</h3>  
-                <p>  
-                    Infrastructures sportives complètes, programmes de bien-être  
-                    et alimentation saine.  
-                </p>  
-            </div>  
-        </div>  
+                    <div class="slider-slide" role="group" aria-roledescription="diapositive" aria-label="2 sur 4">
+                        <img
+                            src="{% static 'images/vf-R.jpg' %}"
+                            alt="Bâtiments du Lycée Moderne Alassane Ouattara d'Anyama"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+
+                    <div class="slider-slide" role="group" aria-roledescription="diapositive" aria-label="3 sur 4">
+                        <img
+                            src="{% static 'images/mr-yao-prov.jpg' %}"
+                            alt="Le proviseur du lycée, M. Konan Yao Honoré"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+
+                    <div class="slider-slide" role="group" aria-roledescription="diapositive" aria-label="4 sur 4">
+                        <img
+                            src="{% static 'images/hero-4.jpg' %}"
+                            alt="Élèves du Lycée Moderne Alassane Ouattara d'Anyama"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+
+                </div>
+
+                <div class="slider-controls">
+                    <button type="button" class="slider-arrow slider-prev" aria-label="Image précédente">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="slider-dots">
+                        <button type="button" class="slider-dot is-active" aria-label="Afficher l'image 1 sur 4" aria-current="true"></button>
+                        <button type="button" class="slider-dot" aria-label="Afficher l'image 2 sur 4"></button>
+                        <button type="button" class="slider-dot" aria-label="Afficher l'image 3 sur 4"></button>
+                        <button type="button" class="slider-dot" aria-label="Afficher l'image 4 sur 4"></button>
+                    </div>
+
+                    <button type="button" class="slider-arrow slider-next" aria-label="Image suivante">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+
+                    <button type="button" class="slider-pause" aria-label="Mettre le diaporama en pause">
+                        <i class="fas fa-pause" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- ===== CTA SECTION ===== -->
-<section class="cta-section">  
-    <div class="cta-bg">  
-        <div class="cta-pattern"></div>  
-    </div>  
-    <div class="container">  
-        <div class="cta-content" data-aos="zoom-in">  
-            <h2>Prêt à Rejoindre Notre Communauté ?</h2>  
-            <p>  
-                Inscrivez votre enfant dès maintenant et offrez-lui un avenir  
-                brillant dans un environnement d'excellence.  
-            </p>  
-            <div class="cta-buttons">  
-                <a href="{% url 'contact' %}" class="btn btn-white btn-lg">  
-                    <i class="fas fa-pencil-alt"></i>  
-                    <span>Demande d'inscription</span>  
-                </a>  
-                <a href="{% url 'contact' %}" class="btn btn-outline-white btn-lg">  
-                    <i class="fas fa-phone"></i>  
-                    <span>Nous appeler</span>  
-                </a>  
-            </div>  
-        </div>  
-    </div>  
+<!-- ===== PRÉSENTATION ET POINTS CLÉS ===== -->
+<section class="about-preview" id="about-preview">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Notre École</span>
+            <h2 class="section-title">
+                Un Lieu d'Apprentissage <span class="highlight">Exceptionnel</span>
+            </h2>
+            <p class="section-desc">
+                Nous croyons en une éducation qui va au-delà des manuels scolaires.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <article class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-icon">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                </div>
+                <h3>Pédagogie innovante</h3>
+                <p>
+                    Apprentissage inclusif, classes spacieuses et méthodes
+                    actives pour développer la pensée critique de chaque élève.
+                </p>
+            </article>
+
+            <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon icon-green">
+                    <i class="fas fa-chalkboard-user" aria-hidden="true"></i>
+                </div>
+                <h3>Clubs et activités scolaires</h3>
+                <p>
+                    Le LYMAO propose des activités scolaires, des jeux et des
+                    événements qui ouvrent aux élèves des perspectives pour leur
+                    avenir professionnel. Des clubs et des salles informatiques
+                    sont à leur disposition pour un meilleur suivi et le
+                    développement de leurs compétences.
+                </p>
+            </article>
+
+            <article class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon icon-orange">
+                    <i class="fas fa-palette" aria-hidden="true"></i>
+                </div>
+                <h3>Arts &amp; créativité</h3>
+                <p>
+                    Ateliers artistiques, musique, théâtre et développement du
+                    talent créatif de chaque élève.
+                </p>
+            </article>
+
+            <article class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon icon-purple">
+                    <i class="fas fa-running" aria-hidden="true"></i>
+                </div>
+                <h3>Sport &amp; bien-être</h3>
+                <p>
+                    Infrastructures sportives complètes, programmes de bien-être
+                    et alimentation saine.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===== APPEL À L'ACTION ===== -->
+<section class="cta-section">
+    <div class="cta-bg" aria-hidden="true">
+        <div class="cta-pattern"></div>
+    </div>
+    <div class="container">
+        <div class="cta-content" data-aos="zoom-in">
+            <h2>Prêt à rejoindre notre communauté ?</h2>
+            <p>
+                Une question sur l'établissement ou sur la prochaine rentrée ?
+                Notre secrétariat vous répond et vous oriente.
+            </p>
+            <div class="cta-buttons">
+                <a href="{% url 'contact' %}" class="btn btn-white btn-lg">
+                    <i class="fas fa-pen" aria-hidden="true"></i>
+                    <span>Nous écrire</span>
+                </a>
+                <a href="tel:+2250747951020" class="btn btn-outline-white btn-lg">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <span>Appeler le secrétariat</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
 
 {% block extra_js %}
-<script>
-(function() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
-    let interval;
-
-    function showSlide(index) {
-        // Retirer 'active' de toutes les slides et tous les dots
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        // Ajouter 'active' uniquement sur l'index demandé
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-
-        currentSlide = index;
-    }
-
-    function nextSlide() {
-        let next = (currentSlide + 1) % slides.length;
-        showSlide(next);
-    }
-
-    function startSlider() {
-        interval = setInterval(nextSlide, 4000);
-    }
-
-    // Clic sur les dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            clearInterval(interval);
-            showSlide(index);
-            startSlider();
-        });
-    });
-
-    // Initialisation : la première slide est déjà active dans le HTML
-    startSlider();
-})();
-</script>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-/* ===== CARROUSEL HERO - FONDU ENCHAÎNÉ RESPONSIVE ===== */
-.hero-slider-container {
-    position: relative;
-    width: 100%;
-    /* Le secret de la responsivité : un ratio fixe */
-    aspect-ratio: 4 / 3;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
-    background-color: #f1f5f9;
-}
-
-/* Toutes les slides sont empilées au même endroit */
-.hero-slide {
-    position: absolute;
-    inset: 0; /* top/right/bottom/left: 0 */
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    z-index: 1;
-}
-
-/* Seule la slide active devient visible */
-.hero-slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
-.hero-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-/* Dots */
-.slider-dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.dot.active {
-    background: #fff;
-    transform: scale(1.3);
-}
-
-.dot:hover {
-    background: rgba(255, 255, 255, 0.8);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .hero-slider-container {
-        aspect-ratio: 16 / 10;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-slider-container {
-        aspect-ratio: 4 / 3;
-        margin-top: 25px;
-    }
-    .slider-dots {
-        bottom: 15px;
-    }
-    .dot {
-        width: 10px;
-        height: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-slider-container {
-        aspect-ratio: 3 / 4; /* Format portrait sur très petit écran */
-    }
-}
-</style>
+<script src="{% static 'js/slider.js' %}" defer></script>
 {% endblock %}
