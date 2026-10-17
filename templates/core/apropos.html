@@ -217,10 +217,7 @@
 
             <article class="team-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="team-image">
-                     <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de étaire du proviseur" loading="lazy" decoding="async" />
-                    <div class="team-initials" aria-hidden="true">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de M. Kondé, éducateur" loading="lazy" decoding="async" />
                 </div>
                 <div class="team-info">
                     <h3>M. Kondé</h3>
@@ -231,9 +228,7 @@
 
             <article class="team-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="team-image">
-                    <div class="team-initials" aria-hidden="true">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Portrait de M. Méa, informaticien du lycée" loading="lazy" decoding="async" />
                 </div>
                 <div class="team-info">
                     <h3>M. Méa</h3>
@@ -672,7 +667,7 @@
 }
 
 /* ============================================
-   ÉQUIPE — CORRECTIONS MAJEURES
+   ÉQUIPE
    ============================================ */
 .team-section {
     padding: 80px 0;
@@ -691,12 +686,12 @@
     margin: 12px 0 0;
 }
 
-/* GRID ÉQUIPE — alignement parfait */
+/* GRID ÉQUIPE — 4 colonnes alignées */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 28px;
-    align-items: start;
+    align-items: stretch;
 }
 
 /* CARTE — hauteur uniforme */
@@ -718,13 +713,14 @@
     border-color: #c7d2fe;
 }
 
-/* IMAGE — ratio fixe pour alignement */
+/* IMAGE — ratio carré fixe pour alignement parfait */
 .team-image {
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: #eef2ff;
+    flex-shrink: 0;
 }
 
 .team-image img {
@@ -733,22 +729,11 @@
     height: 100%;
     object-fit: cover;
     object-position: top center;
+    transition: transform 0.4s ease;
 }
 
-/* INITIALS — fallback quand pas d'image */
-.team-initials {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    color: #fff;
-    font-size: 4rem;
-}
-
-.team-initials i {
-    opacity: 0.9;
+.team-card:hover .team-image img {
+    transform: scale(1.05);
 }
 
 /* INFO — remplit l'espace restant */
@@ -785,7 +770,7 @@
 }
 
 /* ============================================
-   RESPONSIVE — TABLETTES
+   RESPONSIVE — TABLETTES (max 1024px)
    ============================================ */
 @media (max-width: 1024px) {
     .about-grid {
@@ -814,7 +799,7 @@
 }
 
 /* ============================================
-   RESPONSIVE — MOBILES
+   RESPONSIVE — MOBILES (max 640px)
    ============================================ */
 @media (max-width: 640px) {
     .page-header {
@@ -885,6 +870,10 @@
     .mv-card:hover,
     .stat-box:hover,
     .value-item:hover {
+        transform: none;
+    }
+
+    .team-card:hover .team-image img {
         transform: none;
     }
 }
