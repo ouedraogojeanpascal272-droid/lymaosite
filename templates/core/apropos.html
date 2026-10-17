@@ -15,7 +15,8 @@
     <div class="container">
         <div class="page-header-content" data-aos="fade-up">
             <nav class="breadcrumb" aria-label="Fil d'Ariane">
-                <a href="{% url 'home' %}">Accueil</a>
+                <!-- CORRECTION ICI : 'home' -> 'core:home' -->
+                <a href="{% url 'core:home' %}">Accueil</a>
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
                 <span aria-current="page">Notre école</span>
             </nav>
