@@ -23,4 +23,7 @@ def information_page(request, slug):
     template_name = templates_map.get(slug, 'pages/404.html')
     return render(request, template_name, {'slug': slug})
 
+def galerie(request):
+    return render(request, 'core/galerie.html')
+
     
