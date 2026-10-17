@@ -27,7 +27,6 @@
                     <a href="https://web.facebook.com/groups/795953487795874?locale=fr_FR" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"
                         ><i class="fab fa-facebook-f"></i
                     ></a>
-                    
                  </div>
             </div>
 
@@ -35,7 +34,8 @@
                 <h4>Navigation</h4>
                 <ul>
                     <li>
-                        <a href="{% url 'home' %}"
+                        <!-- CORRECTION ICI : 'home' -> 'core:home' -->
+                        <a href="{% url 'core:home' %}"
                             ><i class="fas fa-chevron-right"></i> Accueil</a
                         >
                     </li>
@@ -64,7 +64,6 @@
                        <a href="{% url 'reglement'  %}"
                        ><i class="fas fa-chevron-right"></i>
                         Règlement</a>
-                       
                     </li>
                     <li>
                         <a href="{% url 'calendrier'  %}"
@@ -103,7 +102,6 @@
                     <i class="fas fa-envelope"></i>
                     <span>lymao608@gmail.com</span>
                 </div>
-               
             </div>
         </div>
 
