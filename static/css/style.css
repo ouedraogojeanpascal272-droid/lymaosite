@@ -1,34 +1,3 @@
-/* ==========================================================================
-   LYMAO — Feuille de style principale (version révisée)
-
-   Ce qui NE change pas : la palette (mêmes variables, mêmes valeurs),
-   les polices (Poppins / Playfair Display), les noms de classes utilisés
-   dans le HTML, la structure générale des pages et le design mobile du menu.
-
-   Ce qui change :
-   - Correction du défilement des ancres (elles passaient sous la barre fixe).
-   - Correction du bouton de l'indicateur de défilement qui se décalait.
-   - Menu mobile consolidé en un seul bloc (au lieu de six surcharges
-     successives avec !important), avec overlay animé et verrou du scroll.
-   - Contrastes relevés sur les petits textes (même teinte, nuance plus foncée
-     ou opacité plus forte). Aucune couleur nouvelle.
-   - Champs de formulaire en 16 px : évite le zoom automatique sur iPhone.
-   - Survols (hover) appliqués seulement aux écrans avec souris, pour éviter
-     les effets "collés" sur téléphone.
-   - Animations réduites au strict nécessaire : une entrée sur le hero,
-     plus de flottements infinis. Respect de prefers-reduced-motion.
-   - Typographie fluide (clamp) au lieu de nombreux sauts de taille.
-   - Focus clavier visible, lien d'évitement, styles pour le contenu riche
-     (articles, règlement, calendrier, FAQ en accordéon natif).
-   - Styles d'impression pour le calendrier et le règlement.
-   ========================================================================== */
-
-
-/* ==========================================================================
-   1. IMPORTS
-   ========================================================================== */
-
-/* Font Awesome est chargé dans base.html (un seul chargement). */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 
