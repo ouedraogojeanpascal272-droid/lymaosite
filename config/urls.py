@@ -10,7 +10,7 @@ from apps.news.views import liste_actualites , detail_actualite
 
 urlpatterns = [
     path('apropos/', TemplateView.as_view(template_name="core/apropos.html"), name='apropos'), 
-    path('admin/', admin.site.urls),
+    path('espace-gestion-lymao/', admin.site.urls),
     path('', include(('apps.core.urls', 'core'), namespace='core')), 
     path('actualites/', liste_actualites, name='liste_actualites'),           
     path('actualites/<int:id>/', detail_actualite, name='detail_actualite'), 
