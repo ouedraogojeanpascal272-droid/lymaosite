@@ -13,6 +13,7 @@ urlpatterns = [
     path('calendrier/', TemplateView.as_view(template_name="core/calendrier.html"), name='calendrier'),
     path('inscriptions/', TemplateView.as_view(template_name="core/inscriptions.html"), name='inscriptions'),
     path('faq/', TemplateView.as_view(template_name="core/faq.html"), name='faq'),
+    path('galerie/', views.galerie, name='galerie'),
 
 ]
 
