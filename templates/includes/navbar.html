@@ -27,7 +27,7 @@
         <ul class="nav-menu" id="navMenu">
             <li class="nav-item">
                 <a
-                    href="{% url 'home' %}"
+                    href="{% url 'core:home' %}"
                     class="nav-link{% if request.path == '/' %} active{% endif %}"
                     {% if request.path == '/' %}aria-current="page"{% endif %}
                 >
