@@ -6,6 +6,7 @@ from apps.core.views import information_page
 from apps.core.views import home
 from django.views.generic import TemplateView
 from apps.news.views import liste_actualites , detail_actualite
+from apps.core import views
 
 
 urlpatterns = [
@@ -21,7 +22,7 @@ urlpatterns = [
     path('calendrier/', TemplateView.as_view(template_name="core/calendrier.html"), name='calendrier'),
     path('inscriptions/', TemplateView.as_view(template_name="core/inscriptions.html"), name='inscriptions'),
     path('faq/', TemplateView.as_view(template_name="core/faq.html"), name='faq'),
-    path('', include('core.urls')),  # ou path('core/', include('core.urls'))
+    
     
 
 ]
