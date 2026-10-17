@@ -1,1 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
 
+{% block title %}Galerie — Lycée Moderne Alassane Ouattara{% endblock %}
+{% block meta_description %}Découvrez en images et en vidéos la vie du LYMAO : événements, sport, culture et activités scolaires.{% endblock %}
+
+{% block content %}
+
+<!-- ===== EN-TÊTE ===== -->
+<section class="page-header page-header-small">
+    <div class="page-header-bg" aria-hidden="true"><div class="page-header-pattern"></div></div>
+    <div class="container">
+        <div class="page-header-content" data-aos="fade-up">
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                <a href="{% url 'home' %}">Accueil</a>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Galerie</span>
+            </nav>
+            <h1>Notre <span class="text-gradient">galerie</span></h1>
+            <p>Revivez les moments forts de la vie du LYMAO à travers nos photos et vidéos.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION GALERIE ===== -->
+<section class="gallery-section">
+    <div class="container">
+
+        <!-- Filtres -->
+        <div class="gallery-filters" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">Tout</button>
+            <button class="filter-btn" data-filter="photo">Photos</button>
+            <button class="filter-btn" data-filter="video">Vidéos</button>
+            <span class="filter-divider"></span>
+            <button class="filter-btn" data-category="evenement">Événements</button>
+            <button class="filter-btn" data-category="sport">Sport</button>
+            <button class="filter-btn" data-category="culture">Culture</button>
+            <button class="filter-btn" data-category="vie-scolaire">Vie scolaire</button>
+        </div>
+
+        <!-- Grille de médias -->
+        <div class="gallery-grid" id="galleryGrid" data-aos="fade-up">
+
+            <!-- EXEMPLE 1 : Photo Événement -->
+            <div class="gallery-item" data-type="photo" data-category="evenement">
+                <a href="{% static 'images/lymao-p.jpg' %}" class="gallery-link" data-lightbox="gallery" data-title="Cérémonie de rentrée 2026">
+                    <img src="{% static 'images/lymao-p.jpg' %}" alt="Cérémonie de rentrée au LYMAO" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </a>
+                <span class="gallery-caption">Cérémonie de rentrée 2026</span>
+            </div>
+
+            <!-- EXEMPLE 2 : Photo Sport -->
+            <div class="gallery-item" data-type="photo" data-category="sport">
+                <a href="{% static 'images/vf-R.jpg' %}" class="gallery-link" data-lightbox="gallery" data-title="Tournoi de football inter-classes">
+                    <img src="{% static 'images/vf-R.jpg' %}" alt="Tournoi de football au LYMAO" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </a>
+                <span class="gallery-caption">Tournoi de football</span>
+            </div>
+
+            <!-- EXEMPLE 3 : Photo Culture -->
+            <div class="gallery-item" data-type="photo" data-category="culture">
+                <a href="{% static 'images/mr-yao-prov.jpg' %}" class="gallery-link" data-lightbox="gallery" data-title="Spectacle de fin d'année">
+                    <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Spectacle de fin d'année" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </a>
+                <span class="gallery-caption">Spectacle de fin d'année</span>
+            </div>
+
+            <!-- EXEMPLE 4 : Photo Vie scolaire -->
+            <div class="gallery-item" data-type="photo" data-category="vie-scolaire">
+                <a href="{% static 'images/lymao-p.jpg' %}" class="gallery-link" data-lightbox="gallery" data-title="Journée portes ouvertes">
+                    <img src="{% static 'images/lymao-p.jpg' %}" alt="Journée portes ouvertes" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </a>
+                <span class="gallery-caption">Journée portes ouvertes</span>
+            </div>
+
+            <!-- EXEMPLE 5 : Vidéo (YouTube) -->
+            <div class="gallery-item" data-type="video" data-category="evenement">
+                <a href="https://www.youtube.com/embed/ton_id_video" class="gallery-link video-link" data-lightbox="gallery" data-title="Discours du proviseur">
+                    <img src="{% static 'images/vf-R.jpg' %}" alt="Discours du proviseur" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </a>
+                <span class="gallery-caption">Discours du proviseur</span>
+            </div>
+
+            <!-- AJOUTE D'AUTRES IMAGES ICI EN COPIANT LE BLOC CI-DESSUS -->
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lightbox-close" aria-label="Fermer">&times;</button>
+    <button class="lightbox-prev" aria-label="Précédent">&#10094;</button>
+    <button class="lightbox-next" aria-label="Suivant">&#10095;</button>
+    <div class="lightbox-content">
+        <img src="" alt="" id="lightboxImg" style="display: none;">
+        <iframe src="" id="lightboxIframe" frameborder="0" allowfullscreen style="display: none;"></iframe>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ===== FILTRES ===== */
+.gallery-filters {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    margin-bottom: 40px; justify-content: center;
+}
+.filter-btn {
+    padding: 10px 22px; background: #ffffff; border: 2px solid #e2e8f0;
+    border-radius: 30px; font-size: 0.9rem; font-weight: 600; color: #64748b;
+    cursor: pointer; transition: all 0.25s ease;
+}
+.filter-btn:hover { border-color: #6366f1; color: #6366f1; }
+.filter-btn.active { background: #6366f1; border-color: #6366f1; color: #ffffff; }
+.filter-divider { width: 1px; height: 24px; background: #e2e8f0; margin: 0 8px; }
+
+/* ===== GRILLE RESPONSIVE ===== */
+.gallery-section { padding: 60px 0 100px; background: #f8fafc; }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+.gallery-item {
+    position: relative; border-radius: 16px; overflow: hidden;
+    background: #ffffff; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12); }
+.gallery-link { display: block; position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.gallery-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.gallery-item:hover .gallery-link img { transform: scale(1.05); }
+.gallery-overlay {
+    position: absolute; inset: 0; background: rgba(99, 102, 241, 0.7);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s ease;
+}
+.gallery-link:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay i { color: #ffffff; font-size: 2.5rem; }
+.gallery-caption {
+    display: block; padding: 14px 16px; font-size: 0.9rem; font-weight: 600;
+    color: #1e293b; background: #ffffff; border-top: 1px solid #f1f5f9;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(15, 23, 42, 0.95); align-items: center; justify-content: center;
+    padding: 20px; backdrop-filter: blur(5px);
+}
+.lightbox.active { display: flex; }
+.lightbox-content { max-width: 90vw; max-height: 85vh; text-align: center; position: relative; }
+.lightbox-content img { max-width: 100%; max-height: 80vh; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+.lightbox-content iframe { width: 80vw; height: 45vw; max-width: 1000px; max-height: 80vh; border-radius: 8px; }
+.lightbox-caption { margin-top: 16px; color: rgba(255,255,255,0.9); font-size: 1.1rem; font-weight: 500; }
+.lightbox-close, .lightbox-prev, .lightbox-next {
+    position: absolute; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff; font-size: 1.5rem; cursor: pointer; width: 50px; height: 50px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+}
+.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.25); }
+.lightbox-close { top: 20px; right: 20px; font-size: 2rem; }
+.lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
+    .lightbox-prev, .lightbox-next { display: none; }
+}
+@media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-filters { gap: 8px; }
+    .filter-divider { display: none; }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    // 1. FILTRES
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const typeFilter = this.dataset.filter;
+            const catFilter = this.dataset.category;
+            
+            items.forEach(item => {
+                const matchType = !typeFilter || typeFilter === 'all' || item.dataset.type === typeFilter;
+                const matchCat = !catFilter || item.dataset.category === catFilter;
+                item.style.display = (matchType && matchCat) ? '' : 'none';
+            });
+        });
+    });
+
+    // 2. LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxIframe = document.getElementById('lightboxIframe');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    let currentMediaList = [];
+    let currentIndex = 0;
+
+    function openLightbox(linkElement) {
+        const isVideo = linkElement.classList.contains('video-link');
+        const src = linkElement.getAttribute('href');
+        const title = linkElement.dataset.title || '';
+
+        lightboxImg.style.display = 'none';
+        lightboxIframe.style.display = 'none';
+        lightboxIframe.src = '';
+
+        if (isVideo) {
+            lightboxIframe.src = src;
+            lightboxIframe.style.display = 'block';
+        } else {
+            lightboxImg.src = src;
+            lightboxImg.alt = title;
+            lightboxImg.style.display = 'block';
+        }
+        lightboxCaption.textContent = title;
+
+        currentMediaList = Array.from(document.querySelectorAll('.gallery-item'))
+            .filter(item => item.style.display !== 'none')
+            .map(item => item.querySelector('.gallery-link'));
+        currentIndex = currentMediaList.indexOf(linkElement);
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxIframe.src = '';
+        document.body.style.overflow = '';
+    }
+
+    function navigate(direction) {
+        if (currentMediaList.length === 0) return;
+        let newIndex = currentIndex + direction;
+        if (newIndex < 0) newIndex = currentMediaList.length - 1;
+        if (newIndex >= currentMediaList.length) newIndex = 0;
+        openLightbox(currentMediaList[newIndex]);
+    }
+
+    document.querySelectorAll('.gallery-link').forEach(link => {
+        link.addEventListener('click', (e) => { e.preventDefault(); openLightbox(link); });
+    });
+
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.querySelector('.lightbox-prev').addEventListener('click', () => navigate(-1));
+    document.querySelector('.lightbox-next').addEventListener('click', () => navigate(1));
+    
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'ArrowRight') navigate(1);
+    });
+})();
+</script>
+{% endblock %}
