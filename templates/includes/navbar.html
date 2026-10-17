@@ -1,26 +1,16 @@
-
-<!-- ========================================
-     NAVIGATION LYMAO — VERSION CORRIGÉE
-     ======================================== -->
-
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" aria-label="Navigation principale">
     <div class="nav-container">
 
-        <!-- LOGO DE L'ÉCOLE -->
-        <a href="{% url 'home' %}" class="nav-logo">
-            <div class="logo-icon">
+        <a href="{% url 'home' %}" class="nav-logo" aria-label="LYMAO, retour à l'accueil">
+            <div class="logo-icon" aria-hidden="true">
                 <i class="fas fa-graduation-cap"></i>
             </div>
-
             <div class="logo-text">
                 <span class="logo-main">LYMAO</span>
-                <span class="logo-sub">
-                    LYCEE MODERNE ALASSANE OUATTARA
-                </span>
+                <span class="logo-sub">Lycée Moderne Alassane Ouattara</span>
             </div>
         </a>
 
-        <!-- BOUTON MENU MOBILE : UN SEUL -->
         <button
             type="button"
             class="nav-toggle"
@@ -34,14 +24,11 @@
             <span class="hamburger"></span>
         </button>
 
-        <!-- LIENS DE NAVIGATION -->
         <ul class="nav-menu" id="navMenu">
-
-            <!-- ACCUEIL -->
             <li class="nav-item">
                 <a
                     href="{% url 'home' %}"
-                    class="nav-link {% if request.path == '/' %}active{% endif %}"
+                    class="nav-link{% if request.path == '/' %} active{% endif %}"
                     {% if request.path == '/' %}aria-current="page"{% endif %}
                 >
                     <i class="fas fa-home" aria-hidden="true"></i>
@@ -49,23 +36,21 @@
                 </a>
             </li>
 
-            <!-- NOTRE ÉCOLE -->
             <li class="nav-item">
                 <a
                     href="{% url 'apropos' %}"
-                    class="nav-link {% if 'about' in request.path or 'apropos' in request.path %}active{% endif %}"
-                    {% if 'about' in request.path or 'apropos' in request.path %}aria-current="page"{% endif %}
+                    class="nav-link{% if 'apropos' in request.path %} active{% endif %}"
+                    {% if 'apropos' in request.path %}aria-current="page"{% endif %}
                 >
                     <i class="fas fa-school" aria-hidden="true"></i>
                     <span>Notre École</span>
                 </a>
             </li>
 
-            <!-- ACTUALITÉS -->
             <li class="nav-item">
                 <a
                     href="{% url 'liste_actualites' %}"
-                    class="nav-link {% if 'actualite' in request.path %}active{% endif %}"
+                    class="nav-link{% if 'actualite' in request.path %} active{% endif %}"
                     {% if 'actualite' in request.path %}aria-current="page"{% endif %}
                 >
                     <i class="fas fa-newspaper" aria-hidden="true"></i>
@@ -73,11 +58,10 @@
                 </a>
             </li>
 
-            <!-- CONTACT -->
             <li class="nav-item">
                 <a
                     href="{% url 'contact' %}"
-                    class="nav-link {% if 'contact' in request.path %}active{% endif %}"
+                    class="nav-link{% if 'contact' in request.path %} active{% endif %}"
                     {% if 'contact' in request.path %}aria-current="page"{% endif %}
                 >
                     <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -85,26 +69,8 @@
                 </a>
             </li>
 
-            <!-- ADMINISTRATION -->
-            <li class="nav-item nav-cta">
-                <a
-                    href="{% url 'admin:index' %}"
-                    class="btn btn-nav admin-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <i class="fas fa-lock" aria-hidden="true"></i>
-                    <span>Administration</span>
-                </a>
-            </li>
-
         </ul>
     </div>
 </nav>
 
-<!-- UN SEUL FOND SOMBRE POUR LE MENU MOBILE -->
-<div
-    class="nav-overlay"
-    id="navOverlay"
-    aria-hidden="true"
-></div>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
