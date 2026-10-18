@@ -10,8 +10,7 @@ from apps.news.views import liste_actualites, detail_actualite
 urlpatterns = [
     path('apropos/', TemplateView.as_view(template_name="core/apropos.html"), name='apropos'), 
     path('espace-gestion-lymao/', admin.site.urls),
-    
-    # ✅ GALERIE AJOUTÉE ICI (sans namespace, comme apropos, faq, etc.)
+
     path('galerie/', TemplateView.as_view(template_name="core/galerie.html"), name='galerie'),
 
     path('', include(('apps.core.urls', 'core'), namespace='core')), 
