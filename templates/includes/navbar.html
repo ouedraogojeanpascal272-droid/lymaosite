@@ -1,16 +1,26 @@
-<nav class="navbar" id="navbar" aria-label="Navigation principale">
+
+<!-- ========================================
+     NAVIGATION LYMAO — VERSION CORRIGÉE
+     ======================================== -->
+
+<nav class="navbar" id="navbar">
     <div class="nav-container">
 
-        <a href="{% url 'core:home' %}" class="nav-logo" aria-label="LYMAO, retour à l'accueil">
-            <div class="logo-icon" aria-hidden="true">
+        <!-- LOGO DE L'ÉCOLE -->
+        <a href="{% url 'home' %}" class="nav-logo">
+            <div class="logo-icon">
                 <i class="fas fa-graduation-cap"></i>
             </div>
+
             <div class="logo-text">
                 <span class="logo-main">LYMAO</span>
-                <span class="logo-sub">Lycée Moderne Alassane Ouattara</span>
+                <span class="logo-sub">
+                    LYCEE MODERNE ALASSANE OUATTARA
+                </span>
             </div>
         </a>
 
+        <!-- BOUTON MENU MOBILE : UN SEUL -->
         <button
             type="button"
             class="nav-toggle"
@@ -20,50 +30,3 @@
             aria-expanded="false"
         >
             <span class="hamburger"></span>
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-        </button>
-
-        <ul class="nav-menu" id="navMenu">
-            <li class="nav-item">
-                <a href="{% url 'core:home' %}" class="nav-link{% if request.path == '/' %} active{% endif %}" {% if request.path == '/' %}aria-current="page"{% endif %}>
-                    <i class="fas fa-home" aria-hidden="true"></i>
-                    <span>Accueil</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{% url 'core:apropos' %}" class="nav-link{% if 'apropos' in request.path %} active{% endif %}" {% if 'apropos' in request.path %}aria-current="page"{% endif %}>
-                    <i class="fas fa-school" aria-hidden="true"></i>
-                    <span>Notre École</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{% url 'liste_actualites' %}" class="nav-link{% if 'actualite' in request.path %} active{% endif %}" {% if 'actualite' in request.path %}aria-current="page"{% endif %}>
-                    <i class="fas fa-newspaper" aria-hidden="true"></i>
-                    <span>Actualités</span>
-                </a>
-            </li>
-
-            <!-- ✅ LIEN GALERIE CORRIGÉ (core:galerie est le nom officiel) -->
-            <li class="nav-item">
-                <a href="{% url 'core:galerie' %}" class="nav-link{% if 'galerie' in request.path %} active{% endif %}" {% if 'galerie' in request.path %}aria-current="page"{% endif %}>
-                    <i class="fas fa-images" aria-hidden="true"></i>
-                    <span>Galerie</span>
-                </a>
-            </li>
-            <!-- ✅ FIN LIEN GALERIE -->
-
-            <li class="nav-item">
-                <a href="{% url 'contact' %}" class="nav-link{% if 'contact' in request.path %} active{% endif %}" {% if 'contact' in request.path %}aria-current="page"{% endif %}>
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
-
-        </ul>
-    </div>
-</nav>
-
-<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
