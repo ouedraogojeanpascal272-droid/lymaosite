@@ -12,7 +12,5 @@ urlpatterns = [
     path('calendrier/', TemplateView.as_view(template_name="core/calendrier.html"), name='calendrier'),
     path('inscriptions/', TemplateView.as_view(template_name="core/inscriptions.html"), name='inscriptions'),
     path('faq/', TemplateView.as_view(template_name="core/faq.html"), name='faq'),
-    
-    # ✅ LA ROUTE GALERIE RESTE ICI (elle devient automatiquement 'core:galerie')
-    path('galerie/', views.galerie, name='galerie'),
+    # ✅ PAS DE GALERIE ICI (elle est dans config/urls.py)
 ]
