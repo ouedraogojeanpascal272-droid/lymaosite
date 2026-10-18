@@ -1,31 +1,31 @@
-{% extends 'base.html' %}
-{% load static %}
+                    <a href="https://www.youtube.com/embed/IDENTIFIANT" class="gallery-link video-link" data-title="Titre de la vidéo">
+                        <img src="{% static 'images/mr-yao-prov.jpg' %}" alt="Aperçu de la vidéo : titre" loading="lazy">
+                        <span class="gallery-overlay" aria-hidden="true"><i class="fas fa-play-circle"></i></span>
+                    </a>
+                    <figcaption class="gallery-caption">Titre de la vidéo</figcaption>
+                </figure>
+            {% endcomment %}
 
-{% block title %}Galerie — Lycée Moderne Alassane Ouattara{% endblock %}
+        </div>
+    </div>
+</section>
 
-{% block extra_head %}
-<style>
-    .gallery-section { padding: 60px 0 100px; background: #f8fafc; }
+<!-- Visionneuse (ouverte par main.js) -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visionneuse de la galerie">
+    <button type="button" class="lightbox-close" aria-label="Fermer">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="lightbox-prev" aria-label="Photo précédente">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="lightbox-next" aria-label="Photo suivante">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <div class="lightbox-content">
+        <img src="" alt="" id="lightboxImg" hidden>
+        <iframe src="" id="lightboxIframe" title="Vidéo de la galerie" allowfullscreen hidden></iframe>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+</div>
 
-    .gallery-filters {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 40px;
-    }
-
-    .filter-btn {
-        min-height: 44px;
-        padding: 10px 22px;
-        background: #ffffff;
-        border: 2px solid #e2e8f0;
-        border-radius: 30px;
-        font-family: inherit;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #64748b;
-        cursor: pointer;
-        transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
-    }
+{% endblock %}
