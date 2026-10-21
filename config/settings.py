@@ -13,9 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2^j1eyh7qn#m9dc+$83j4j9iwltmd#msz8^s$$d-xn)86k')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-# ALLOWED_HOSTS défini une seule fois, incluant Vercel
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'testserver', '.vercel.app', 'lymao.vercel.app', 'lymaosite.vercel.app']
 
 # Application definition
@@ -34,7 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # WhiteNoise pour les fichiers statiques
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -93,7 +92,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "lymao608@gmail.com"
-EMAIL_HOST_PASSWORD = "xkbk cpjv axvy dhtb"  # ⚠️ En production, utilise une variable d'environnement !
+EMAIL_HOST_PASSWORD = "xkbk cpjv axvy dhtb"
 DEFAULT_FROM_EMAIL = "lymao608@gmail.com"
 CONTACT_EMAIL = "lymao608@gmail.com"
 
@@ -104,18 +103,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# WhiteNoise configuration pour servir les fichiers statiques en production
+# WhiteNoise configuration
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media files
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-# Security settings for production (activé seulement si DEBUG=False)
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
