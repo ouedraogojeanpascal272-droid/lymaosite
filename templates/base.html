@@ -1,4 +1,5 @@
-{% load static %}<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
@@ -6,11 +7,11 @@
     <meta name="description" content="{% block meta_description %}Lycée Moderne Alassane Ouattara d'Anyama (LYMAO) : pédagogie, vie scolaire, actualités et informations pratiques pour les familles.{% endblock %}" />
     <title>{% block title %}LYMAO — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %}</title>
 
-    <!-- Icônes : chargées une seule fois (la feuille de style ne doit plus les importer) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" referrerpolicy="no-referrer" />
-    <!-- Animations au défilement -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" referrerpolicy="no-referrer" />
-    <!-- Feuille de style du site -->
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Animations AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Feuille de style principale du site -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     {% block extra_head %}{% endblock %}
@@ -26,8 +27,10 @@
 
     {% include 'includes/footer.html' %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" referrerpolicy="no-referrer"></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    
     {% block extra_js %}{% endblock %}
 </body>
 </html>
