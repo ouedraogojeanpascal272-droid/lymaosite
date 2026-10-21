@@ -73,7 +73,7 @@
 </div>
 {% endblock %}
 
-{% block extra_css %}
+{% block extra_head %}
 <style>
 .gallery-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 40px; justify-content: center; }
 .filter-btn { padding: 10px 22px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 30px; font-size: 0.9rem; font-weight: 600; color: #64748b; cursor: pointer; transition: all 0.25s ease; }
@@ -140,7 +140,7 @@
         lightboxImg.style.display = 'none';
         lightboxIframe.style.display = 'none';
         lightboxIframe.src = '';
-        if (isVideo) { lightboxIframe.src = src; lightboxIframe.style.display = 'block'; } 
+        if (isVideo) { lightboxIframe.src = src; lightboxIframe.style.display = 'block'; }
         else { lightboxImg.src = src; lightboxImg.alt = title; lightboxImg.style.display = 'block'; }
         lightboxCaption.textContent = title;
         currentMediaList = Array.from(document.querySelectorAll('.gallery-item')).filter(item => item.style.display !== 'none').map(item => item.querySelector('.gallery-link'));
