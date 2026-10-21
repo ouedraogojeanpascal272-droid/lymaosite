@@ -1,5 +1,4 @@
-{% load static %}
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
@@ -7,11 +6,13 @@
     <meta name="description" content="{% block meta_description %}Lycée Moderne Alassane Ouattara d'Anyama (LYMAO) : pédagogie, vie scolaire, actualités et informations pratiques pour les familles.{% endblock %}" />
     <title>{% block title %}LYMAO — Lycée Moderne Alassane Ouattara d'Anyama{% endblock %}</title>
 
-    <!-- Icônes Font Awesome -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <!-- Animations AOS -->
+    
+    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    <!-- Feuille de style principale du site -->
+    
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     {% block extra_head %}{% endblock %}
