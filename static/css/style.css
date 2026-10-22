@@ -369,7 +369,8 @@ iframe {
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1001;
+    position: relative;
+    z-index: 1003; /* au-dessus du tiroir (1002) : le bouton reste cliquable pour fermer */
 }
 
 .hamburger {
@@ -3183,4 +3184,11 @@ iframe {
     .slider-slide.is-active {
         transition: none;
     }
+}
+
+/* Contenu toujours visible si AOS ne se charge pas (CDN bloqué, hors ligne, script refusé).
+   Tant que base.html n'a pas ajouté la classe « aos-ready », rien n'est masqué. */
+html:not(.aos-ready) [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
 }
