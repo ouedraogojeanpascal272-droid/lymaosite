@@ -103,8 +103,12 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# WhiteNoise configuration
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"},
+}
+# Sert les fichiers de STATICFILES_DIRS directement, sans collectstatic
+WHITENOISE_USE_FINDERS = True
 
 # Media files
 MEDIA_URL = "/media/"
