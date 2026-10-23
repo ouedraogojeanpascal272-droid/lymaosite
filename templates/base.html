@@ -1,7 +1,33 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="color-scheme" content="light">
+
+    <title>{% block title %}Lycée Moderne Alassane Ouattara — LYMAO{% endblock %}</title>
+
+    <meta name="description"
+          content="{% block meta_description %}Bienvenue sur le site du Lycée Moderne Alassane Ouattara d’Anyama. Retrouvez les actualités, les informations et la vie de notre établissement.{% endblock %}">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Les pages peuvent ajouter leurs propres ressources -->
     {% block extra_head %}{% endblock %}
 </head>
+
 <body>
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <a class="skip-link" href="#contenu">
+        Aller au contenu
+    </a>
 
     {% include 'includes/navbar.html' %}
 
@@ -11,21 +37,41 @@
 
     {% include 'includes/footer.html' %}
 
-    <!-- Scripts -->
-    <!-- onload : signale à style.css que AOS est chargé (sinon le contenu reste visible) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" onload="document.documentElement.classList.add('aos-ready')"></script>
+    <!-- AOS : animations au défilement -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+        onload="document.documentElement.classList.add('aos-ready')"
+        onerror="document.documentElement.classList.add('aos-unavailable')">
+    </script>
+
+    <!-- JavaScript principal : gère notamment le menu mobile -->
     <script src="{% static 'js/main.js' %}"></script>
 
     {% block extra_js %}{% endblock %}
 
+    <!-- Initialisation AOS après le chargement de la bibliothèque -->
     <script>
-        // Initialisation seulement si AOS est disponible
-        if (window.AOS) {
-            AOS.init({
-                duration: 800,
-                once: true,
-            });
-        }
+        (function () {
+            function initializeAOS() {
+                if (!window.AOS || window.__lymaoAOSInitialized) {
+                    return;
+                }
+
+                window.__lymaoAOSInitialized = true;
+
+                var prefersReducedMotion =
+                    window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                window.AOS.init({
+                    duration: prefersReducedMotion ? 0 : 800,
+                    once: true,
+                    disable: prefersReducedMotion
+                });
+            }
+
+            initializeAOS();
+        })();
     </script>
 </body>
 </html>
