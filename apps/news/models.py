@@ -10,15 +10,16 @@ class Actualite(models.Model):
     )
     date_publication = models.DateTimeField("Date de publication", auto_now_add=True)
     slug = models.SlugField(unique=False, blank=True)
-def save(self, *args, **kwargs):
+
+    def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slug(self.titre) #ignore slugify doit être importé de django.utils.text
+            self.slug = slug(self.titre)
         super().save(*args, **kwargs)
-    
-class Meta:
+
+    class Meta:
         verbose_name = "Actualité"
         verbose_name_plural = "Actualités"
         ordering = ["-date_publication"]  # Les plus récentes en premier
 
-def __str__(self):
+    def __str__(self):
         return self.titre
